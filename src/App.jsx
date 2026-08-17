@@ -5,6 +5,7 @@ import './App.css';
 import ProjectsPage from "./views/ProjectsPage";
 import AboutPage from "./views/AboutPage";
 import ArchivePage from "./views/ArchivePage";
+import BlaaSolProject from "./views/BlaaSolProject";
 
 const router = createHashRouter([
   {
@@ -22,7 +23,11 @@ const router = createHashRouter([
       {
         path: "Archive",
         element: <ArchivePage />
-      }
+      },
+      { 
+        path: "projects/blaa-sol", 
+        element: <BlaaSolProject /> 
+      },
     ]
   }
 ]);

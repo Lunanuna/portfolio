@@ -1,0 +1,76 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.topSection {
+  width: 1200px;
+  height: 300px;
+  margin-top:120px;
+  padding: 0 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 36px;
+  color: #575757;
+}
+
+.role {
+  font-size: 64px;
+  font-weight: 600;
+}
+
+.contact {
+  align-self: flex-end;
+}
+
+.bottomSection {
+  max-width: 1200px;
+  display: flex;
+ justify-content: space-between;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.profileImage {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.introduction {
+  font-size: 18px;
+}
+
+/* 말풍선 */
+
+/* .introduction {
+  position: relative;
+  background-color: #f2f2f2;
+  border-radius: 16px;
+  padding: 16px 20px;
+  font-size: 18px;
+}
+
+.introduction::after {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 24px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 10px solid #f2f2f2;
+} */
