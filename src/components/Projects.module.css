@@ -1,0 +1,30 @@
+.projectItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  color: inherit;
+  padding: 16px 0;
+}
+
+.thumbnail {
+  width: 360px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.projectTitle {
+  font-size: 20px;
+}
+
+.description {
+  font-size: 14px;
+  color: #888;
+}
