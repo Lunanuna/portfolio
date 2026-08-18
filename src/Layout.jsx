@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, ScrollRestoration } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
@@ -8,6 +8,7 @@ function Layout() {
       <Header />
       <main><Outlet /></main>
       <Footer />
+      <ScrollRestoration />
     </div>
   )
 }
