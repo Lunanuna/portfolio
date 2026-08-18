@@ -19,7 +19,7 @@ const projectList = [
   },
   {
     path: 'cph-fw',
-    title: 'CPH FW',
+    title: 'COPENHAGEN FASHION WEEK',
     description: '여기에 한 줄 소개글',
     thumbnail: blaaSolThumb,
     keywords: ['Web Design', 'Interaction', 'Visual Identity'],

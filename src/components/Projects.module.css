@@ -1,474 +1,62 @@
-/* ============================================================
-   BlaaSol.module.css
-   ------------------------------------------------------------
-   미세 조정 포인트는 전부 아래 :root 변수 / 각 규칙 주석에 표시.
-   기본 본문(paragraph) 16px 기준으로 잡음.
-   ============================================================ */
-
-.page {
-  /* --- 레이아웃 --- */
-  --content-max: 1100px;   /* 넓은 요소(이미지, 카드, 메타 행)의 최대 폭 */
-  --text-max: 820px;       /* 글 단락의 최대 폭. 이 폭으로 가운데 정렬됨 */
-  --side-pad: 60px;        /* 좌우 화이트스페이스. 줄이면 콘텐츠가 넓어짐 */
-  --section-gap: 100px;    /* 섹션 사이 세로 간격 */
-
-  /* --- 컬러 --- */
-  --c-accent: #16A6E0;     /* Problem/Solution 등 섹션 제목 하늘색 */
-  --c-navy: #1F3A93;       /* 진한 네이비 (배경 섹션, 링크) */
-  --c-navy-bg: #24408E;    /* 디자인 시스템 섹션 배경 */
-  --c-lightblue-bg: #E7EEF1; /* 기능 소개 섹션 연한 배경 */
-  --c-text: #1A1A1A;       /* 기본 본문 색 */
-  --c-text-sub: #767676;   /* 보조 텍스트 (eyebrow, note) */
-  --c-tag-border: #F3A5C0; /* 히어로 태그 테두리 핑크 */
-
-  /* --- 타이포 --- */
-  --fs-body: 16px;         /* 본문 크기 (요청대로 16px) */
-  --lh-body: 1.75;         /* 본문 줄간격. 답답하면 1.8~1.9로 */
-
-  color: var(--c-text);
-  /* 폰트는 전역(index.css)에서 상속받게 둠. 여기서 지정하고 싶으면 아래 주석 해제
-  font-family: 'Poppins', sans-serif; */
-}
-
-/* 본문 폭으로 감싸는 공통 컨테이너 성격의 규칙들이 반복되므로
-   .textBlock / .metaRow / .processSection 등에 동일한 값을 적용해둠 */
-
-/* ============================================================
-   1. HERO
-   ============================================================ */
-.hero {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: 80px var(--side-pad) 0; /* 상단 여백 80px — 헤더 높이에 맞춰 조정 */
-  display: flex;
-  align-items: flex-start;
-  gap: 60px;                        /* 텍스트 ↔ 이미지 간격 */
-}
-
-.heroText {
-  flex: 1;
-  min-width: 0; /* flex 안에서 텍스트 줄바꿈 깨지는 것 방지 */
-}
-
-.eyebrow {
-  margin: 0 0 8px;
-  font-size: 13px;
-  color: var(--c-text-sub);
-}
-
-.heroTitle {
-  margin: 0 0 28px;
-  font-size: 56px;   /* 제목 크기 */
-  line-height: 1.15;
+.title {
+  margin: 0 0 40px;
+  padding: 0 60px;
+  font-size: 36px;
   font-weight: 700;
-  letter-spacing: -0.02em;
 }
 
-.tagList {
-  list-style: none;
-  margin: 0 0 32px;
-  padding: 0;
+.list {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 한 줄에 2개 */
+  column-gap: 64px;
+  row-gap: 56px;
+}
+
+.projectItem {
+  display: flex;
+  flex-direction: column; /* 이미지 위, 텍스트 아래 */
+  text-decoration: none;
+  color: inherit;
+}
+
+.thumbnail {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.projectTitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.description {
+  font-size: 16px;
+  color: #444;
+  margin: 0 0 16px;
+}
+
+.keywords {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.tag {
+.keyword {
   font-size: 13px;
-  padding: 5px 14px;
-  border: 1px solid var(--c-tag-border);
-  border-radius: 999px;  /* 완전한 알약 모양 */
-  color: var(--c-text);
-  white-space: nowrap;
-}
-
-.heroLead {
-  margin: 0 0 20px;
-  font-size: var(--fs-body);
-  line-height: var(--lh-body);
-  font-weight: 600;      /* 히어로 소개문은 본문보다 조금 굵게 */
-  max-width: 46ch;       /* 한 줄 글자 수 제한 — 읽기 편한 길이 */
-}
-
-.heroImageWrap {
-  flex: 0 0 42%;  /* 이미지 영역 폭. 키우려면 % 올리면 됨 */
-}
-
-.heroImage {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ============================================================
-   2. 메타 정보 행 (MY ROLE / DELIVERABLE / TOOLS / DATE / TYPE)
-   ============================================================ */
-.metaRow {
-  max-width: var(--content-max);
-  margin: 60px auto 0;
-  padding: 0 var(--side-pad);
-  display: grid;
-  /* 앞 3개는 넓게, DATE/TYPE은 좁게 — 칼럼 비율 조정하려면 여기 */
-  grid-template-columns: 1.3fr 1.3fr 1.6fr 0.7fr 1fr;
-  gap: 24px;
-}
-
-.metaLabel {
-  margin: 0 0 10px;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--c-text-sub);
-}
-
-.metaValue {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.5;
-  white-space: pre-line; /* 데이터의 \n 을 실제 줄바꿈으로 표시 */
-}
-
-.metaNote {
-  margin: 6px 0 0;
-  font-size: 12px;
-  color: var(--c-text-sub);
-  line-height: 1.5;
-  white-space: pre-line;
-}
-
-/* ============================================================
-   3. 기능 소개 섹션 (연한 파랑 풀블리드)
-   ------------------------------------------------------------
-   화면 끝까지 배경을 채우기 위해 100vw 트릭 사용.
-   부모에 overflow-x: hidden 이 걸려있어야 가로 스크롤이 안 생겨.
-   ============================================================ */
-.featureSection {
-  margin: var(--section-gap) 0 0;
-  padding: 70px 0 80px;
-  background: var(--c-lightblue-bg);
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%); /* 부모 폭을 무시하고 화면 전체로 확장 */
-}
-
-.featureHeadline {
-  max-width: var(--content-max);
-  margin: 0 auto 56px;
-  padding: 0 var(--side-pad);
-  font-size: 34px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--c-navy);
-  text-align: center;
-}
-
-.featureRow {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: 0 var(--side-pad);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 목업 4개 균등 배치 */
-  gap: 24px;
-  align-items: start;
-}
-
-.featureImage {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ============================================================
-   4. 텍스트 섹션 공통 (Problem / Solution / My Role ...)
-   ============================================================ */
-.textBlock {
-  /* 글 단은 좁게 잡고 margin auto 로 가운데 정렬.
-     글자 자체는 왼쪽 정렬 그대로 유지되고, 덩어리만 화면 중앙에 놓임. */
-  max-width: var(--text-max);
-  margin: var(--section-gap) auto 0;
-  padding: 0 var(--side-pad);
-}
-
-.sectionHeading {
-  margin: 0 0 20px;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--c-accent);
-}
-
-.subHeading {
-  margin: 32px 0 16px;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--c-text);
-}
-
-.body {
-  margin: 0 0 18px;
-  font-size: var(--fs-body);
-  line-height: var(--lh-body);
-  /* 한 줄 길이는 부모(.textBlock)의 --text-max 가 결정.
-     여기에 max-width 를 또 걸면 글이 왼쪽으로 치우쳐 보이니 넣지 말 것. */
-}
-
-/* ============================================================
-   5. Double Diamond 카드 4개
-   ============================================================ */
-.processSection {
-  max-width: var(--content-max);
-  margin: var(--section-gap) auto 0;
-  padding: 0 var(--side-pad);
-}
-
-.processRow {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  align-items: stretch; /* 카드 높이를 가장 긴 카드에 맞춤 */
-}
-
-.processCard {
-  border: 1px solid var(--c-accent);
-  border-radius: 16px;
-  padding: 24px 20px 32px;
-  text-align: center;
-  background: #fff;
-}
-
-.processArrow {
-  display: block;
-  /* width/height 둘 다 명시. auto 로 두면 SVG에 viewBox 나 크기 속성이 없을 때
-     브라우저가 0px 로 계산해서 아이콘이 안 보이는 문제가 생김. */
-  width: 36px;
-  height: 18px;
-  object-fit: contain;  /* 위 박스 비율과 SVG 비율이 달라도 안 찌그러짐 */
-  margin: 0 auto 12px;  /* 카드 안에서 가운데 정렬 */
-}
-
-
-.processTitle {
-  margin: 0 0 20px;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.processList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  text-align: left; /* 항목은 왼쪽 정렬 (제목만 가운데) */
-}
-
-.processItem {
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 6px;
-  white-space: pre-line;
-}
-
-/* ============================================================
-   6. 이미지 배치 유틸
-   ============================================================ */
-
-/* 폰 목업 여러 개를 가로로 */
-.imageRow {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-
-.phoneImage {
-  width: 200px;  /* 폰 목업 하나의 폭 */
-  height: auto;
-  display: block;
-}
-
-/* 페르소나 보드처럼 넓은 통이미지 */
-.wideFigure {
-  max-width: var(--content-max);
-  margin: 48px auto 0;
-  padding: 0 var(--side-pad);
-}
-
-.wideImage {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 4px;
-}
-
-/* 스케치 사진처럼 가운데 정렬 + 폭 제한 */
-.centerFigure {
-  margin: 40px 0 0;
-  text-align: center;
-}
-
-.sketchImage {
-  width: 100%;
-  max-width: 560px; /* 스케치 사진 최대 폭 */
-  height: auto;
-  border-radius: 4px;
-}
-
-/* ============================================================
-   7. Design System 섹션 (네이비 풀블리드)
-   ============================================================ */
-.dsSection {
-  margin: var(--section-gap) 0 0;
-  padding: 60px 0 70px;
-  background: var(--c-navy-bg);
-  color: #fff;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.dsInner {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: 0 var(--side-pad);
-}
-
-.dsCaption {
-  margin: 40px 0 16px;
-  font-size: 15px;
-  font-weight: 500;
-  color: #fff;
-}
-
-.dsCaption:first-child {
-  margin-top: 0; /* 첫 캡션은 위 여백 제거 */
-}
-
-.dsImage {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
-}
-
-/* ============================================================
-   8. Deliver 섹션 (목업 + 설명 좌우)
-   ============================================================ */
-.deliverBlock {
-  max-width: var(--text-max); /* 글 단과 같은 폭 = 같은 세로선에 정렬됨 */
-  margin: 60px auto 0;
-  padding: 0 var(--side-pad);
-}
-
-.deliverRow {
-  display: flex;
-  align-items: flex-start;
-  gap: 60px; /* 목업 ↔ 설명 간격 */
-}
-
-.deliverImage {
-  width: 220px;   /* Deliver 목업 폭 */
-  flex-shrink: 0; /* 텍스트가 길어져도 이미지가 찌그러지지 않게 */
-  height: auto;
-  display: block;
-}
-
-/* ============================================================
-   9. 코드 솔루션 링크
-   ============================================================ */
-.codedLink {
-  display: inline-block;
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--c-navy);
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.codedLink:hover {
-  opacity: 0.7;
-}
-
-.linkNote {
-  margin: 12px 0 0;
-  font-size: 14px;
-  color: #444;
-}
-
-/* ============================================================
-   10. 반응형
-   ------------------------------------------------------------
-   태블릿/모바일에서 좌우 배치를 세로로 풀어줌.
-   브레이크포인트 숫자는 필요에 맞게 조정.
-   ============================================================ */
-@media (max-width: 900px) {
-  .page {
-    --side-pad: 32px;
-    --section-gap: 72px;
-  }
-
-  .hero {
-    flex-direction: column;
-    gap: 40px;
-  }
-
-  .heroTitle {
-    font-size: 40px;
-  }
-
-  .heroImageWrap {
-    flex: none;
-    width: 100%;
-  }
-
-  /* 메타 정보: 5칼럼 → 2칼럼 */
-  .metaRow {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px 20px;
-  }
-
-  /* 목업 4개 → 2×2 */
-  .featureRow {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px 20px;
-  }
-
-  .featureHeadline {
-    font-size: 26px;
-  }
-
-  /* 프로세스 카드 4개 → 2×2 */
-  .processRow {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .deliverRow {
-    flex-direction: column;
-    gap: 28px;
-  }
-
-  .codedLink {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 560px) {
-  .page {
-    --side-pad: 20px;
-  }
-
-  .heroTitle {
-    font-size: 32px;
-  }
-
-  /* 좁은 화면에선 전부 1칼럼 */
-  .metaRow,
-  .featureRow,
-  .processRow {
-    grid-template-columns: 1fr;
-  }
-
-  .phoneImage {
-    width: 150px;
-  }
+  padding: 4px 12px;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  color: #555;
 }
