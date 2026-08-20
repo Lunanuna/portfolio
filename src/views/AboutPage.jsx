@@ -6,6 +6,7 @@ export default function AboutPage(){
        <main>
         <div className={styles.mainL}>
             <h1>Hi my name is Gayoung!</h1>
+            <h2>I like to listen, look closer, and figure things out.</h2>
         <p>
             I came to design after four years in customer service at Booking.com, where I spent every day listening to customers, solving problems, and seeing the product from their side of the screen.
 
