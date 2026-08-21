@@ -19,8 +19,12 @@ export default function Footer() {
                         
                 </li>
                 <li>
-                    <a href="/gayeong-han-cv.pdf" target="_blank" rel="noopener noreferrer">
-                        Resume
+                    <a href="/resume-gayoung.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.resumeButton} // 기존 버튼 클래스명 그대로 사용
+                    >
+                    Resume
                     </a>
                 </li>
             </ul>
