@@ -1,0 +1,286 @@
+/* ============================================================
+   ArchivePage.module.css
+   ------------------------------------------------------------
+   조절 포인트는 .page 상단 변수에 모아뒀어.
+   ============================================================ */
+
+.page {
+  /* --- 레이아웃 --- */
+  --content-max: 1000px;   /* 콘텐츠 최대 폭. 일러스트도 이 폭 */
+  --lead-max: 62ch;        /* 헤더 설명문 폭 — 너무 넓으면 읽기 힘들어서 따로 제한 */
+  --side-pad: 40px;        /* 좌우 여백 */
+  --section-gap: 32px;    /* 섹션 사이 세로 간격 */
+
+  /* --- 컬러 --- */
+  --c-text: #111111;
+  --c-text-sub: #505050;
+  --c-desc: #767676;
+  --c-border: #DFE3E6;
+  --c-placeholder: #E7EBEE; /* 이미지 로딩 전 배경 */
+
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 80px var(--side-pad) 140px;
+  color: var(--c-text);
+}
+
+/* ============================================================
+   1. 헤더 — 가운데 정렬
+   ============================================================ */
+.header {
+  text-align: center;
+  margin-bottom: 120px;
+}
+
+.title {
+  margin: 0 0 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.lead {
+  max-width: var(--lead-max);
+  margin: 0 auto;          /* 가운데 정렬된 덩어리 */
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--c-desc);
+}
+
+/* ============================================================
+   2. 섹션 공통 — 제목은 왼쪽 정렬
+   ============================================================ */
+.section + .section {
+  margin-top: var(--section-gap);
+}
+
+.sectionHeading {
+  margin: 0 0 40px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: left;        /* 헤더와 달리 왼쪽 */
+}
+
+/* ============================================================
+   3. Code Practice — 3단 카드
+   ============================================================ */
+.codeGrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 32px;
+}
+
+.codeCard {
+  position: relative;      /* stretched link의 기준점 */
+  display: flex;
+  flex-direction: column;
+}
+
+.thumbWrap {
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--c-placeholder);
+  aspect-ratio: 4 / 3;
+  margin-bottom: 16px;
+}
+
+.thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;    /* 잘려도 화면 위쪽(헤더/주요 UI)은 살아남음 */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.codeCard:hover .thumb {
+  transform: scale(1.04);
+}
+
+.codeTitle {
+  margin: 0 0 6px;
+  font-family: 'Karla', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.codeTitle a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 카드 전체를 데모 링크의 클릭 영역으로 확장 */
+.stretchedLink::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.codeCard:focus-within .thumbWrap {
+  outline: 2px solid var(--c-text);
+  outline-offset: 4px;
+}
+
+.codeDesc {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--c-text-sub);
+}
+
+.codeFooter {
+  margin-top: auto;        /* 설명 길이가 달라도 하단이 나란히 정렬됨 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 14px;
+  padding: 4px 12px;
+  border: 1.5px solid #1ABCFE;
+  border-radius: 999px;
+  color: var(--c-text-sub);
+  white-space: nowrap;
+}
+
+/* GitHub 링크만 stretched link 영역 위로 올림 */
+.githubLink {
+  position: relative;
+  z-index: 1;
+  font-size: 13px;
+  color: var(--c-text-sub);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.githubLink:hover {
+  color: var(--c-text);
+}
+
+/* ============================================================
+   4. Illustration — 세로 스택, 콘텐츠 폭 그대로
+   ============================================================ */
+.gallery {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;               /* 그림 사이 간격 */
+}
+
+.artCard {
+  margin: 0;
+}
+
+.art {
+  width: 100%;
+  height: auto;            /* 원본 비율 유지 — 비율이 제각각이라 강제하지 않음 */
+  display: block;
+  border-radius: 8px;
+  background: var(--c-placeholder);
+}
+
+.artMeta {
+  margin-top: 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.artTitle {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.artTool {
+  font-size: 16px;
+  font-weight: 500;
+  color: var( --c-text-sub);
+}
+
+/* 제목과 도구 사이 구분점 */
+.artTool::before {
+  content: '·';
+  margin-right: 12px;
+}
+
+/* ============================================================
+   5. 반응형
+   ============================================================ */
+@media (max-width: 900px) {
+  .page {
+    --side-pad: 32px;
+    --section-gap: 88px;
+    padding-top: 56px;
+  }
+
+  .header {
+    margin-bottom: 80px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  /* 카드 3단 → 2단 */
+  .codeGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery {
+    gap: 56px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    --side-pad: 20px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .sectionHeading {
+    font-size: 20px;
+    margin-bottom: 28px;
+  }
+
+  /* 좁은 화면에선 카드 1단 */
+  .codeGrid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  /* 태그와 Code 링크가 한 줄에 안 들어가면 줄바꿈 */
+  .codeFooter {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+/* 움직임을 줄여달라고 설정한 사용자는 확대 효과 생략 */
+@media (prefers-reduced-motion: reduce) {
+  .codeCard:hover .thumb {
+    transform: none;
+  }
+}

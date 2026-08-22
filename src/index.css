@@ -80,3 +80,9 @@ h1, h2, h3, h4 {
 .layout main {
   flex: 1;
 }
+
+/* index.css 어딘가 */
+main {
+  display: flex;
+  flex-direction: column;   /* ← 이게 빠져 있거나 */
+}
