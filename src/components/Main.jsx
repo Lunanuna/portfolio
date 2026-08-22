@@ -17,12 +17,11 @@ export default function Main() {
       <section className={styles.bottomSection}>
         <img className={styles.profileImage} src={profile} alt="profile" />
         <div className={styles.introduction}>
-         <div>Multimedia design student with a focus on UX/UI</div>
          <div>
-          I always digging into the small details that make an interface feel right.
+          Hi there! I’m Gayoung, a Multimedia Design student specializing in UI/UX.
          </div>
          <div>
-          Also I am currently looking for an intership in the field!
+          I’m currently looking for an internship opportunity for Spring 2027 based in Copenhagen, where I can learn, contribute, and grow as a designer.
          </div>
          
           </div>

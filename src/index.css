@@ -15,10 +15,10 @@
 /* 2. 변수 — 나중에 여기만 바꾸면 전체 반영 */
 :root {
   --color-text: #111111;
-  --color-bg: #ffffff;
-  --color-muted: #6b6b6b;
+  --color-bg: #FAFAF9;
+  --color-muted: #505050;
 
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-sans: 'Karla', BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 
   --space-sm: 0.5rem;
   --space-md: 1rem;

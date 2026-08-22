@@ -1,53 +1,188 @@
-/* Footer.module.css */
-
 .footer {
-  padding: 4rem 2rem;
+  /* ── 여기 숫자만 바꾸면 전체가 따라옴 ── */
+  --c-bg: #1ABCFE;        /* 배경 */
+  --c-cream: #FAFEE4;     /* 제목 + 왼쪽 정보 */
+  --c-white: #FFFFFF;     /* 오른쪽 링크 */
+  --pad-x: 48px;          /* 좌우 여백 */
+  --pad-top: 48px;
+  --pad-bottom: 64px;
+  --gap-heading: 48px;   /* Let's Chat ↔ 아래 내용 세로 간격 */
+
+  background: var(--c-bg);
+  padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
+
+  /* 화면 끝까지 배경 채우기 — 부모에 이미 full-bleed가 걸려있으면 이 4줄 삭제 */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: grid;
+  grid-template-columns: 1fr auto;  /* 왼쪽 정보 / 오른쪽 링크 */
+  align-items: center;              /* 항목 수가 달라도 시각적으로 균형 */
+  column-gap: 40px;
+  row-gap: var(--gap-heading);
 }
 
+/* ── Let's Chat! ── */
 .heading {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0 0 3rem;
+  grid-column: 1 / -1;   /* 두 칼럼 전체를 차지 */
+  margin: 0;
+  /* margin-left: 48px;     ← heading만 더 들여쓰고 싶으면 주석 해제 */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #26448C;
 }
 
+/* ── 왼쪽: 이름 / 직함 ── */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;             /* Gayoung Han ↔ UX/UI Designer */
+}
+
+.name,
+.role {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;      /* medium */
+  line-height: 1.2;
+  color: var(--c-cream);
+}
+
+.role {
+  display: flex;
+  align-items: center;
+  gap: 16px;             /* | 양옆 16px씩 */
+}
+
+.divider {
+  opacity: 0.7;          /* 구분자만 살짝 연하게 — 1로 두면 균일 */
+}
+
+/* ── 오른쪽: 링크 ── */
 .contact {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 300px;      /* 이 값이 오른쪽 칼럼 시작 위치를 정함 */
 }
 
 .contact a {
-  color: inherit;
+  color: var(--c-white);
+  font-size: 20px;
+  font-weight: 600;      /* semibold */
+  line-height: 1.2;
   text-decoration: none;
-  white-space: nowrap;
+  transition: opacity 0.2s ease;
 }
 
 .contact a:hover {
-  opacity: 0.6;
+  opacity: 0.75;
 }
 
-.contact a:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 4px;
+/* ── 이메일 + 카피 버튼 ── */
+.emailRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;             /* 이메일 ↔ 아이콘 */
 }
 
-@media (max-width: 768px) {
+.copyButton {
+  color: var(--c-white);
+  font-size: 20px;
+  font-weight: 600;     
+  display: flex;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;         /* 아이콘 세로 중앙 정렬 */
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.copyButton span:hover{
+opacity: 0.75;
+}
+
+.copyButton img:hover {
+  opacity: 1;
+  transform: scale(1.12);
+}
+
+.copyIcon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  filter: brightness(0) invert(1);  /* 검은 SVG → 흰색. 이미 흰 아이콘이면 삭제 */
+}
+
+/* 화면에서만 숨기고 스크린리더는 읽는 패턴 */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 900px) {
   .footer {
-    padding: 3rem 1.25rem;
+    --pad-x: 32px;
+    --pad-top: 48px;
+    --pad-bottom: 64px;
+    --gap-heading: 56px;
+
+    grid-template-columns: 1fr;  /* 한 칼럼으로 */
+    align-items: start;
+    row-gap: 48px;
   }
 
-  .heading {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+  .footer .heading {
+    margin-left: 0;              /* 모바일에선 들여쓰기 해제 */
+    font-size: 44px;
   }
 
   .contact {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
+    min-width: 0;
+  }
+
+  .name,
+  .role,
+  .contact a {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer {
+    --pad-x: 20px;
+  }
+
+  .footer .heading {
+    font-size: 34px;
+  }
+
+  /* 좁은 화면에서 | 줄이 넘칠 때 대비 */
+  .role {
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+
+  .name,
+  .role,
+  .contact a {
+    font-size: 17px;
   }
 }

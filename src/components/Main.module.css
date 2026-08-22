@@ -25,8 +25,9 @@
 }
 
 .role {
+  font-family: 'Montserrat';
   font-size: 64px;
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .contact {
@@ -51,26 +52,6 @@
 
 .introduction {
   font-size: 18px;
+  max-width: 650px;
 }
 
-/* 말풍선 */
-
-/* .introduction {
-  position: relative;
-  background-color: #f2f2f2;
-  border-radius: 16px;
-  padding: 16px 20px;
-  font-size: 18px;
-}
-
-.introduction::after {
-  content: '';
-  position: absolute;
-  left: -10px;
-  top: 24px;
-  width: 0;
-  height: 0;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-right: 10px solid #f2f2f2;
-} */
