@@ -1,14 +1,11 @@
-section{
-  display: flex;
+
+.projects {
+  scroll-margin-top: 100px; 
+    display: flex;
   flex-direction: column;
   margin: 0 auto;
   max-width: 1200px;
-  margin-bottom: 64px;
-  
-}
-
-.projects {
-  scroll-margin-top: 100px;   /* 헤더 높이 + 여유 */
+  margin-bottom: 64px;  /* 헤더 높이 + 여유 */
 }
 
 .title {
