@@ -1,4 +1,4 @@
-import { RouterProvider, createHashRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Layout from "./Layout";
 import './App.css';
 
@@ -9,7 +9,7 @@ import ArchivePage from "./views/ArchivePage";
 import BlaaSolProject from "./views/BlaaSolProject";
 
 //Archive Detail Page
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,

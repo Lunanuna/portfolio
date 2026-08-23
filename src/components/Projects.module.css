@@ -1,12 +1,22 @@
 section{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1200px;
   margin-bottom: 64px;
+  
+}
+
+.projects {
+  scroll-margin-top: 100px;   /* 헤더 높이 + 여유 */
 }
 
 .title {
+  font-family: 'Montserrat', 'Karla';
   margin: 0 0 40px;
   padding: 0 60px;
   font-size: 36px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .list {

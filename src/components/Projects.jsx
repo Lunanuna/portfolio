@@ -28,7 +28,7 @@ const projectList = [
 
 export default function Projects() {
   return (
-    <section>
+    <section id="Projects" className={styles.projects}>
       <h2 className={styles.title}>Projects</h2>
       <div className={styles.list}>
         {projectList.map((project) => (
