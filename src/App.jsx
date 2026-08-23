@@ -7,6 +7,8 @@ import AboutPage from "./views/AboutPage";
 import ArchivePage from "./views/ArchivePage";
 //Projects Detail Page
 import BlaaSolProject from "./views/BlaaSolProject";
+import SpilCafeenProject from "./views/SpilCafeenProject";
+import CphfwProject from "./views/CphfwProject";
 
 //Archive Detail Page
 const router = createBrowserRouter([
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
       { 
         path: "projects/blaa-sol", 
         element: <BlaaSolProject /> 
+      },
+      { 
+        path: "projects/spil-cafeen", 
+        element: <SpilCafeenProject /> 
+      },
+      { 
+        path: "projects/cph-fw", 
+        element: <CphfwProject /> 
       },
     ]
   }
