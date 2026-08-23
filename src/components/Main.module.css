@@ -28,6 +28,9 @@
   align-items: flex-start;   /* 'left' 아님 — 무효값이라 무시됨 */
 }
 
+.koreanHello{
+  color:#999999;
+}
 .role {
   font-family: 'Karla', sans-serif;
   font-size: 36px;
@@ -90,7 +93,7 @@
   align-items: center;
   gap: 10px;
   margin-top: 40px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #111111;
   text-decoration: none;

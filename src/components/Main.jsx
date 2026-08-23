@@ -18,7 +18,7 @@ export default function Main() {
         <img className={styles.profileImage} src={profile} alt="profile" />
         <div className={styles.introduction}>
          <div className={styles.introText}>
-          <p>Hejsa!</p>
+          <p>Hejsa <span className={styles.koreanHello}>안녕하세요!</span></p>
           <p>My name is Gayoung and I am studying Multimedia Design specializing in UI/UX.</p>
           <p> I'm a detail-oriented and curious designer who likes to dig deeper into the things I notice.</p>
           <p>I’m currently looking for <span className={styles.highlight}>an internship opportunity for Spring 2027 based in Copenhagen</span>, where I can learn, contribute, and grow as a designer.</p>

@@ -13,9 +13,9 @@ const projectList = [
   },
   {
     path: 'spil-cafeen',
-    title: 'Spil Cafeen',
+    title: 'Spilcaféen',
     description: 'Mobile App Design for a board game cafe',
-    thumbnail: spillCafeenThumb, // 나중에 이미지 추가
+    thumbnail: spillCafeenThumb, 
     keywords: ['App Design', 'User Testing', 'Dark Mode'],
   },
   {

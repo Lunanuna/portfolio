@@ -8,7 +8,7 @@ import styles from './BlaaSolProject.module.css';
    피그마에서 export 할 때 2x(@2x) 정도로 뽑으면 선명해.
    ============================================================ */
 
-import heroMockup from '../assets/images/case-blaasol/hero-mockup.png';
+import heroMockup from '../assets/images/project-thumbnail/blaasol-thumbnail.png';
 // 히어로 우측, 손에 든 폰 목업
 
 import feature01 from '../assets/images/case-blaasol/feature-01.png';

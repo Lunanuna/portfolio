@@ -91,13 +91,13 @@
 }
 
 .heroImageWrap {
-  flex: 0 0 42%;  /* 이미지 영역 폭. 키우려면 % 올리면 됨 */
+  flex: 0 0 50%;  /* 이미지 영역 폭. 키우려면 % 올리면 됨 */
 }
 
 .heroImage {
     margin-top: 64px;
-    margin-left: 16px;
-  width: 60%;
+    /* margin-left: 16px; */
+  width: 200%;
   height: auto;
   display: block;
 }
