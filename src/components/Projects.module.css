@@ -35,7 +35,7 @@
 
 .thumbnail {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: 4px;
   margin-bottom: 20px;
@@ -118,10 +118,6 @@
     row-gap: 48px;
   }
 
-  /* 1단이 되면 썸네일이 너무 커져서 비율을 낮춤 */
-  .thumbnail {
-    aspect-ratio: 16 / 10;
-  }
 
   /* 터치 기기엔 hover 확대가 의미 없음 */
   .projectItem:hover .thumbnail {

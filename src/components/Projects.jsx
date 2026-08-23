@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import styles from './Projects.module.css';
 import blaaSolThumb from '../assets/images/project-thumbnail/blaasol-thumbnail.png'
-
+import spillCafeenThumb from '../assets/images/project-thumbnail/spillCafeenThumb.png'
+import cphfwThumb from '../assets/images/project-thumbnail/cphfw-thumbnail.png'
 const projectList = [
   {
     path: 'blaa-sol',
@@ -14,14 +15,14 @@ const projectList = [
     path: 'spil-cafeen',
     title: 'Spil Cafeen',
     description: 'Mobile App Design for a board game cafe',
-    thumbnail: blaaSolThumb, // 나중에 이미지 추가
+    thumbnail: spillCafeenThumb, // 나중에 이미지 추가
     keywords: ['App Design', 'User Testing', 'Dark Mode'],
   },
   {
     path: 'cph-fw',
     title: 'COPENHAGEN FASHION WEEK',
     description: 'Info screen for CPHFW based on UX Research',
-    thumbnail: blaaSolThumb,
+    thumbnail: cphfwThumb,
     keywords: ['Web Design', 'Interaction', 'Visual Identity'],
   },
 ];
