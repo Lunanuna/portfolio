@@ -201,12 +201,11 @@
   margin-top: 16px;
   display: flex;
   align-items: baseline;
-  gap: 12px;
+  gap: 8px;
 }
 
 .artTitle {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   font-weight: 600;
 }
@@ -220,7 +219,7 @@
 /* 제목과 도구 사이 구분점 */
 .artTool::before {
   content: '·';
-  margin-right: 12px;
+  margin-right: 8px;
 }
 
 /* ============================================================

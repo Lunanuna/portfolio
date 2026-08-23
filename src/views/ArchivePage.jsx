@@ -47,7 +47,7 @@ const CODE_PROJECTS = [
   },
   {
     title: 'Library',
-    tags: ['JavaScript', 'Object'],
+    tags: ['JavaScript', 'Objects'],
     description:
       'I built this to get comfortable with JavaScript objects.',
     thumbnail: libraryThumb,
@@ -65,13 +65,13 @@ const ILLUSTRATIONS = [
     alt: '베네치아 운하 앞 보도에 서 있는 갈매기와 비둘기',
   },
   {
-    title: 'Finn',
+    title: 'Finn og Mig',
     tool: 'Procreate',
     src: finnImg,
     alt: '야외 테이블에서 담배를 든 젊은 여성과 마주 앉아 글을 쓰는 백발의 노인',
   },
   {
-    title: 'Lahav',
+    title: 'Oink Revenge',
     tool: 'Illustrator',
     src: lahavImg,
     alt: '붉은 바닥의 작업장에서 놀란 표정을 짓는 동물 캐릭터 두 명과 금속 선반',

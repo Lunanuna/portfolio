@@ -6,21 +6,21 @@ const projectList = [
   {
     path: 'blaa-sol',
     title: 'Blå Sol Festival App',
-    description: 'Redesign Project 어쩌고 저쩌고',
+    description: 'Local Festival App Redesign Project',
     thumbnail: blaaSolThumb,
-    keywords: ['UX Research', 'UI Design', 'Prototyping'],
+    keywords: ['UX/UI Deisgn', 'Prototpying', 'Design System'],
   },
   {
     path: 'spil-cafeen',
     title: 'Spil Cafeen',
-    description: '여기에 한 줄 소개글',
+    description: 'Mobile App Design for a board game cafe',
     thumbnail: blaaSolThumb, // 나중에 이미지 추가
-    keywords: ['Branding', 'App Design', 'User Testing'],
+    keywords: ['App Design', 'User Testing', 'Dark Mode'],
   },
   {
     path: 'cph-fw',
     title: 'COPENHAGEN FASHION WEEK',
-    description: '여기에 한 줄 소개글',
+    description: 'Info screen for CPHFW based on UX Research',
     thumbnail: blaaSolThumb,
     keywords: ['Web Design', 'Interaction', 'Visual Identity'],
   },

@@ -160,7 +160,8 @@ opacity: 0.75;
 
   .name,
   .role,
-  .contact a {
+  .contact a,
+  .copyButton {
     font-size: 20px;
   }
 }
@@ -182,7 +183,8 @@ opacity: 0.75;
 
   .name,
   .role,
-  .contact a {
+  .contact a,
+  .copyButton{
     font-size: 17px;
   }
 }
