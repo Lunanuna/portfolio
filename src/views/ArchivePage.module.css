@@ -231,6 +231,7 @@
     --side-pad: 32px;
     --section-gap: 88px;
     padding-top: 56px;
+    margin-top: 32px;
   }
 
   .header {
