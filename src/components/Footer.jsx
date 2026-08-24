@@ -33,12 +33,12 @@ export default function Footer() {
       <h2 className={styles.heading}>Let’s Chat!</h2>
 
       <div className={styles.info}>
-        <p className={styles.name}>Gayoung Han</p>
         <p className={styles.role}>
+          <span>Gayoung Han</span>
+          <span className={styles.divider} aria-hidden="true">·</span>
           <span>UX/UI Designer</span>
-          <span className={styles.divider} aria-hidden="true">|</span>
-          <span>Copenhagen NV</span>
         </p>
+         <p className={styles.name}>Copenhagen NV</p>
       </div>
 
       <ul className={styles.contact}>

@@ -1,15 +1,39 @@
-main{
-    
-    display:flex;
-    justify-content: center;
-    gap: 36px;
+.mainAbout{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 240px;
 }
 
-img{
-    width: 28vw;
+.topSection{
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    padding-bottom: 120px;
 }
-
+h1{
+    font-family: 'Montserrat';
+    margin: 0 0 32px;
+}
 p{
-    max-width: 600px;
-    font-size: 24px;
+    line-height: 145%;
+    font-size: 20px;
+    color: #505050;
+     margin: 0 0 16px;
 }
+
+.textBox{
+    max-width: 600px;
+}
+
+.button{
+    background-color: #1ABCFE;
+    color: white;
+    border-radius: 24px;
+    padding: 8px 16px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 24px;
+    align-self: flex-start;
+}
+
