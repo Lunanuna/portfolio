@@ -1,85 +1,81 @@
 .footer {
-  /* ── 여기 숫자만 바꾸면 전체가 따라옴 ── */
-  --c-bg: #1ABCFE;        /* 배경 */
-  --c-cream: #FAFEE4;     /* 제목 + 왼쪽 정보 */
-  --c-white: #FFFFFF;     /* 오른쪽 링크 */
-  --pad-x: 48px;          /* 좌우 여백 */
+  --c-bg: #1ABCFE;
+  --c-cream: #FAFEE4;
+  --c-white: #FFFFFF;
+  --c-heading: #2A4494;
+
+  --pad-x: 48px;
   --pad-top: 48px;
-  --pad-bottom: 64px;
-  --gap-heading: 48px;   /* Let's Chat ↔ 아래 내용 세로 간격 */
+  --gap-stack: 48px;   /* 이름 ↔ 링크 ↔ Let's Chat 세로 간격 */
+
+  --crop: -0.17em;      /* 클수록 많이 잘림 */
 
   background: var(--c-bg);
-  padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
+  padding: var(--pad-top) var(--pad-x) 0;
+  overflow: hidden;              /* ★ 핵심 */
 
-  /* 화면 끝까지 배경 채우기 — 부모에 이미 full-bleed가 걸려있으면 이 4줄 삭제 */
+  /* full-bleed — 부모가 이미 full width면 이 3줄 삭제 */
   width: 100vw;
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-left: calc(50% - 50vw);
 
-  display: grid;
-  grid-template-columns: 1fr auto;  /* 왼쪽 정보 / 오른쪽 링크 */
-  align-items: center;              /* 항목 수가 달라도 시각적으로 균형 */
-  column-gap: 40px;
-  row-gap: var(--gap-heading);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: var(--gap-stack);
 }
 
 /* ── Let's Chat! ── */
 .heading {
-  grid-column: 1 / -1;   /* 두 칼럼 전체를 차지 */
-  margin: 0;
-  /* margin-left: 48px;     ← heading만 더 들여쓰고 싶으면 주석 해제 */
   font-family: 'Montserrat', sans-serif;
-  font-size: 40px;
   font-weight: 800;
-  line-height: 1;
+  color: var(--c-heading);
+  font-size: 16.9vw;
+  line-height: 0.85;
   letter-spacing: -0.02em;
-  color: #26448C;
+  text-align: center;
+  white-space: nowrap;
+  margin: 0 0 var(--crop);
+  user-select: none;
 }
 
-/* ── 왼쪽: 이름 / 직함 ── */
+/* ── 이름 ── */
 .info {
   display: flex;
   flex-direction: column;
-  gap: 16px;             /* Gayoung Han ↔ UX/UI Designer */
+  gap: 16px;
 }
 
 .name,
 .role {
   margin: 0;
-  font-size: 20px;
-  font-weight: 500;      /* medium */
+  font-size: 32px;
+  font-weight: 600;
   line-height: 1.2;
-  color: var(--c-cream);
+  color: #767676;
 }
 
-.role {
-  display: flex;
-  align-items: center;
-  gap: 16px;             /* | 양옆 16px씩 */
-}
-
-.divider {
-  opacity: 0.7;          /* 구분자만 살짝 연하게 — 1로 두면 균일 */
-}
-
-/* ── 오른쪽: 링크 ── */
+/* ── 링크 ── */
 .contact {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  min-width: 300px;      /* 이 값이 오른쪽 칼럼 시작 위치를 정함 */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.contact a,
+.copyButton {
+  color: var(--c-white);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
 }
 
 .contact a {
-  color: var(--c-white);
-  font-size: 20px;
-  font-weight: 600;      /* semibold */
-  line-height: 1.2;
-  text-decoration: none;
   transition: opacity 0.2s ease;
 }
 
@@ -91,40 +87,36 @@
 .emailRow {
   display: flex;
   align-items: center;
-  gap: 16px;             /* 이메일 ↔ 아이콘 */
 }
 
 .copyButton {
-  color: var(--c-white);
-  font-size: 20px;
-  font-weight: 600;     
   display: flex;
+  align-items: center;
   gap: 8px;
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
-  display: flex;         /* 아이콘 세로 중앙 정렬 */
-  transition: opacity 0.2s ease, transform 0.15s ease;
+  font-family: inherit;
+  transition: opacity 0.2s ease;
 }
 
-.copyButton span:hover{
-opacity: 0.75;
-}
-
-.copyButton img:hover {
-  opacity: 1;
-  transform: scale(1.12);
+.copyButton:hover {
+  opacity: 0.75;
 }
 
 .copyIcon {
   width: 20px;
   height: 20px;
   display: block;
-  filter: brightness(0) invert(1);  /* 검은 SVG → 흰색. 이미 흰 아이콘이면 삭제 */
+  filter: brightness(0) invert(1);
+  transition: transform 0.15s ease;
 }
 
-/* 화면에서만 숨기고 스크린리더는 읽는 패턴 */
+.copyButton:hover .copyIcon {
+  transform: scale(1.12);
+}
+
 .srOnly {
   position: absolute;
   width: 1px;
@@ -140,51 +132,26 @@ opacity: 0.75;
 @media (max-width: 900px) {
   .footer {
     --pad-x: 32px;
-    --pad-top: 48px;
-    --pad-bottom: 64px;
-    --gap-heading: 56px;
-
-    grid-template-columns: 1fr;  /* 한 칼럼으로 */
-    align-items: start;
-    row-gap: 48px;
-  }
-
-  .footer .heading {
-    margin-left: 0;              /* 모바일에선 들여쓰기 해제 */
-    font-size: 44px;
-  }
-
-  .contact {
-    min-width: 0;
-  }
-
-  .name,
-  .role,
-  .contact a,
-  .copyButton {
-    font-size: 20px;
+    --pad-top: 56px;
+    --gap-stack: 40px;
   }
 }
 
 @media (max-width: 560px) {
   .footer {
     --pad-x: 20px;
+    --gap-stack: 32px;
+    --crop: -0.22em;   /* 작은 화면에선 덜 자름 */
   }
 
-  .footer .heading {
-    font-size: 34px;
-  }
-
-  /* 좁은 화면에서 | 줄이 넘칠 때 대비 */
-  .role {
-    flex-wrap: wrap;
-    gap: 8px 16px;
+  .contact {
+    gap: 16px;
   }
 
   .name,
   .role,
   .contact a,
-  .copyButton{
+  .copyButton {
     font-size: 17px;
   }
 }

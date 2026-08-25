@@ -30,16 +30,12 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer}>
-      <h2 className={styles.heading}>Let’s Chat!</h2>
 
-      <div className={styles.info}>
+      {/* <div className={styles.info}>
         <p className={styles.role}>
-          <span>Gayoung Han</span>
-          <span className={styles.divider} aria-hidden="true">·</span>
-          <span>UX/UI Designer</span>
-        </p>
-         <p className={styles.name}>Copenhagen NV</p>
-      </div>
+       Gayoung Han
+          </p>
+      </div> */}
 
       <ul className={styles.contact}>
         <li><a
@@ -83,6 +79,8 @@ export default function Footer() {
   </span>
 </li>
       </ul>
+
+       <h2 className={styles.heading}>Let’s Chat!</h2>
     </footer>
   );
 }
