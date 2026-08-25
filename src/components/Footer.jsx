@@ -80,51 +80,7 @@ export default function Footer() {
 </li>
       </ul>
 
-       <h2 className={styles.heading}>Let’s Chat!</h2>
+       <h2 className={styles.heading}>Let’s Chat</h2>
     </footer>
   );
 }
-
-// import styles from './Footer.module.css';
-
-// export default function Footer() {
-//     return (
-//         <footer className={styles.footer}>
-//             <h2 className={styles.heading}>Let’s Chat!</h2>
-//                 <div className={styles.info}>
-//                     <p className={styles.name}>Gayoung Han</p>
-//                     <p className={styles.role}>
-//                      <span>UX/UI Designer</span>
-//                      <span className={styles.divider} aria-hidden="true">|</span>
-//                      <span>Copenhagen NV</span>
-//                     </p>
-//                 </div>  
-//             <ul className={styles.contact}>
-//             <li>
-//                     <a href="/resume-gayoung.pdf"
-//                     target="_blank"
-//                     rel="noopener noreferrer"
-//                     className={styles.resumeButton} // 기존 버튼 클래스명 그대로 사용
-//                     >
-//                     Resume
-//                     </a>
-//                 </li>
-//                 <li>
-//                     <a
-//                         href="https://www.linkedin.com/in/gayoung-han93/"
-//                         target="_blank"
-//                         rel="noopener noreferrer"
-//                     >
-//                         LinkedIn
-//                     </a>
-                        
-//                 </li>
-//                 <li>
-//                     <a href="mailto:hanga93@gmail.com">hanga93@gmail.com</a>
-//                 </li>
-                
-            
-//             </ul>
-//         </footer>
-//     )
-// }

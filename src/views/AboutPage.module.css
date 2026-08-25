@@ -1,39 +1,133 @@
-.mainAbout{
-    display: flex;
+.mainAbout {
+  display: flex;
+  flex-direction: column;
+  margin-top: 240px;
+}
+
+/* ── 상단 ── */
+.topAbout {
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+  align-items: flex-start;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px 120px;
+}
+
+.textBox {
+  max-width: 600px;
+  display: flex;              /* ← align-self 살리기 */
+  flex-direction: column;
+}
+
+.heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #111111;
+  line-height: 1.25;
+  margin: 0 0 32px;
+}
+
+.textBox p {
+  font-family: 'Karla', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: #505050;
+  margin: 0 0 16px;
+}
+
+.portrait {
+  width: 280px;
+  height: auto;
+  display: block;
+  flex-shrink: 0;             /* 텍스트에 밀려 찌그러지지 않게 */
+}
+
+.button {
+  display: inline-block;
+  align-self: flex-start;
+  background-color: #1ABCFE;
+  color: #FFFFFF;
+  border-radius: 24px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 24px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.button:hover {
+  opacity: 0.85;
+}
+
+/* ── 하단 (full-bleed) ── */
+.bottomAbout {
+  background-color: #F6FCFF;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  padding: 80px 24px;
+}
+
+.bottomInner {                /* ← 새로 추가할 래퍼 */
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.subHeading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0 0 80px;
+}
+
+/* ── 갤러리 ── */
+.gallery {
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery p {
+  font-family: 'Karla', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #505050;
+  margin: 0 0 16px;
+}
+
+.imageArr {
+  display: flex;
+  flex-wrap: wrap;            /* 모바일에서 넘칠 때 */
+  gap: 16px;
+  margin-bottom: 64px;
+}
+
+.galleryImg {
+  height: 250px;
+  width: auto;
+  display: block;             /* 아래 미세 여백 제거 */
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 900px) {
+  .mainAbout { margin-top: 120px; }
+
+  .topAbout {
     flex-direction: column;
-    margin: 0 auto;
-    margin-top: 240px;
-}
+    gap: 32px;
+    padding-bottom: 80px;
+  }
 
-.topSection{
-    display: flex;
-    flex-direction: row;
-    gap: 24px;
-    padding-bottom: 120px;
-}
-h1{
-    font-family: 'Montserrat';
-    margin: 0 0 32px;
-}
-p{
-    line-height: 145%;
-    font-size: 20px;
-    color: #505050;
-     margin: 0 0 16px;
-}
+  .portrait { width: 100%; max-width: 320px; }
 
-.textBox{
-    max-width: 600px;
-}
+  .subHeading { margin-bottom: 48px; }
 
-.button{
-    background-color: #1ABCFE;
-    color: white;
-    border-radius: 24px;
-    padding: 8px 16px;
-    font-size: 18px;
-    font-weight: 600;
-    margin-top: 24px;
-    align-self: flex-start;
+  .galleryImg { height: 180px; }
 }
-

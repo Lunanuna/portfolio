@@ -132,7 +132,7 @@
 @media (max-width: 900px) {
   .footer {
     --pad-x: 32px;
-    --pad-top: 56px;
+    --pad-top: 32px;
     --gap-stack: 40px;
   }
 }
@@ -152,6 +152,6 @@
   .role,
   .contact a,
   .copyButton {
-    font-size: 17px;
+    font-size: 16px;
   }
 }
