@@ -2,6 +2,7 @@ import styles from './AboutPage.module.css';
 
 // images
 import portrait from '../assets/images/About/portrait.png';
+import tivoli from '../assets/images/About/tivoli.png';
 import film1 from '../assets/images/About/film1.png';
 import film2 from '../assets/images/About/film2.png';
 import film3 from '../assets/images/About/film3.png';
@@ -36,7 +37,7 @@ const GALLERIES = [
     ],
   },
   {
-    caption: 'My favorite place in Copenhagen is...',
+    caption: 'God, I love grocery shopping in a big supermarket!',
     images: [
       { src: inco1, alt: 'Inco 매장 외관' },
       { src: inco2, alt: 'Inco에서 장 보는 모습' },
@@ -81,7 +82,18 @@ export default function AboutPage() {
 
         <img src={portrait} alt="한가영" className={styles.portrait} />
       </section>
-
+      <section className={styles.middleAbout}>
+        <div className={styles.middleInner}>
+              <h2 className={styles.middleHeader}>
+            I think...
+        </h2>
+        <div className={styles.middleFlex}>
+            <img src={tivoli} className={styles.middleImg} alt="tivoli"/>
+            <p className={styles.middlePara}>👀 There’s always another perspective worth looking from.</p>
+        </div>
+        </div>
+      
+      </section>
       {/* ── 하단 ── */}
       <section className={styles.bottomAbout}>
         <div className={styles.bottomInner}>

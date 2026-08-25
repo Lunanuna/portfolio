@@ -65,6 +65,46 @@
   opacity: 0.85;
 }
 
+.middleAbout{
+    background-color: #A1E1FA;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  padding: 80px 24px;
+}
+
+.middleInner{
+     max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+.middleHeader{
+    color: #FFFFFF;
+    font-size: 64px;
+    font-weight: 800;
+}
+
+.middleImg{
+    max-width: 500px;
+    height: auto;
+  display: block;
+  flex-shrink: 0;    
+}
+
+.middleFlex{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 64px;
+}
+
+.middlePara{
+    font-size: 24px;
+    font-weight: 800px;
+}
+
+
 /* ── 하단 (full-bleed) ── */
 .bottomAbout {
   background-color: #F6FCFF;
@@ -128,6 +168,27 @@
   .portrait { width: 100%; max-width: 320px; }
 
   .subHeading { margin-bottom: 48px; }
+
+  .middleAbout{
+    padding: 64px 24px;
+  }
+  .middleHeader{
+    font-size: 64px;
+  }
+
+  .middleFlex{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .middleImg{
+    max-width: 350px;
+    height: auto;
+  }
+
+  .middlePara{
+    font-size: 20px;
+  }
 
   .galleryImg { height: 180px; }
 }
