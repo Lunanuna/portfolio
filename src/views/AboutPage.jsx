@@ -1,4 +1,5 @@
 import styles from './AboutPage.module.css';
+import useInView from '../hooks/useInView';
 
 // images
 import portrait from '../assets/images/About/portrait.png';
@@ -46,6 +47,7 @@ const GALLERIES = [
 ];
 
 export default function AboutPage() {
+    const [paraRef, paraInView] = useInView();
   return (
     <main className={styles.mainAbout}>
 
@@ -89,7 +91,12 @@ export default function AboutPage() {
         </h2>
         <div className={styles.middleFlex}>
             <img src={tivoli} className={styles.middleImg} alt="tivoli"/>
-            <p className={styles.middlePara}>👀 There’s always another perspective worth looking from.</p>
+            <p 
+            ref={paraRef}
+            className={`${styles.middlePara} ${paraInView ? styles.visible : ''}`}
+            >
+            👀 There’s always another perspective worth looking from.
+            </p>
         </div>
         </div>
       

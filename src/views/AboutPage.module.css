@@ -101,7 +101,19 @@
 
 .middlePara{
     font-size: 24px;
-    font-weight: 800px;
+    font-weight: 600;
+    font-style: italic;
+
+  /* 시작 상태 */
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  transition-delay: 0.45s;      /* ← "좀 나중에" 나오는 느낌 */
+}
+
+.middlePara.visible {
+  opacity: 1;
+  transform: none;
 }
 
 
@@ -188,6 +200,9 @@
 
   .middlePara{
     font-size: 20px;
+     opacity: 1;
+    transform: none;
+    transition: none;
   }
 
   .galleryImg { height: 180px; }
