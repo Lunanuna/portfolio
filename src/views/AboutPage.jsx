@@ -15,6 +15,7 @@ import freetime2 from '../assets/images/About/freetime2.png';
 import freetime3 from '../assets/images/About/freetime3.png';
 import inco1 from '../assets/images/About/inco1.png';
 import inco2 from '../assets/images/About/inco2.png';
+import test from '../assets/images/About/test.png';
 
 /* 갤러리 데이터 — 사진 추가/변경은 여기서만 하면 됨 */
 const GALLERIES = [
@@ -78,7 +79,7 @@ export default function AboutPage() {
             rel="noopener noreferrer"
             className={styles.button}
           >
-            View my resume
+            work with me
           </a>
         </div>
 
@@ -86,8 +87,9 @@ export default function AboutPage() {
       </section>
       <section className={styles.middleAbout}>
         <div className={styles.middleInner}>
-              <h2 className={styles.middleHeader}>
-            I think...
+            <img src={test}/>
+              {/* <h2 className={styles.middleHeader}>
+            I believe...
         </h2>
         <div className={styles.middleFlex}>
             <img src={tivoli} className={styles.middleImg} alt="tivoli"/>
@@ -97,7 +99,7 @@ export default function AboutPage() {
             >
             👀 There’s always another perspective worth looking from.
             </p>
-        </div>
+        </div> */}
         </div>
       
       </section>

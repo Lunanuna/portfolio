@@ -5,7 +5,8 @@
   flex-direction: column;
   margin: 0 auto;
   max-width: 1200px;
-  margin-bottom: 64px;  /* 헤더 높이 + 여유 */
+  margin-top: 64px;
+  margin-bottom: 256px; 
 }
 
 .title {
