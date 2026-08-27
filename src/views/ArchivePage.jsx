@@ -9,9 +9,12 @@ import styles from './ArchivePage.module.css';
 
 // 코드 프로젝트 썸네일 — 배포된 사이트 스크린샷
 // 셋 다 브라우저 창 1440px 폭으로 통일해서 찍기
-import weatherThumb from '../assets/images/archive/thumb-weather.png';
-import etchThumb from '../assets/images/archive/thumb-etch.png';
-import libraryThumb from '../assets/images/archive/thumb-library.png';
+// import weatherThumb from '../assets/images/archive/thumb-weather.png';
+// import etchThumb from '../assets/images/archive/thumb-etch.png';
+// import libraryThumb from '../assets/images/archive/thumb-library.png';
+import weatherThumbVideo from '../assets/images/archive/weather.mp4';
+import etchTumbVideo from '../assets/images/archive/etch.mp4';
+import libraryTumbVideo from '../assets/images/archive/library.mp4';
 
 // 일러스트 — 가로 1600px, WebP 권장
 import veniceImg from '../assets/images/archive/venice.png';
@@ -31,7 +34,7 @@ const CODE_PROJECTS = [
     // ↓ 설명은 초안이야. 실제 기능에 맞게 고쳐줘
     description:
       'Search a city and see its current weather, pulled live from an API.',
-    thumbnail: weatherThumb,
+    thumbnail: weatherThumbVideo,
     demo: 'https://lunanuna.github.io/',
     // ↓ GitHub 주소는 Pages 주소에서 유추한 거야. 실제 저장소명 확인 필요
     github: 'https://github.com/lunanuna/lunanuna.github.io',
@@ -41,7 +44,7 @@ const CODE_PROJECTS = [
     tags: ['JavaScript', 'DOM'],
     description:
       'My first project built purely with DOM manipulation.',
-    thumbnail: etchThumb,
+    thumbnail: etchTumbVideo,
     demo: 'https://lunanuna.github.io/Etch-A-Sketch/',
     github: 'https://github.com/lunanuna/Etch-A-Sketch',
   },
@@ -50,7 +53,7 @@ const CODE_PROJECTS = [
     tags: ['JavaScript', 'Objects'],
     description:
       'I built this to get comfortable with JavaScript objects.',
-    thumbnail: libraryThumb,
+    thumbnail: libraryTumbVideo,
     demo: 'https://lunanuna.github.io/Library-2/',
     github: 'https://github.com/lunanuna/Library-2',
   },
@@ -100,12 +103,20 @@ export default function ArchivePage() {
             <li key={project.title} className={styles.codeCard}>
               <div className={styles.thumbWrap}>
                 {/* alt는 비워둠 — 바로 아래 제목 링크가 같은 정보를 이미 전달함 */}
-                <img
+                <video
+  className={styles.thumb}
+  src={project.thumbnail}
+  autoPlay
+  loop
+  muted
+  playsInline      /* iOS에서 전체화면 안 뜨게 — 필수 */
+/>
+                {/* <img
                   src={project.thumbnail}
                   alt=""
                   className={styles.thumb}
                   loading="lazy"
-                />
+                /> */}
               </div>
 
               <h3 className={styles.codeTitle}>

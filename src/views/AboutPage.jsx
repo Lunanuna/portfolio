@@ -21,7 +21,7 @@ import testMobile from '../assets/images/About/testMobile.png'
 /* 갤러리 데이터 — 사진 추가/변경은 여기서만 하면 됨 */
 const GALLERIES = [
   {
-    caption: "Films I've watched more than once",
+    caption: "Films I've watched more than once 🎬",
     images: [
       { src: film1, alt: 'Parasite' },
       { src: film2, alt: 'Being John Malkovich' },
@@ -32,7 +32,7 @@ const GALLERIES = [
     ],
   },
   {
-    caption: 'Things I do in my free time 🎵',
+    caption: 'Favorite things I do in my free time 🎵',
     images: [
       { src: freetime1, alt: '뜨개질하는 모습' },
       { src: freetime2, alt: '친구들과 함께 요리한 날' },
@@ -40,7 +40,7 @@ const GALLERIES = [
     ],
   },
   {
-    caption: 'I love grocery shopping in a big supermarket!',
+    caption: 'Also I love grocery shopping in a big supermarket 😊',
     images: [
       { src: inco1, alt: 'Inco 매장 외관' },
       { src: inco2, alt: 'Inco에서 장 보는 모습' },
@@ -82,6 +82,7 @@ export default function AboutPage() {
               target="_blank"
               rel="noopener noreferrer"
               className={styles.button}
+              
             >
               work with me
             </a>
@@ -116,7 +117,7 @@ export default function AboutPage() {
           </h2>
 
           {GALLERIES.map((gallery) => (
-            <div key={gallery.caption} className={styles.gallery}>
+            <div key={gallery.caption} ref={paraRef} className={`${styles.gallery} ${paraInView ? styles.visible : ''}`}>
               <p>{gallery.caption}</p>
               <div className={styles.imageArr}>
                 {gallery.images.map((image) => (

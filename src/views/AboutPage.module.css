@@ -73,7 +73,7 @@
 .textBox p {
   font-family: 'Karla', sans-serif;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.45;
   color: #505050;
   margin: 0 0 16px;
@@ -95,7 +95,7 @@
   padding: 10px 20px;
   font-size: 18px;
   font-weight: 600;
-  margin-top: 24px;
+  margin-top: 36px;
   text-decoration: none;
   cursor: pointer;
   transition: opacity 0.2s ease;
@@ -127,7 +127,7 @@
 
 .middleImg {
   max-width: 1000px;
-  width: 100%;
+  width: 90%;
   border-radius: 4px;
   margin: 0 auto;
   height: auto;
