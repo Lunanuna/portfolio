@@ -160,6 +160,8 @@
   transform: none;
 }
 
+.onlyMobile { display: none; }
+
 /* ============================================================
    하단
    ============================================================ */
@@ -244,6 +246,9 @@
   }
 
   .middleImg { max-width: 350px; }
+
+  .onlyDesktop { display: none; }
+  .onlyMobile  { display: block; }
 
   .middlePara {
     font-size: 20px;

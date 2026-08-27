@@ -16,6 +16,7 @@ import freetime3 from '../assets/images/About/freetime3.png';
 import inco1 from '../assets/images/About/inco1.png';
 import inco2 from '../assets/images/About/inco2.png';
 import test from '../assets/images/About/test.png';
+import testMobile from '../assets/images/About/testMobile.png'
 
 /* 갤러리 데이터 — 사진 추가/변경은 여기서만 하면 됨 */
 const GALLERIES = [
@@ -91,7 +92,8 @@ export default function AboutPage() {
       {/* ── 중간 ── */}
       <section className={styles.middleAbout}>
         <div className={styles.middleInner}>
-          <img src={test} alt="" className={styles.middleImg} />
+          <img src={test} alt="" className={`${styles.testImg} ${styles.onlyDesktop}`} />
+          <img src={testMobile} alt="..." className={`${styles.testImg} ${styles.onlyMobile}`} />
 
           {/* <h2 className={styles.middleHeader}>I believe...</h2>
           <div className={styles.middleFlex}>
