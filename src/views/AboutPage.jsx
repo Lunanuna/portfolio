@@ -31,7 +31,7 @@ const GALLERIES = [
     ],
   },
   {
-    caption: 'In my free time',
+    caption: 'Things I do in my free time 🎵',
     images: [
       { src: freetime1, alt: '뜨개질하는 모습' },
       { src: freetime2, alt: '친구들과 함께 요리한 날' },
@@ -39,7 +39,7 @@ const GALLERIES = [
     ],
   },
   {
-    caption: 'God, I love grocery shopping in a big supermarket!',
+    caption: 'I love grocery shopping in a big supermarket!',
     images: [
       { src: inco1, alt: 'Inco 매장 외관' },
       { src: inco2, alt: 'Inco에서 장 보는 모습' },
@@ -48,61 +48,64 @@ const GALLERIES = [
 ];
 
 export default function AboutPage() {
-    const [paraRef, paraInView] = useInView();
+  const [paraRef, paraInView] = useInView();
+
   return (
     <main className={styles.mainAbout}>
+      {/* ── 제목 ── */}
+      <section className={styles.headingSection}>
+        <div className={styles.headingInner}>
+          <h1 className={styles.heading}>About Gayoung</h1>
+        </div>
+      </section>
 
       {/* ── 상단 ── */}
       <section className={styles.topAbout}>
-        <div className={styles.textBox}>
-          <h1 className={styles.heading}>About Gayoung</h1>
+        <div className={styles.topInner}>
+          <img src={portrait} alt="한가영" className={styles.portrait} />
 
-          <p>
-            I like to listen, look closer, and figure things out. I came to
-            design after four years in customer service at Booking.com, where I
-            spent every day listening to customers, solving problems, and
-            seeing the product from their side of the screen.
-          </p>
-          <p>
-            That experience shaped how I approach design. I'm interested in the
-            moments when what we expect users to do doesn't quite match what
-            they actually do.
-          </p>
-          <p>
-            That gap is what motivates me to dig deeper, look for solutions, and
-            try different ways to make the experience work better.
-          </p>
+          <div className={styles.textBox}>
+            <h3>I’m curious to see things from another perspective.</h3>
+            <p>
+              I’ve always enjoyed drawing and making little things of my own. I used to sketch my teachers or turn little moments with friends into comics, and I still enjoy noticing those little things and turning them into something of my own.
+            </p>
+            <p>
+              I came to design after four years in customer service at Booking.com, where I listened to people from different backgrounds and helped them navigate the website. When something that seemed obvious to me wasn’t obvious to them, I learned to step back and see it from their side.
+            </p>
+            <p>
+              When I design, I often think about how something might be understood by someone seeing it for the first time, and whether what I intended actually comes across. I like keeping things simple and considered, with a subtle touch of humor when it feels right, while paying attention to both the bigger picture and the small details.
+            </p>
 
-          
-           <a href="/resume-gayoung.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.button}
-          >
-            work with me
-          </a>
+            <a
+              href="/resume-gayoung.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.button}
+            >
+              work with me
+            </a>
+          </div>
         </div>
-
-        <img src={portrait} alt="한가영" className={styles.portrait} />
       </section>
+
+      {/* ── 중간 ── */}
       <section className={styles.middleAbout}>
         <div className={styles.middleInner}>
-            <img src={test}/>
-              {/* <h2 className={styles.middleHeader}>
-            I believe...
-        </h2>
-        <div className={styles.middleFlex}>
-            <img src={tivoli} className={styles.middleImg} alt="tivoli"/>
-            <p 
-            ref={paraRef}
-            className={`${styles.middlePara} ${paraInView ? styles.visible : ''}`}
+          <img src={test} alt="" className={styles.middleImg} />
+
+          {/* <h2 className={styles.middleHeader}>I believe...</h2>
+          <div className={styles.middleFlex}>
+            <img src={tivoli} className={styles.middleImg} alt="tivoli" />
+            <p
+              ref={paraRef}
+              className={`${styles.middlePara} ${paraInView ? styles.visible : ''}`}
             >
-            👀 There’s always another perspective worth looking from.
+              👀 There’s always another perspective worth looking from.
             </p>
-        </div> */}
+          </div> */}
         </div>
-      
       </section>
+
       {/* ── 하단 ── */}
       <section className={styles.bottomAbout}>
         <div className={styles.bottomInner}>
@@ -128,7 +131,6 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
-
     </main>
   );
 }
