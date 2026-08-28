@@ -393,7 +393,7 @@ export default function BlaaSol() {
       <section className={styles.textBlock}>
         {/* 실제 배포 주소로 href 교체해줘 */}
         <a
-          href="https://example.com"
+          href="https://bla-sol.pages.dev/"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.codedLink}
@@ -401,7 +401,7 @@ export default function BlaaSol() {
           See the coded solution →
         </a>
         <p className={styles.linkNote}>
-          Coded Solution has a bit different image as I refined the figma
+          Coded Solution has a bit different design as I refined the figma
           prototype after the group project.
         </p>
       </section>
@@ -410,17 +410,10 @@ export default function BlaaSol() {
       <section className={styles.textBlock}>
         <h2 className={styles.sectionHeading}>Learnings and Next Step</h2>
         <p className={styles.body}>
-          First of all, the whole double diamond design process allowed me to
-          understand and practice how to start design with problem and reach to
-          the solution. During this process, I had opportunities to gain deep
-          understanding of each UX methods by practicing with my peers.
-          Especially, we didn't hesitate to argue whenever we have different
-          opinions and insights. That helps us to take a next step in a right
-          direction.
+          The Double Diamond process helped me understand how to move from a problem to a solution. I also learned the value of different perspectives through working closely with my peers, challenging each other’s ideas and making better decisions together.
         </p>
         <p className={styles.body}>
-          {/* ↓ 원본 PDF에서 여기부터 잘려 있었음. 마저 써줘 */}
-          Also, I felt that my UI design skill has developed. I think
+          I’d like to keep developing my Figma skills, especially in creating more refined layouts and stronger visual hierarchy. Alongside that, I want to build on my front-end skills with React and explore WordPress to better understand how design and development come together.
         </p>
       </section>
     </article>

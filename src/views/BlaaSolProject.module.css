@@ -17,17 +17,19 @@
   --c-navy: #1F3A93;       /* 진한 네이비 (배경 섹션, 링크) */
   --c-navy-bg: #24408E;    /* 디자인 시스템 섹션 배경 */
   --c-lightblue-bg: #E7EEF1; /* 기능 소개 섹션 연한 배경 */
-  --c-text: #1A1A1A;       /* 기본 본문 색 */
+  --c-text: #111111;       /* 기본 본문 색 */
   --c-text-sub: #767676;   /* 보조 텍스트 (eyebrow, note) */
   --c-tag-border: #F3A5C0; /* 히어로 태그 테두리 핑크 */
 
   /* --- 타이포 --- */
-  --fs-body: 16px;         /* 본문 크기 (요청대로 16px) */
+  --fs-body: 18px;         /* 본문 크기 (요청대로 16px) */
   --lh-body: 1.75;         /* 본문 줄간격. 답답하면 1.8~1.9로 */
 
   color: var(--c-text);
   /* 폰트는 전역(index.css)에서 상속받게 둠. 여기서 지정하고 싶으면 아래 주석 해제
   font-family: 'Poppins', sans-serif; */
+
+  margin-bottom: 128px;
 }
 
 /* 본문 폭으로 감싸는 공통 컨테이너 성격의 규칙들이 반복되므로
@@ -117,14 +119,15 @@
 
 .metaLabel {
   margin: 0 0 10px;
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: 0.08em;
+   font-weight: 600;
   color: var(--c-text-sub);
 }
 
 .metaValue {
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 1.5;
   white-space: pre-line; /* 데이터의 \n 을 실제 줄바꿈으로 표시 */
@@ -132,7 +135,7 @@
 
 .metaNote {
   margin: 6px 0 0;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--c-text-sub);
   line-height: 1.5;
   white-space: pre-line;
@@ -390,7 +393,7 @@
 .linkNote {
   margin: 12px 0 0;
   font-size: 14px;
-  color: #444;
+  color: #767676;
 }
 
 /* ============================================================
