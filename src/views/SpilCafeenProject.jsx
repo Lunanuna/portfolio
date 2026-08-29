@@ -1,4 +1,4 @@
-import styles from './SpilcafeenProject.module.css';
+import styles from './SpilCafeenProject.module.css';
 
 /* ============================================================
    이미지 import

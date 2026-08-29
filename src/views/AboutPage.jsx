@@ -3,7 +3,6 @@ import useInView from '../hooks/useInView';
 
 // images
 import portrait from '../assets/images/About/portrait.png';
-import tivoli from '../assets/images/About/tivoli.png';
 import film1 from '../assets/images/About/film1.png';
 import film2 from '../assets/images/About/film2.png';
 import film3 from '../assets/images/About/film3.png';
@@ -96,16 +95,6 @@ export default function AboutPage() {
           <img src={test} alt="" className={`${styles.testImg} ${styles.onlyDesktop}`} />
           <img src={testMobile} alt="..." className={`${styles.testImg} ${styles.onlyMobile}`} />
 
-          {/* <h2 className={styles.middleHeader}>I believe...</h2>
-          <div className={styles.middleFlex}>
-            <img src={tivoli} className={styles.middleImg} alt="tivoli" />
-            <p
-              ref={paraRef}
-              className={`${styles.middlePara} ${paraInView ? styles.visible : ''}`}
-            >
-              👀 There’s always another perspective worth looking from.
-            </p>
-          </div> */}
         </div>
       </section>
 
