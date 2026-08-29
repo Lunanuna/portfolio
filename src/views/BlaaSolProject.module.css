@@ -86,7 +86,8 @@
 
 .heroLead {
   margin: 0 0 20px;
-  font-size: var(--fs-body);
+  color: #505050;
+  font-size: 16px;
   line-height: var(--lh-body);
   font-weight: 600;      /* 히어로 소개문은 본문보다 조금 굵게 */
   max-width: 46ch;       /* 한 줄 글자 수 제한 — 읽기 편한 길이 */
@@ -190,15 +191,15 @@
 .textBlock {
   /* 글 단은 좁게 잡고 margin auto 로 가운데 정렬.
      글자 자체는 왼쪽 정렬 그대로 유지되고, 덩어리만 화면 중앙에 놓임. */
-  max-width: var(--text-max);
+  max-width: var(--content-max);
   margin: var(--section-gap) auto 0;
   padding: 0 var(--side-pad);
 }
 
 .sectionHeading {
-  margin: 0 0 20px;
-  font-size: 24px;
-  font-weight: 700;
+  margin: 0 0 45px;
+  font-size: 32px;
+  font-weight: 800;
   color: var(--c-accent);
 }
 
@@ -262,10 +263,12 @@
 }
 
 .processItem {
-  font-size: 14px;
+  font-size: 16px;
+  color: #505050;
   line-height: 1.6;
   margin-bottom: 6px;
   white-space: pre-line;
+  
 }
 
 /* ============================================================
@@ -312,6 +315,7 @@
   max-width: 560px; /* 스케치 사진 최대 폭 */
   height: auto;
   border-radius: 4px;
+  margin-bottom: 128px;
 }
 
 /* ============================================================
@@ -350,28 +354,52 @@
   height: auto;
   display: block;
   border-radius: 8px;
+  margin-top: 32px;
 }
 
 /* ============================================================
    8. Deliver 섹션 (목업 + 설명 좌우)
    ============================================================ */
-.deliverBlock {
-  max-width: var(--text-max); /* 글 단과 같은 폭 = 같은 세로선에 정렬됨 */
+/* ── 컬럼들을 나란히 놓는 컨테이너 ── */
+.deliverBlockRow {
+  max-width: var(--content-max);   /* 820 → 1100. 폰 2개 나란히 놓기엔 좁음 */
   margin: 60px auto 0;
   padding: 0 var(--side-pad);
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  /* 아이템이 3개 넘으면 auto-fit 참고 */
+  gap: 80px 60px;
 }
 
+/* ── 각 아이템: 제목 → 목업 → 설명 세로 ── */
 .deliverRow {
   display: flex;
-  align-items: flex-start;
-  gap: 60px; /* 목업 ↔ 설명 간격 */
+  flex-direction: column;
+  align-items: flex-start;  /* 제목·목업 가운데 정렬 */
+  gap: 28px;             /* 60px는 너무 벌어짐 */
+}
+
+.deliverRow .subHeading {
+  margin: 0;             /* 기존 32px 0 16px 상쇄 */
+  text-align: left;
 }
 
 .deliverImage {
-  width: 220px;   /* Deliver 목업 폭 */
-  flex-shrink: 0; /* 텍스트가 길어져도 이미지가 찌그러지지 않게 */
+  width: 100%;
+  max-width: 180px;
   height: auto;
   display: block;
+}
+
+.deliverRow .body {
+  margin: 0;
+  align-self: stretch;   /* 설명은 칼럼 폭 전체 사용 */
+}
+
+.deliverBlock {
+  max-width: var(--content-max);   /* text-max → content-max */
+  margin: 60px auto 0;
+  padding: 0 var(--side-pad);
 }
 
 /* ============================================================
@@ -392,7 +420,7 @@
 
 .linkNote {
   margin: 12px 0 0;
-  font-size: 14px;
+  font-size: 16px;
   color: #767676;
 }
 
@@ -451,6 +479,8 @@
   .codedLink {
     font-size: 20px;
   }
+
+
 }
 
 @media (max-width: 560px) {
@@ -466,10 +496,15 @@
   .metaRow,
   .featureRow,
   .processRow {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
-
+  
   .phoneImage {
     width: 150px;
+  }
+
+      .deliverBlockRow {
+    grid-template-columns: 1fr;
+    gap: 56px;
   }
 }

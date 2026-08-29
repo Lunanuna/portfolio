@@ -1,0 +1,566 @@
+/* ============================================================
+   Spilcafeen.module.css
+   ------------------------------------------------------------
+   타이포 규칙 (요청한 스펙 그대로):
+     h1  Montserrat / 64px / ExtraBold(800)   ← 유일하게 Montserrat
+     h2  Klara(상속)  / 32px / Bold   / #BF171C
+     h3  Klara(상속)  / 24px / Bold   / #3E0008
+     h4  Klara(상속)  / 20px / Medium / #505050
+     p   Klara(상속)  / 18px / Regular/ #111111
+
+   ⚠️ Montserrat 은 index.css 에서 한 번 불러와야 해:
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+   미세조정은 전부 아래 :root 변수 / 각 규칙 주석에 표시해놨어.
+   ============================================================ */
+
+.page {
+  /* --- 레이아웃 --- */
+  --content-max: 1100px;   /* 넓은 요소(이미지, 카드, 메타 행)의 최대 폭 */
+  --text-max: 1000px;       /* 글 단락의 최대 폭. 이 폭으로 가운데 정렬됨 */
+  --side-pad: 60px;        /* 좌우 화이트스페이스. 줄이면 콘텐츠가 넓어짐 */
+  --section-gap: 100px;    /* 섹션 사이 세로 간격 */
+
+  /* --- 컬러 --- */
+  --c-red: #BF171C;        /* h2 / 포인트 레드 (브랜드 컬러) */
+  --c-burgundy: #3E0008;   /* h3 / 짙은 버건디 */
+  --c-gray: #505050;       /* h4 / 라벨 회색 */
+  --c-text: #111111;       /* 본문 p */
+  --c-text-sub: #767676;   /* eyebrow, 캡션 등 보조 텍스트 */
+  --c-tag-border: #BF171C; /* 히어로 태그 테두리 */
+
+  /* --- 타이포 --- */
+  --fs-body: 18px;         /* 본문 크기 */
+  --lh-body: 1.7;          /* 본문 줄간격. 답답하면 1.8~1.9로 */
+
+  color: var(--c-text);
+  /* 폰트는 전역(index.css)의 Klara 를 상속받게 둠.
+     h1 만 아래 .heroTitle 에서 Montserrat 로 덮어씀. */
+}
+
+/* ============================================================
+   1. HERO
+   ------------------------------------------------------------
+   왼쪽: eyebrow + h1 + 태그 + 리드문
+   오른쪽: Spilcaféen 로고
+   ============================================================ */
+.hero {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 80px var(--side-pad) 0; /* 상단 여백 80px — 헤더 높이에 맞춰 조정 */
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;                        /* 텍스트 ↔ 로고 간격 */
+}
+
+.heroText {
+  flex: 1;
+  min-width: 0; /* flex 안에서 텍스트 줄바꿈 깨지는 것 방지 */
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--c-text-sub);
+}
+
+/* ---- h1 : 유일하게 Montserrat ---- */
+.heroTitle {
+  margin: 0 0 24px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 64px;
+  font-weight: 800;          /* ExtraBold */
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--c-text);
+}
+
+.tagList {
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 14px;
+  padding: 5px 16px;
+  border: 1px solid var(--c-tag-border);
+  border-radius: 999px;  /* 완전한 알약 모양 */
+  color: var(--c-red);
+  white-space: nowrap;
+}
+
+.heroLead {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--c-text);
+  max-width: 48ch;       /* 한 줄 글자 수 제한 — 읽기 편한 길이 */
+}
+
+.heroLogoWrap {
+  flex: 0 0 42%;   /* 30% → 42% (420px 담기려면 이 정도 필요) */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.heroLogo {
+  width: 100%;
+  max-width: 420px;  /* 로고 최대 폭 */
+  height: auto;
+  display: block;
+}
+
+/* ============================================================
+   2. 메타 정보 행 (MY ROLE / DELIVERABLE / TOOLS / DATE / TYPE)
+   ============================================================ */
+.metaRow {
+  max-width: var(--content-max);
+  margin: 56px auto 0;
+  padding: 0 var(--side-pad);
+  display: grid;
+  /* 칼럼 비율 조정하려면 여기 */
+  grid-template-columns: 1.2fr 1.4fr 1.2fr 0.7fr 1fr;
+  gap: 24px;
+}
+
+.metaLabel {
+  margin: 0 0 10px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--c-text-sub);
+}
+
+.metaValue {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: pre-line; /* 데이터의 \n 을 실제 줄바꿈으로 표시 */
+}
+
+/* ============================================================
+   3. 히어로 목업 밴드 (빨간 대각선 밴드 — 풀블리드)
+   ------------------------------------------------------------
+   화면 끝까지 채우기 위해 100vw 트릭 사용.
+   부모(레이아웃)에 overflow-x: hidden 이 걸려있어야 가로 스크롤이 안 생겨.
+   ============================================================ */
+.mockupBand {
+  margin: 72px 0 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); /* 부모 폭을 무시하고 화면 전체로 확장 */
+  line-height: 0;              /* img 아래 생기는 4px 여백 제거 */
+}
+
+.mockupBandImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================================
+   4. 텍스트 섹션 공통
+   ------------------------------------------------------------
+   글 단은 좁게 잡고 margin auto 로 가운데 정렬.
+   글자 자체는 왼쪽 정렬 그대로, 덩어리만 화면 중앙에 놓임.
+   ============================================================ */
+.textBlock {
+  max-width: var(--text-max);
+  margin: var(--section-gap) auto 0;
+  padding: 0 var(--side-pad);
+}
+
+/* ---- h2 ---- */
+.h2 {
+  margin: 0 0 20px;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--c-red);
+}
+
+/* ---- h3 ---- */
+.h3 {
+  margin: 40px 0 16px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--c-burgundy);
+}
+
+/* h2 바로 뒤에 오는 h3 는 위 여백 줄임 */
+.h2 + .h3 {
+  margin-top: 24px;
+}
+
+/* ---- h4 ---- */
+.h4 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 500;   /* Medium */
+  line-height: 1.4;
+  color: var(--c-gray);
+}
+
+/* ---- p ---- */
+.body {
+  margin: 0 0 18px;
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  color: var(--c-text);
+  /* 한 줄 길이는 부모(.textBlock)의 --text-max 가 결정.
+     여기에 max-width 를 또 걸면 글이 왼쪽으로 치우쳐 보이니 넣지 말 것. */
+}
+
+.body:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   5. Main Focus 리스트 (My Role 섹션 안)
+   ============================================================ */
+.focusList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.focusItem {
+  position: relative;
+  padding-left: 18px;      /* 불릿 자리 확보 */
+  margin-bottom: 10px;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--c-text);
+}
+
+/* 작은 사각 불릿 — 동그라미로 바꾸려면 border-radius: 50% 추가 */
+.focusItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;             /* 텍스트 첫 줄 중앙에 맞춤 */
+  width: 6px;
+  height: 6px;
+  background: var(--c-red);
+}
+
+/* ============================================================
+   6. Double Diamond 카드 4개
+   ============================================================ */
+.processSection {
+  max-width: var(--content-max);
+  margin: 48px auto 0;
+  padding: 0 var(--side-pad);
+}
+
+.processRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: stretch; /* 카드 높이를 가장 긴 카드에 맞춤 */
+}
+
+.processCard {
+  border: 1px solid var(--c-red);
+  border-radius: 16px;
+  padding: 24px 20px 32px;
+  text-align: center;
+  background: #fff;
+}
+
+.processIcon {
+  display: block;
+  /* width/height 둘 다 명시. auto 로 두면 SVG에 viewBox 나 크기 속성이 없을 때
+     브라우저가 0px 로 계산해서 아이콘이 안 보이는 문제가 생김. */
+  width: 32px;
+  height: 32px;
+  object-fit: contain;  /* 박스 비율과 이미지 비율이 달라도 안 찌그러짐 */
+  margin: 0 auto 12px;  /* 카드 안에서 가운데 정렬 */
+}
+
+.processTitle {
+  margin: 0 0 20px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--c-red);
+}
+
+.processList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left; /* 항목은 왼쪽 정렬 (제목만 가운데) */
+}
+
+.processItem {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--c-text);
+  margin-bottom: 6px;
+}
+
+/* ============================================================
+   7. 이미지 배치 유틸
+   ============================================================ */
+
+/* 페르소나 보드처럼 넓은 통이미지 */
+.wideFigure {
+  max-width: var(--content-max);
+  margin: 40px auto 0;
+  padding: 0 var(--side-pad);
+}
+
+.wideImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+/* 본문 폭에 맞춰 들어가는 이미지 (타이포그래피 표 등) */
+.textFigure {
+  margin: 24px 0 0;
+}
+
+.textImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+/* 사진 아래 출처 캡션 */
+.caption {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--c-text-sub);
+  text-align: right;
+}
+
+/* ============================================================
+   8. 컬러 변수 2×2 그리드
+   ------------------------------------------------------------
+   h4 라벨 + 이미지 한 세트가 4개.
+   1줄에 2개씩 → 모바일에서 1개씩으로 떨어짐.
+   ============================================================ */
+.colorGrid {
+  margin: 32px 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 32px;  /* 세로간격 40 / 가로간격 32 */
+}
+
+.colorItem {
+  min-width: 0; /* grid 안에서 이미지가 칼럼을 밀어내는 것 방지 */
+}
+
+.colorImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   9. Card Components 섹션 (레드 풀블리드)
+   ============================================================ */
+.cardSection {
+  margin: var(--section-gap) 0 0;
+  padding: 70px 0 80px;
+  background: var(--c-red);
+  color: #fff;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cardInner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--side-pad);
+}
+
+/* 레드 배경 위 라벨 (UI Card big / small / Banner) — h4 크기지만 흰색 */
+.cardLabel {
+  margin: 48px 0 16px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.cardLabel:first-child {
+  margin-top: 0; /* 첫 라벨은 위 여백 제거 */
+}
+
+/* UI Card big — 4개 가로 배치 */
+.cardRowBig {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* UI Card small — 3개씩 2줄 */
+.cardRowSmall {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* Banner — 3개 가로 배치 (5개로 늘리면 아래 숫자만 바꾸면 됨) */
+.cardRowBanner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.cardImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* ============================================================
+   10. Preference Test — 3단 비교 (First / Iteration / Final)
+   ============================================================ */
+.compareRow {
+  max-width: var(--content-max);
+  margin: 40px auto 0;
+  padding: 0 var(--side-pad);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.compareItem {
+  text-align: center;
+  min-width: 0;
+}
+
+.compareImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+
+/* 이미지 아래 단계 라벨 */
+.compareLabel {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--c-burgundy);
+}
+
+/* ============================================================
+   11. Final Screens — 영상
+   ============================================================ */
+.videoFigure {
+  margin: 32px auto 0;
+  padding: 0 var(--side-pad);
+}
+
+.video {
+  display: block;
+  width: 100%;
+  max-width: 320px;   /* ← 폰 목업 폭. 이 숫자만 만지면 됨 */
+  max-height: 80vh;   /* 안전장치: 화면 높이 80% 넘지 않게 */
+  height: auto;
+  margin: 0 auto;     /* 가운데 정렬 (display:block 이라 text-align 은 안 먹음) */
+  object-fit: contain;
+  border-radius: 8px;
+  background: #000;
+}
+
+/* ============================================================
+   12. 반응형
+   ------------------------------------------------------------
+   태블릿/모바일에서 좌우 배치를 세로로 풀어줌.
+   브레이크포인트 숫자는 필요에 맞게 조정.
+   ============================================================ */
+@media (max-width: 900px) {
+  .page {
+    --side-pad: 32px;
+    --section-gap: 72px;
+    --fs-body: 17px;
+  }
+
+  .hero {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .heroTitle {
+    font-size: 44px;
+  }
+
+  .heroLogoWrap {
+    flex: none;
+    width: 100%;
+    justify-content: flex-start;
+    order: -1;          /* 모바일에선 로고를 텍스트 위로 */
+  }
+
+  .h2 { font-size: 26px; }
+  .h3 { font-size: 20px; }
+  .h4 { font-size: 18px; }
+
+  /* 메타 정보: 5칼럼 → 2칼럼 */
+  .metaRow {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 20px;
+  }
+
+  /* 프로세스 카드 4개 → 2×2 */
+  .processRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* UI 카드 big 4개 → 2×2 */
+  .cardRowBig {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* UI 카드 small 3열 → 2열 */
+  .cardRowSmall {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cardLabel { font-size: 18px; }
+}
+
+@media (max-width: 560px) {
+  .page {
+    --side-pad: 20px;
+  }
+
+  .heroTitle {
+    font-size: 34px;
+  }
+
+  /* 좁은 화면에선 전부 1칼럼 */
+  .metaRow,
+  .processRow,
+  .colorGrid,
+  .cardRowBig,
+  .cardRowSmall,
+  .cardRowBanner,
+  .compareRow {
+    grid-template-columns: 1fr;
+  }
+
+  .colorGrid { gap: 32px; }
+}

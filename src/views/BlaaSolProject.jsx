@@ -364,20 +364,21 @@ export default function BlaaSol() {
       </section>
 
       {/* ========== 10. Deliver ========== */}
-      <section className={styles.textBlock}>
-        <h2 className={styles.sectionHeading}>Deliver</h2>
-      </section>
+     
 
-      {DELIVER_ITEMS.map((item) => (
-        <section key={item.title} className={styles.deliverBlock}>
-          <h3 className={styles.subHeading}>{item.title}</h3>
-          <div className={styles.deliverRow}>
-            <img src={item.image} alt={item.title} className={styles.deliverImage} />
-            <p className={styles.body}>{item.text}</p>
-          </div>
-        </section>
-      ))}
+    <section className={styles.textBlock}>
+  <h2 className={styles.sectionHeading}>Deliver</h2>
+</section>
 
+<section className={styles.deliverBlockRow}>
+  {DELIVER_ITEMS.map((item) => (
+    <div key={item.title} className={styles.deliverRow}>
+      <h3 className={styles.subHeading}>{item.title}</h3>
+      <img src={item.image} alt={item.title} className={styles.deliverImage} />
+      <p className={styles.body}>{item.text}</p>
+    </div>
+  ))}
+</section>
       <section className={styles.deliverBlock}>
         <h3 className={styles.subHeading}>Detail Page</h3>
         <p className={styles.body}>
