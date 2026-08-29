@@ -56,8 +56,8 @@ import uiCardSmall6 from '../assets/images/case-spilcafeen/ui-card-small-6.png';
 import banner1 from '../assets/images/case-spilcafeen/banner-1.png';
 import banner2 from '../assets/images/case-spilcafeen/banner-2.png';
 import banner3 from '../assets/images/case-spilcafeen/banner-3.png';
-import banner4 from '../assets/images/case-spilcafeen/banner-4.png';
-import banner5 from '../assets/images/case-spilcafeen/banner-5.png';
+// import banner4 from '../assets/images/case-spilcafeen/banner-4.png';
+// import banner5 from '../assets/images/case-spilcafeen/banner-5.png';
 // Card Components > Banner
 // ⚠️ 원본 PDF 엔 배너가 5개(3개 + 2개 줄)로 보이던데 리스트엔 3개만 있어서 3개로 짰어.
 //    5개면 banner-4, banner-5 import 추가하고 아래 BANNER_CARDS 배열에만 넣으면 돼.
