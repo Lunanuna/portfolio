@@ -42,7 +42,7 @@ const GALLERIES = [
   },
   {
     caption: (  <>
-      And also a professional karaoke singer 🎤😊{' '}
+      And also a professional karaoke singer 😊🎤{' '}
       <span className={styles.SpanColor}>(only when the mood is right)</span> 
     </>),
     images: [
