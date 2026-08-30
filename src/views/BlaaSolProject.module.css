@@ -87,9 +87,9 @@
 .heroLead {
   margin: 0 0 20px;
   color: #505050;
-  font-size: 16px;
+  font-size: 18px;
   line-height: var(--lh-body);
-  font-weight: 600;      /* 히어로 소개문은 본문보다 조금 굵게 */
+  font-weight: 400;      /* 히어로 소개문은 본문보다 조금 굵게 */
   max-width: 46ch;       /* 한 줄 글자 수 제한 — 읽기 편한 길이 */
 }
 
@@ -98,7 +98,7 @@
 }
 
 .heroImage {
-    margin-top: 64px;
+    margin-top: 120px;
     /* margin-left: 16px; */
   width: 200%;
   height: auto;

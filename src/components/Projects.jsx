@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styles from './Projects.module.css';
 import blaaSolThumb from '../assets/images/project-thumbnail/blaasol-thumbnail.png'
 import spillCafeenThumb from '../assets/images/project-thumbnail/spillCafeenThumb.png'
-import cphfwThumb from '../assets/images/project-thumbnail/cphfw-thumbnail.png'
+import hiddenSeoulThumb from '../assets/images/project-thumbnail/hiddenSeoulThumb.png'
 const projectList = [
   {
     path: 'blaa-sol',
@@ -19,11 +19,11 @@ const projectList = [
     keywords: ['App Design', 'User Testing', 'Dark Mode'],
   },
   {
-    path: 'cph-fw',
-    title: 'COPENHAGEN FASHION WEEK',
-    description: 'Info screen for CPHFW based on UX Research',
-    thumbnail: cphfwThumb,
-    keywords: ['Web Design', 'Interaction', 'Visual Identity'],
+    path: 'hidden-seoul',
+    title: 'Hidden Seoul',
+    description: 'Web design for hidden Seoul spot guide',
+    thumbnail: hiddenSeoulThumb,
+    keywords: ['Responsive Design', 'JavaScript', 'Prototype'],
   },
 ];
 

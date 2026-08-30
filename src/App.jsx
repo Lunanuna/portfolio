@@ -8,7 +8,7 @@ import ArchivePage from "./views/ArchivePage";
 //Projects Detail Page
 import BlaaSolProject from "./views/BlaaSolProject";
 import SpilCafeenProject from "./views/SpilCafeenProject";
-import CphfwProject from "./views/CphfwProject";
+import HiddenSeoulProject from "./views/HiddenSeoulProject";
 
 //Archive Detail Page
 const router = createBrowserRouter([
@@ -37,8 +37,8 @@ const router = createBrowserRouter([
         element: <SpilCafeenProject /> 
       },
       { 
-        path: "projects/cph-fw", 
-        element: <CphfwProject /> 
+        path: "projects/hidden-seoul", 
+        element: <HiddenSeoulProject /> 
       },
     ]
   }

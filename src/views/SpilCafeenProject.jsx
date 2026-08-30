@@ -112,12 +112,12 @@ const PROCESS_STEPS = [
     items: ['User Persona', 'User Stories', 'OOUX'],
   },
   {
-    title: 'Develope',
+    title: 'Develop',
     icon: diamondIcon3,
     items: ['Lo-fi Prototype', 'Hi-fi Prototype', 'Preference Test'],
   },
   {
-    title: 'Deliever',
+    title: 'Deliver',
     icon: diamondIcon4,
     items: ['Interactive', 'Figma Prototype'],
   },
@@ -398,7 +398,7 @@ export default function SpilcafeenProject() {
 
       {/* ========== 11. Final Screens (영상) ========== */}
       <section className={styles.textBlock}>
-        <h2 className={styles.h2}>Final Screens</h2>
+        <h2 className={styles.h2}>Final Screen</h2>
       </section>
 
       <figure className={styles.videoFigure}>
@@ -417,8 +417,10 @@ export default function SpilcafeenProject() {
       <section className={styles.textBlock}>
         <h2 className={styles.h2}>Learnings and Next Steps</h2>
         <p className={styles.body}>
-          {/* ↓ 아직 안 쓴 부분. 여기에 내용 채우면 돼 */}
-          해당 프로젝트를 통해서 ..
+       I focused on improving my Figma skills by exploring component properties to create variations of UI cards within the same format. I also learned to build more interactive prototypes using Smart Animate and connecting frames to create smoother interactions.
+        </p>
+        <p className={styles.body}>
+            I’d like to explore more advanced Figma features and build on my experience with creating a basic design system. My next step is to develop a more structured and consistent system that can support a wider range of UI components.
         </p>
       </section>
     </article>

@@ -443,10 +443,14 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
-  align-items: start;
+  align-items: stretch;   /* start → stretch (칸 높이를 가장 큰 것에 맞춤) */
 }
 
 .compareItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;  /* ← 핵심. 내용을 아래로 밀어붙임 */
+  height: 100%;
   text-align: center;
   min-width: 0;
 }
@@ -462,9 +466,9 @@
 /* 이미지 아래 단계 라벨 */
 .compareLabel {
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
-  color: var(--c-burgundy);
+  color: var(--c-gray);
 }
 
 /* ============================================================
