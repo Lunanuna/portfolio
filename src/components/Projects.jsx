@@ -23,7 +23,7 @@ const projectList = [
     title: 'Hidden Seoul',
     description: 'Web design for hidden Seoul spot guide',
     thumbnail: hiddenSeoulThumb,
-    keywords: ['Responsive Design', 'JavaScript', 'Prototype'],
+    keywords: ['Responsive Design', 'JavaScript', 'Content Creation'],
   },
 ];
 

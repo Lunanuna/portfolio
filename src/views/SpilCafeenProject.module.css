@@ -62,7 +62,8 @@
 
 .eyebrow {
   margin: 0 0 8px;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 400;
   color: var(--c-text-sub);
 }
 
@@ -131,14 +132,14 @@
 
 .metaLabel {
   margin: 0 0 10px;
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   color: var(--c-text-sub);
 }
 
 .metaValue {
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 1.5;
   white-space: pre-line; /* 데이터의 \n 을 실제 줄바꿈으로 표시 */

@@ -12,8 +12,9 @@ import film6 from '../assets/images/About/film6.png';
 import freetime1 from '../assets/images/About/freetime1.png';
 import freetime2 from '../assets/images/About/freetime2.png';
 import freetime3 from '../assets/images/About/freetime3.png';
-import inco1 from '../assets/images/About/inco1.png';
-import inco2 from '../assets/images/About/inco2.png';
+import freetime4 from '../assets/images/About/freetime4.png';
+import karaoke1 from '../assets/images/About/karaoke1.png';
+import karaoke2 from '../assets/images/About/karaoke2.png';
 import test from '../assets/images/About/test.png';
 import testMobile from '../assets/images/About/testMobile.png'
 
@@ -31,18 +32,22 @@ const GALLERIES = [
     ],
   },
   {
-    caption: 'Favorite things I do in my free time 🎵',
+    caption: 'Part-time chef 🧑🏻‍🍳, part-time knitter 🧶',
     images: [
       { src: freetime1, alt: '뜨개질하는 모습' },
       { src: freetime2, alt: '친구들과 함께 요리한 날' },
       { src: freetime3, alt: '직접 만든 반찬' },
+      { src: freetime4, alt:'어쩌고'}
     ],
   },
   {
-    caption: 'Also I love grocery shopping in a big supermarket 😊',
+    caption: (  <>
+      And also a professional karaoke singer 🎤😊{' '}
+      <span className={styles.SpanColor}>(only when the mood is right)</span> 
+    </>),
     images: [
-      { src: inco1, alt: 'Inco 매장 외관' },
-      { src: inco2, alt: 'Inco에서 장 보는 모습' },
+      { src: karaoke1, alt: 'Inco 매장 외관' },
+      { src: karaoke2, alt: 'Inco에서 장 보는 모습' },
     ],
   },
 ];

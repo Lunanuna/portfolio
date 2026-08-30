@@ -28,7 +28,7 @@
   color: var(--c-text);
   /* 폰트는 전역(index.css)에서 상속받게 둠. 여기서 지정하고 싶으면 아래 주석 해제
   font-family: 'Poppins', sans-serif; */
-
+  margin-top: 64px;
   margin-bottom: 128px;
 }
 

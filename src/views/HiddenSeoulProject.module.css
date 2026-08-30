@@ -1,0 +1,610 @@
+/* ============================================================
+   HiddenSeoul.module.css
+   ------------------------------------------------------------
+   타이포 규칙 (Spilcaféen 과 동일 스펙, 컬러만 블루 계열):
+     h1  Montserrat / 64px / ExtraBold(800)   ← 유일하게 Montserrat
+     h2  Klara(상속)  / 32px / Bold   / #3771C8
+     h3  Klara(상속)  / 24px / Bold   / #12305C
+     h4  Klara(상속)  / 20px / Medium / #505050
+     p   Klara(상속)  / 18px / Regular/ #111111
+
+   #3D5C8A 는 "제목은 아닌데 조금 강조" 용도로 씀:
+     - 어피니티 다이어그램 칼럼 헤더
+     - 로고/프로토타입 캡션 라벨
+     - 강조 span (.accent)
+
+   ⚠️ Montserrat 은 index.css 에서 한 번 불러와야 해:
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+   ============================================================ */
+
+.page {
+  /* --- 레이아웃 --- */
+  --content-max: 1100px;   /* 넓은 요소(이미지, 카드)의 최대 폭 */
+  --text-max: 1100px;       /* 글 단락의 최대 폭 */
+  --side-pad: 60px;        /* 좌우 화이트스페이스 */
+  --section-gap: 100px;    /* 섹션 사이 세로 간격 */
+
+  /* --- 컬러 --- */
+  --c-blue: #3771C8;       /* h2 / Hidden Seoul 메인 블루 */
+  --c-blue-deep: #12305C;  /* h3 / 짙은 네이비 */
+  --c-blue-soft: #3D5C8A;  /* 보조 강조 (칼럼 헤더, 캡션 라벨) */
+  --c-gray: #505050;       /* h4 */
+  --c-text: #111111;       /* 본문 p */
+  --c-text-sub: #767676;   /* eyebrow, 캡션 */
+  --c-blue-tint: #E8EEF8;  /* 어피니티 항목 블록 배경 (연한 파랑) */
+  --c-band-dark: #111111;  /* Lo-fi 와이어프레임 섹션 배경 */
+  --c-band-light: #F2F4F8; /* Hi-fi 프로토타입 섹션 배경 */
+  --c-line: #D8E1EF;       /* 얇은 구분선 */
+  --c-tag-border: #3771C8; /* 히어로 태그 테두리 */
+
+  /* --- 타이포 --- */
+  --fs-body: 18px;
+  --lh-body: 1.7;
+
+  color: var(--c-text);
+  /* 폰트는 전역(index.css)의 Klara 상속. h1 만 아래에서 Montserrat 로 덮어씀 */
+    margin-top: 64px;
+  margin-bottom: 128px;
+}
+
+/* 본문 안에서 살짝 강조할 때 <span className={styles.accent}> */
+.accent {
+  color: var(--c-blue-soft);
+  font-weight: 600;
+}
+
+/* ============================================================
+   1. HERO
+   ============================================================ */
+.hero {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 80px var(--side-pad) 0;
+  display: flex;
+  align-items: center;   /* 로고/목업이 텍스트 세로 중앙에 오게 */
+  gap: 60px;
+}
+
+.heroText {
+  flex: 1;
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--c-text-sub);
+}
+
+/* ---- h1 : 유일하게 Montserrat ---- */
+.heroTitle {
+  margin: 0 0 24px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--c-text);
+}
+
+.tagList {
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 14px;
+  padding: 5px 16px;
+  border: 1px solid var(--c-tag-border);
+  border-radius: 999px;
+  color: var(--c-blue);
+  white-space: nowrap;
+}
+
+.heroLead {
+  margin: 0 0 16px;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  max-width: 48ch;
+}
+
+.heroLead:last-child {
+  margin-bottom: 0;
+}
+
+.heroImageWrap {
+  flex: 0 0 auto;   /* 퍼센트 대신 이미지 크기 그대로 (max-width 와 안 싸움) */
+}
+
+.heroImage {
+  width: 440px;     /* ← 히어로 목업 폭. 이 숫자만 조절하면 됨 */
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================================
+   2. 메타 정보 행
+   ============================================================ */
+.metaRow {
+  max-width: var(--content-max);
+  margin: 56px auto 0;
+  padding: 0 var(--side-pad);
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1.3fr 0.7fr 1fr;
+  gap: 24px;
+}
+
+.metaLabel {
+  margin: 0 0 10px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--c-text-sub);
+}
+
+.metaValue {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: pre-line;  /* 데이터의 \n 을 실제 줄바꿈으로 */
+}
+
+/* ============================================================
+   3. Step Inside 밴드 (풀블리드 통이미지)
+   ------------------------------------------------------------
+   100vw 트릭. 부모에 overflow-x: hidden 걸려있어야 가로 스크롤 안 생김.
+   ============================================================ */
+.band {
+  margin: 72px 0 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 0;   /* img 아래 4px 여백 제거 */
+}
+
+.bandImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================================
+   4. 텍스트 섹션 공통
+   ============================================================ */
+.textBlock {
+  max-width: var(--text-max);
+  margin: var(--section-gap) auto 0;
+  padding: 0 var(--side-pad);
+}
+
+.h2 {
+  margin: 0 0 20px;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--c-blue);
+}
+
+.h3 {
+  margin: 40px 0 16px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--c-blue-deep);
+}
+
+.h2 + .h3 {
+  margin-top: 24px;
+}
+
+.h4 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--c-gray);
+}
+
+.body {
+  margin: 0 0 18px;
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  color: var(--c-text);
+}
+
+.body:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   5. Main Focus 리스트
+   ============================================================ */
+.focusList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.focusItem {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 10px;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+
+/* 작은 사각 불릿 — 동그라미로 바꾸려면 border-radius: 50% 추가 */
+.focusItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  background: var(--c-blue);
+}
+
+/* ============================================================
+   6. Double Diamond — 테두리 없는 4칼럼 텍스트
+   ------------------------------------------------------------
+   PDF 처럼 카드 박스 없이 제목(블루) + 항목 리스트만.
+   위쪽에 얇은 블루 구분선 하나.
+   ============================================================ */
+.processSection {
+  max-width: 1000px;
+  margin: 128px auto 0;
+  padding: 40px var(--side-pad) 0;
+  border-top: 2px solid var(--c-blue);  /* 상단 구분선. 빼려면 이 줄 삭제 */
+}
+
+.processRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 100px;
+  align-items: start;   /* 각 칼럼이 위에서부터 시작 */
+}
+
+.processTitle {
+  margin: 0 0 20px;
+  font-size: 28px;      /* 칼럼 제목 크기 */
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--c-blue);
+  /* 왼쪽 정렬 — 가운데로 하고 싶으면 text-align: center 추가 */
+}
+
+.processList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.processItem {
+  font-size: 17px;
+  line-height: 1.5;
+  margin-bottom: 14px;  /* 항목 사이 간격 */
+  color: var(--c-gray);
+}
+
+/* ============================================================
+   7. 어피니티 다이어그램
+   ------------------------------------------------------------
+   PDF 처럼 파란 헤더 바(흰 글씨) + 연한 파랑 포스트잇 블록.
+   ============================================================ */
+.affinityRow {
+  max-width: var(--content-max);
+  margin: 40px auto 0;
+  padding: 0 var(--side-pad);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;          /* 칼럼 사이 간격 */
+  align-items: start; /* 항목 수가 달라도 위에서부터 채워짐 */
+}
+
+.affinityCol {
+  min-width: 0;
+}
+
+/* 칼럼 헤더 — 진한 블루 배경 + 흰 글씨 */
+.affinityHead {
+  margin: 0 0 20px;   /* 헤더 ↔ 첫 블록 간격 */
+  padding: 12px 14px;
+  background: var(--c-blue);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.affinityList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 각 항목 — 연한 파랑 블록 */
+.affinityItem {
+  padding: 14px;
+  margin-bottom: 16px;   /* 블록 사이 간격 */
+  background: var(--c-blue-tint);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--c-text);
+}
+
+.affinityItem:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   8. 이미지 배치 유틸
+   ============================================================ */
+
+/* 넓은 통이미지 (로고 이터레이션 보드 등) */
+.wideFigure {
+  max-width: var(--content-max);
+  margin: 32px auto 0;
+  padding: 0 var(--side-pad);
+}
+
+.wideImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 2개 나란히 (페르소나, 와이어프레임 세트) */
+.pairRow {
+  max-width: var(--content-max);
+  margin: 32px auto 0;
+  padding: 0 var(--side-pad);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.pairImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  
+}
+
+/* 캡션 라벨 (이미지 위/아래 설명) */
+.figLabel {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--c-blue-soft);
+}
+
+/* ============================================================
+   8-1. Logo Design Iteration — 4단계 가로 배치
+   ------------------------------------------------------------
+   캡션(위) + 이미지(아래) 한 세트가 4개.
+   캡션 길이가 달라도 이미지 시작 높이가 맞도록 min-height 로 맞춰둠.
+   ============================================================ */
+.logoRow {
+  max-width: var(--content-max);
+  margin: 32px auto 0;
+  padding: 0 var(--side-pad);
+  display: flex;
+  flex-direction: column;
+  gap: 48px;              /* 세로 배치라 24px보다 넉넉하게 */
+  align-items: center;
+}
+
+.logoItem {
+  margin: 0;
+  width: 100%;
+  max-width: 720px;       /* ← 이미지 최대 폭. 이 숫자만 조절하면 됨 */
+  text-align: center;     /* 라벨 + 이미지 둘 다 가운데로 */
+}
+
+.logoLabel {
+  margin: 24px 0 16px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--c-blue-soft);
+  /* min-height 삭제 — 세로 배치에선 높이 맞출 이유가 없어서 빈 공간만 생겨 */
+}
+
+.logoImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;         /* display:block 이라 text-align 으론 안 가운데 옴 */
+}
+
+/* ============================================================
+   8-2. 이미지 배경 밴드 (풀블리드)
+   ------------------------------------------------------------
+   PDF 처럼 이미지 영역만 배경색으로 감싸는 띠.
+   제목/본문은 밖(흰 배경)에 그대로 두고, 이미지 행만 안에 넣음.
+   100vw 트릭이라 부모에 overflow-x: hidden 필요.
+   ============================================================ */
+.imageBand {
+  margin: 32px 0 0;
+  padding: 70px 0;   /* 배경 위아래 여백. 줄이면 띠가 얇아짐 */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Lo-fi 와이어프레임 — 검정 배경 */
+.bandDark {
+  background: var(--c-band-dark);
+}
+
+/* Hi-fi 프로토타입 — 아주 연한 회청색 배경 */
+.bandLight {
+  background: var(--c-band-light);
+  padding: 60px 0;
+}
+
+/* 밴드 안에 들어간 행은 자기 위쪽 margin 을 버림
+   (밴드의 padding 이 이미 여백 역할을 하니까 이중으로 벌어지지 않게) */
+.imageBand > .pairRow,
+.imageBand > .deviceRow {
+  margin-top: 0;
+}
+
+/* 밴드 안에 행이 두 개 이상일 때(헤더 + UI카드) 그 사이 간격 */
+.imageBand > .deviceRow + .deviceRow {
+  margin-top: 48px;
+}
+
+/* ============================================================
+   9. Hi-fi Prototype — 모바일 + 데스크탑 나란히
+   ------------------------------------------------------------
+   모바일은 좁고 데스크탑은 넓으니 1 : 2 비율.
+   ============================================================ */
+.deviceRow {
+  max-width: var(--content-max);
+  margin: 24px auto 0;
+  padding: 0 var(--side-pad);
+  display: grid;
+  grid-template-columns: 1fr 2fr;  /* 모바일 : 데스크탑 */
+  gap: 32px;
+  align-items: end;   /* 바닥 정렬 — 높이 다른 목업이 나란히 서게 */
+}
+
+.deviceImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================================
+   10. Coded Solution 버튼
+   ============================================================ */
+.codedLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  padding: 14px 26px;
+  border: 1.5px solid var(--c-blue);
+  border-radius: 999px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--c-blue);
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.codedLink:hover {
+  background: var(--c-blue);
+  color: #fff;
+}
+
+/* github 아이콘 — hover 시 흰색으로 반전 */
+.linkIcon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  object-fit: contain;
+}
+
+.codedLink:hover .linkIcon {
+  filter: brightness(0) invert(1);
+}
+
+/* ============================================================
+   11. 반응형
+   ============================================================ */
+@media (max-width: 900px) {
+  .page {
+    --side-pad: 32px;
+    --section-gap: 72px;
+    --fs-body: 17px;
+  }
+
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .heroTitle { font-size: 44px; }
+
+  .heroImageWrap {
+    width: 100%;
+    order: -1;   /* 모바일에선 목업을 텍스트 위로 */
+  }
+
+  .h2 { font-size: 26px; }
+  .h3 { font-size: 20px; }
+  .h4 { font-size: 18px; }
+
+  .metaRow {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 20px;
+  }
+
+  /* 프로세스 4칼럼 → 2×2 */
+  .processRow {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 24px;
+  }
+
+  .processTitle { font-size: 24px; }
+
+  /* 어피니티 4칼럼 → 2칼럼 */
+  .affinityRow {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 16px;
+  }
+
+  /* 배경 밴드 여백 축소 */
+  .imageBand { padding: 48px 0; }
+  .bandLight { padding: 44px 0; }
+
+  /* 로고 4단계 → 2×2 */
+  .logoRow {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 24px;
+  }
+
+  .logoLabel { min-height: 0; }  /* 2칼럼에선 높이 맞출 필요 없음 */
+
+  /* 모바일/데스크탑 목업은 세로로 */
+  .deviceRow {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+}
+
+@media (max-width: 560px) {
+  .page {
+    --side-pad: 20px;
+  }
+
+  .heroTitle { font-size: 34px; }
+
+  /* 좁은 화면에선 전부 1칼럼 */
+  .metaRow,
+  .processRow,
+  .affinityRow,
+  .pairRow,
+  .logoRow {
+    grid-template-columns: 1fr;
+  }
+
+  .codedLink {
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+}
