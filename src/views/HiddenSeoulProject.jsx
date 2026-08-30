@@ -412,12 +412,10 @@ export default function HiddenSeoulProject() {
       <section className={styles.textBlock}>
         <h2 className={styles.h2}>Learnings and Next Steps</h2>
         <p className={styles.body}>
-          Looking back at this project a year later, I can clearly see areas
-          where my design skills have grown, which was rewarding to notice. At
-          the time, I learned how to approach design through the UX process and
-          use different UX methods to explore solutions from the user's
-          perspective. I also spent time improving my CSS skills to create a
-          smoother responsive experience.
+     Looking back at this project a year later, I can clearly see how much my design skills have grown. For example, I can’t believe I made all those Figma prototypes without using Auto Layout!
+        </p>
+        <p className={styles.body}>
+          At the time, I learned how to approach design through the UX process and use different UX methods to explore solutions from the user’s perspective. I also spent time improving my CSS skills to create a smoother responsive experience.
         </p>
         <p className={styles.body}>
           For my next project, I want to make my prototypes more interactive and
