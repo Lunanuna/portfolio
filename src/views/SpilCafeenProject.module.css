@@ -282,10 +282,10 @@
   display: block;
   /* width/height 둘 다 명시. auto 로 두면 SVG에 viewBox 나 크기 속성이 없을 때
      브라우저가 0px 로 계산해서 아이콘이 안 보이는 문제가 생김. */
-  width: 32px;
-  height: 32px;
+  width: 16px;
+  height: 16px;
   object-fit: contain;  /* 박스 비율과 이미지 비율이 달라도 안 찌그러짐 */
-  margin: 0 auto 12px;  /* 카드 안에서 가운데 정렬 */
+  margin: 0 auto 16px;  /* 카드 안에서 가운데 정렬 */
 }
 
 .processTitle {
@@ -303,10 +303,10 @@
 }
 
 .processItem {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.7;
   color: var(--c-text);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 /* ============================================================
