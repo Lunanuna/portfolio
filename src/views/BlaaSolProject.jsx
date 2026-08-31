@@ -150,9 +150,7 @@ export default function BlaaSol() {
         <div className={styles.heroText}>
           <p className={styles.eyebrow}>Concept Redesign</p>
           <h1 className={styles.heroTitle}>
-            Blå Sol
-            <br />
-            Festival App
+            Blå Sol App
           </h1>
 
           <ul className={styles.tagList}>
