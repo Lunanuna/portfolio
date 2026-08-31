@@ -23,10 +23,10 @@ const GALLERIES = [
   {
     caption: 'Part-time chef 🧑🏻‍🍳, part-time knitter 🧶',
     images: [
-      { src: freetime1, alt: '뜨개질하는 모습' },
-      { src: freetime2, alt: '친구들과 함께 요리한 날' },
-      { src: freetime3, alt: '직접 만든 반찬' },
-      { src: freetime4, alt:'어쩌고'}
+      { src: freetime1, alt: 'cooking volunteer' },
+      { src: freetime2, alt: 'Ramsløg kimchi' },
+      { src: freetime3, alt: 'first sweater I knitted' },
+      { src: freetime4, alt:'binge watching and knitting'}
     ],
   },
   {
@@ -35,8 +35,8 @@ const GALLERIES = [
       <span className={styles.SpanColor}>(when the time is right)</span> 
     </>),
     images: [
-      { src: karaoke1, alt: 'Inco 매장 외관' },
-      { src: karaoke2, alt: 'Inco에서 장 보는 모습' },
+      { src: karaoke1, alt: 'karaoke 1' },
+      { src: karaoke2, alt: 'karaoke 2' },
     ],
   },
   {
