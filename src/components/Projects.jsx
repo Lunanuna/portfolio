@@ -9,7 +9,7 @@ const projectList = [
     title: 'Blå Sol Festival App',
     description: 'Local Festival App Redesign Project',
     thumbnail: blaaSolThumb,
-    keywords: ['UX/UI Deisgn', 'Prototpying', 'Design System'],
+    keywords: ['UX/UI Design', 'Prototpying', 'Design System'],
   },
   {
     path: 'spil-cafeen',
