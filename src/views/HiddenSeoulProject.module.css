@@ -156,17 +156,16 @@
 }
 
 /* ============================================================
-   3. Step Inside 밴드 (풀블리드 통이미지)
+   3. Step Inside 밴드 (통이미지)
    ------------------------------------------------------------
-   100vw 트릭. 부모에 overflow-x: hidden 걸려있어야 가로 스크롤 안 생김.
+   데스크탑에선 콘텐츠 폭 안에 가둬서 원본보다 커지지 않게(화질 유지),
+   모바일에선 아래 미디어쿼리에서 100vw 로 꽉 채움.
    ============================================================ */
 .band {
-  margin: 72px 0 0;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  line-height: 0;   /* img 아래 4px 여백 제거 */
+  max-width: var(--content-max);
+  margin: 72px auto 0;
+  padding: 0 var(--side-pad);
+  line-height: 0;
 }
 
 .bandImage {
@@ -253,23 +252,36 @@
 }
 
 /* ============================================================
-   6. Double Diamond — 테두리 없는 4칼럼 텍스트
+   6. Double Diamond — 단계별 박스 + 상단 라인
    ------------------------------------------------------------
-   PDF 처럼 카드 박스 없이 제목(블루) + 항목 리스트만.
-   위쪽에 얇은 블루 구분선 하나.
+   ★ 상단 선을 섹션이 아니라 각 단계(.processStage)가 갖고 있음.
+     데스크탑: gap 이 0 이라 4개의 선이 이어져 한 줄로 보임
+     모바일:   세로로 쌓이면서 단계마다 선이 하나씩 생김
+     → 칼럼 간격은 gap 대신 padding-right 로 만든다 (선이 안 끊기게)
    ============================================================ */
 .processSection {
   max-width: 1000px;
   margin: 128px auto 0;
-  padding: 40px var(--side-pad) 0;
-  border-top: 2px solid var(--c-blue);  /* 상단 구분선. 빼려면 이 줄 삭제 */
+  padding: 0 var(--side-pad);
 }
 
 .processRow {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 100px;
-  align-items: start;   /* 각 칼럼이 위에서부터 시작 */
+  gap: 0;               /* ← 반드시 0. 값이 있으면 선이 칼럼 사이에서 끊김 */
+  align-items: start;
+}
+
+.processStage {
+  border-top: 2px solid var(--c-blue);
+  padding: 40px 20px 0;   /* 좌우 20px 균등 */
+  text-align: center;     /* ← 내용 가운데 정렬 */
+}
+
+
+/* 마지막 칼럼은 오른쪽 여백 불필요 */
+.processStage:last-child {
+  padding-right: 0;
 }
 
 .processTitle {
@@ -377,7 +389,7 @@
   width: 100%;
   height: auto;
   display: block;
-  
+
 }
 
 /* 캡션 라벨 (이미지 위/아래 설명) */
@@ -389,10 +401,9 @@
 }
 
 /* ============================================================
-   8-1. Logo Design Iteration — 4단계 가로 배치
+   8-1. Logo Design Iteration — 세로 4단계
    ------------------------------------------------------------
-   캡션(위) + 이미지(아래) 한 세트가 4개.
-   캡션 길이가 달라도 이미지 시작 높이가 맞도록 min-height 로 맞춰둠.
+   캡션(위) + 이미지(아래) 한 세트가 4개, 세로로 쌓임.
    ============================================================ */
 .logoRow {
   max-width: var(--content-max);
@@ -413,7 +424,7 @@
 
 .logoLabel {
   margin: 24px 0 16px;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 1.4;
   color: var(--c-blue-soft);
@@ -559,10 +570,30 @@
     gap: 28px 20px;
   }
 
-  /* 프로세스 4칼럼 → 2×2 */
+   .band {
+    max-width: none;
+    margin: 48px 0 0;
+    padding: 0;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* 프로세스 4칼럼 → 2×2 (gap 은 계속 0, 선이 이어지게) */
   .processRow {
     grid-template-columns: repeat(2, 1fr);
-    gap: 36px 24px;
+  }
+
+  .processStage {
+    padding: 28px 24px 32px 0;  /* 아래 여백 추가 — 위아래 줄이 붙지 않게 */
+    margin: 0 32px;
+  }
+
+
+  /* 2칼럼에선 짝수번째(2, 4)가 오른쪽 끝 */
+  .processStage:nth-child(even) {
+    padding-right: 0;
   }
 
   .processTitle { font-size: 24px; }
@@ -571,19 +602,15 @@
   .affinityRow {
     grid-template-columns: repeat(2, 1fr);
     gap: 32px 16px;
+    margin: 64px;
   }
 
   /* 배경 밴드 여백 축소 */
   .imageBand { padding: 48px 0; }
   .bandLight { padding: 44px 0; }
 
-  /* 로고 4단계 → 2×2 */
-  .logoRow {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 36px 24px;
-  }
-
-  .logoLabel { min-height: 0; }  /* 2칼럼에선 높이 맞출 필요 없음 */
+  /* 로고 세로 배치 간격 축소 */
+  .logoRow { gap: 36px; }
 
   /* 모바일/데스크탑 목업은 세로로 */
   .deviceRow {
@@ -600,12 +627,17 @@
 
   .heroTitle { font-size: 34px; }
 
+  /* 1칼럼이 되면 오른쪽 여백 제거 — 단계마다 선이 하나씩 */
+  .processStage,
+  .processStage:nth-child(even) {
+    padding: 24px 0 28px;
+  }
+
   /* 좁은 화면에선 전부 1칼럼 */
   .metaRow,
   .processRow,
   .affinityRow,
-  .pairRow,
-  .logoRow {
+  .pairRow {
     grid-template-columns: 1fr;
   }
 

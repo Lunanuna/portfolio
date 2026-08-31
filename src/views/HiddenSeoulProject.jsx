@@ -242,22 +242,22 @@ export default function HiddenSeoulProject() {
       </section>
 
       {/* ========== 6. Double Diamond 카드 4개 ========== */}
-      <section className={styles.processSection}>
-        <div className={styles.processRow}>
-          {PROCESS_STEPS.map((step) => (
-            <div key={step.title}>
-              <h3 className={styles.processTitle}>{step.title}</h3>
-              <ul className={styles.processList}>
-                {step.items.map((item) => (
-                  <li key={item} className={styles.processItem}>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+<section className={styles.processSection}>
+  <div className={styles.processRow}>
+    {PROCESS_STEPS.map((step) => (
+      <div key={step.title} className={styles.processStage}>
+        <h3 className={styles.processTitle}>{step.title}</h3>
+        <ul className={styles.processList}>
+          {step.items.map((item) => (
+            <li key={item} className={styles.processItem}>
+              {item}
+            </li>
           ))}
-        </div>
-      </section>
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* ========== 7. Research and User Interview ========== */}
       <section className={styles.textBlock}>
