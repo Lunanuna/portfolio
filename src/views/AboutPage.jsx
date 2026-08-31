@@ -21,17 +21,6 @@ import testMobile from '../assets/images/About/testMobile.png'
 /* 갤러리 데이터 — 사진 추가/변경은 여기서만 하면 됨 */
 const GALLERIES = [
   {
-    caption: "Films I've watched more than once 🎬",
-    images: [
-      { src: film1, alt: 'Parasite' },
-      { src: film2, alt: 'Being John Malkovich' },
-      { src: film3, alt: 'Chungking Express' },
-      { src: film4, alt: 'Burning' },
-      { src: film5, alt: 'Another Round' },
-      { src: film6, alt: 'Kamome Diner' },
-    ],
-  },
-  {
     caption: 'Part-time chef 🧑🏻‍🍳, part-time knitter 🧶',
     images: [
       { src: freetime1, alt: '뜨개질하는 모습' },
@@ -43,11 +32,22 @@ const GALLERIES = [
   {
     caption: (  <>
       And also a professional karaoke singer 😊🎤{' '}
-      <span className={styles.SpanColor}>(only when the mood is right)</span> 
+      <span className={styles.SpanColor}>(when the time is right)</span> 
     </>),
     images: [
       { src: karaoke1, alt: 'Inco 매장 외관' },
       { src: karaoke2, alt: 'Inco에서 장 보는 모습' },
+    ],
+  },
+  {
+    caption: "Last but not least, very much a movie person 🎬",
+    images: [
+      { src: film1, alt: 'Parasite' },
+      { src: film2, alt: 'Being John Malkovich' },
+      { src: film3, alt: 'Chungking Express' },
+      { src: film4, alt: 'Burning' },
+      { src: film5, alt: 'Another Round' },
+      { src: film6, alt: 'Kamome Diner' },
     ],
   },
 ];

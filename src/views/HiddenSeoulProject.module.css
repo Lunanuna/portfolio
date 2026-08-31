@@ -534,6 +534,7 @@
     --side-pad: 32px;
     --section-gap: 72px;
     --fs-body: 17px;
+     margin-top: 32px;
   }
 
   .hero {
