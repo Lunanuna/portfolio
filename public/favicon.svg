@@ -1,6 +1,7 @@
-<svg width="65" height="68" viewBox="0 0 65 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M34 22.7832H4V2.7832H13.96V12.7832H34V22.7832Z" fill="#1ABCFE"/>
-<path d="M57.1914 12.7832V22.1953H47.1914V42.7832H37.1914V12.7832H57.1914Z" fill="#1ABCFE"/>
-<path d="M60.7461 64.8291H20.7461V44.8291H30.7461V54.8291H60.7461V64.8291Z" fill="#1ABCFE"/>
-<ellipse cx="19.0606" cy="33.8069" rx="7.94727" ry="7.65063" fill="#1ABCFE"/>
+<svg width="99" height="99" viewBox="0 0 99 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="99" height="99" rx="49.5" fill="white"/>
+<path d="M51 38.2832H21V18.2832H30.96V28.2832H51V38.2832Z" fill="#1ABCFE"/>
+<path d="M74.1914 28.2832V37.6953H64.1914V58.2832H54.1914V28.2832H74.1914Z" fill="#1ABCFE"/>
+<path d="M77.7461 80.3291H37.7461V60.3291H47.7461V70.3291H77.7461V80.3291Z" fill="#1ABCFE"/>
+<ellipse cx="36.0606" cy="49.3066" rx="7.94727" ry="7.65063" fill="#1ABCFE"/>
 </svg>
