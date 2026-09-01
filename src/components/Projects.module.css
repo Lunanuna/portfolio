@@ -55,7 +55,7 @@
 }
 
 .description {
-  font-size: 17px;
+  font-size: 18px;
   color: #505050;
   margin: 0 0 16px;
 }
@@ -97,7 +97,7 @@
 @media (max-width: 1000px) {
   .projects {
     padding: 0 32px;
-    margin-bottom: 48px;
+    margin-bottom: 128px;
   }
 
   .title {
@@ -131,7 +131,7 @@
 @media (max-width: 480px) {
   .projects {
     padding: 0 20px;
-    margin-bottom: 40px;
+    margin-bottom: 128px;
   }
 
   .title {
@@ -139,11 +139,11 @@
     margin-bottom: 24px;
   }
 
-  .projectTitle { font-size: 19px; }
-  .description  { font-size: 14px; margin-bottom: 12px; }
-  .keyword      { font-size: 12px; padding: 3px 10px; }
+  .projectTitle { font-size: 21px; }
+  .description  { font-size: 16px; margin-bottom: 12px; }
+  .keyword      { font-size: 14px; padding: 3px 10px; }
 
-  .list { row-gap: 40px; }
+  .list { row-gap: 36px; }
 }
 
 /* 움직임 최소화 설정 존중 */

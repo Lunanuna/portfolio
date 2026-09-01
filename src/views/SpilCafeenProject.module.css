@@ -530,6 +530,7 @@
   .metaRow {
     grid-template-columns: repeat(2, 1fr);
     gap: 28px 20px;
+    margin-top: 24px;
   }
 
   /* 프로세스 카드 4개 → 2×2 */
@@ -547,7 +548,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .cardLabel { font-size: 18px; }
+  .cardLabel { font-size: 20px; }
 }
 
 @media (max-width: 560px) {
@@ -561,14 +562,25 @@
 
   /* 좁은 화면에선 전부 1칼럼 */
   .metaRow,
-  .processRow,
+  /* .processRow, */
   .colorGrid,
   .cardRowBig,
   .cardRowSmall,
   .cardRowBanner,
   .compareRow {
     grid-template-columns: 1fr;
+    margin:32px 16px;
   }
 
-  .colorGrid { gap: 32px; }
+.cardRowBig > :first-child,
+.cardRowSmall > :first-child,
+.cardRowBanner > :first-child{
+  margin-top: 16px;
+}
+.colorGrid > :first-child,
+.compareRow > :first-child {
+  margin-top: 32px;
+}
+
+  .colorGrid { gap: 24px; }
 }

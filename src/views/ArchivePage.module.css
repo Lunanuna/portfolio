@@ -22,6 +22,7 @@
   margin: 0 auto;
   padding: 80px var(--side-pad) 140px;
   color: var(--c-text);
+  margin-top: 64px;
 }
 
 /* ============================================================
@@ -232,7 +233,6 @@
     --side-pad: 32px;
     --section-gap: 88px;
     padding-top: 56px;
-    margin-top: 32px;
   }
 
   .header {

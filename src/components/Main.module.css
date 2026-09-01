@@ -114,7 +114,7 @@
 /* ---------- 반응형 ---------- */
 @media (max-width: 1000px) {
    .main{
-    margin-top: 32px;
+    margin-top: 64px;
    }
 
   .topSection,
@@ -179,7 +179,7 @@
   }
 
   .introduction {
-    font-size: 17px;
+    font-size: 18px;
     max-width: none;
   }
 }

@@ -79,7 +79,7 @@ import prototypeVideo from '../assets/images/case-spilcafeen/interactive-prototy
    ============================================================ */
 
 // 히어로 아래 태그
-const HERO_TAGS = ['Research', 'UI/UX Design', 'Prototyping'];
+const HERO_TAGS = ['UX/UI Design', 'Interactive Prototyping'];
 
 // 메타 정보 행 (MY ROLE / DELIVERABLE / ...)
 const META_ITEMS = [
