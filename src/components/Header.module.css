@@ -20,7 +20,7 @@
 }
 
 .logo img {
-  height: 36px;
+  height: 42px;
   width: auto;
   display: block;
 }
@@ -52,5 +52,9 @@
 
   .nav {
     gap: 1.25rem;
+  }
+
+  .logo img{
+    height: 36px;
   }
 }
