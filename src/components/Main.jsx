@@ -1,5 +1,5 @@
 import styles from './Main.module.css';
-import profile from '../assets/images/profile/about.jpeg';
+import profile from '../assets/images/profile/about.jpg';
 import { Link } from 'react-router-dom';
 
 export default function Main() {
