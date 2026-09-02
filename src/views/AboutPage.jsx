@@ -88,7 +88,7 @@ export default function AboutPage() {
               className={styles.button}
               
             >
-              work with me
+              view resume
             </a>
           </div>
         </div>
