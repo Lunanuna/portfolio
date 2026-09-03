@@ -84,6 +84,7 @@
   height: auto;
   display: block;
   flex-shrink: 0;
+   border-radius: 4px;
 }
 
 .button {
@@ -282,11 +283,10 @@
   .imageArr::-webkit-scrollbar { display: none; }
 
   .galleryImg {
-    flex: 0 0 78%;                  /* ← 다음 장이 살짝 보임 */
-    width: 250px;
-    height: auto;
-    /* aspect-ratio: 4 / 5; */
-    object-fit: cover;
+    flex: 0 0 auto;        /* ← 78% 대신 auto */
+    width: auto;           /* 가로는 비율대로 */
+    height: 260px;         /* 이 숫자 하나로 전체 크기 조절 */
+    object-fit: initial;   /* cover 필요 없음 — 크롭이 없으니까 */
     scroll-snap-align: start;
   }
 }
