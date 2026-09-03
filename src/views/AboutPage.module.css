@@ -262,5 +262,31 @@
     transition: none;
   }
 
-  .galleryImg { height: 180px; }
+    /* ── 하단 갤러리: 가로 스와이프 ── */
+  .imageArr {
+    flex-wrap: nowrap;              /* ← wrap 해제가 핵심 */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    margin-bottom: 48px;
+
+    /* 화면 끝까지 흘러가게 (full-bleed) */
+    margin-inline: calc(-1 * var(--side-pad));
+    padding-inline: var(--side-pad);
+    scroll-padding-inline: var(--side-pad);
+
+    scrollbar-width: none;          /* Firefox */
+  }
+
+  .imageArr::-webkit-scrollbar { display: none; }
+
+  .galleryImg {
+    flex: 0 0 78%;                  /* ← 다음 장이 살짝 보임 */
+    width: 250px;
+    height: auto;
+    /* aspect-ratio: 4 / 5; */
+    object-fit: cover;
+    scroll-snap-align: start;
+  }
 }
