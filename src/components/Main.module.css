@@ -60,10 +60,9 @@
 
 .profileImage {
   width: 350px;
-  height: 350px;
+  height: auto;
   flex-shrink: 0;            /* 좁아져도 원이 찌그러지지 않게 */
   object-fit: cover;
-  border-radius: 50%;
   display: block;
 }
 
