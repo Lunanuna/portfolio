@@ -407,14 +407,13 @@
    9. 코드 솔루션 링크
    ============================================================ */
 .iconBlock{
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  max-width: var(--content-max);
+  margin: 24px auto 0;
+  padding: 0 var(--side-pad);
 }
 
 .codedLink {
   display: inline-flex;
-  width: 25%;
   align-items: center;
   gap: 10px;
   margin-top: 8px;
@@ -534,5 +533,10 @@
       .deliverBlockRow {
     grid-template-columns: 1fr;
     gap: 56px;
+  }
+
+    .codedLink {
+    font-size: 16px;
+    padding: 12px 20px;
   }
 }
