@@ -49,6 +49,9 @@ import iconDiscover from '../assets/images/case-blaasol/diamond-discover.svg';
 import iconDefine from '../assets/images/case-blaasol/diamond-define.svg';
 import iconDevelop from '../assets/images/case-blaasol/diamond-develop.svg';
 import iconDeliver from '../assets/images/case-blaasol/diamond-deliver.svg';
+import githubIcon from '../assets/images/case-hiddenseoul/github.svg';
+import figmaIcon from '../assets/images/case-blaasol/figma.svg';
+
 
 /* ============================================================
    데이터
@@ -391,14 +394,28 @@ export default function BlaaSol() {
       {/* ========== 11. 코드 솔루션 링크 ========== */}
       <section className={styles.textBlock}>
         {/* 실제 배포 주소로 href 교체해줘 */}
-        <a
-          href="https://bla-sol.pages.dev/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.codedLink}
-        >
-          See the coded solution →
-        </a>
+              <div className={styles.iconBlock}>
+              <a
+                  href="https://www.figma.com/proto/VaBOC3efju2IWqGGUsKvax/Bl%C3%A5-Sol---Gayoung?node-id=4243-15385&viewport=2739%2C162%2C0.51&t=LU0s4na2igynDKcw-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=811%3A6198&page-id=696%3A3058"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.codedLink}
+                >
+                  <img src={figmaIcon} alt="" className={styles.linkIcon} />
+                  Figma Prototype
+                </a>
+
+
+                <a
+                  href="https://bla-sol.pages.dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.codedLink}
+                >
+                  <img src={githubIcon} alt="" className={styles.linkIcon} />
+                  Coded Solution
+                </a>
+                </div>
         <p className={styles.linkNote}>
           Coded Solution has a bit different design as I refined the figma
           prototype after the group project.

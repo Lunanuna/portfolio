@@ -492,6 +492,39 @@
   background: #000;
 }
 
+
+.codedLink {
+  display: inline-flex;
+  width: 25%;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  padding: 14px 26px;
+  border: 1.5px solid var(--c-red);
+  border-radius: 999px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--c-red);
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.codedLink:hover {
+  background: var(--c-red);
+  color: #fff;
+}
+
+/* github 아이콘 — hover 시 흰색으로 반전 */
+.linkIcon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  object-fit: contain;
+}
+
+.codedLink:hover .linkIcon {
+  filter: brightness(0) invert(1);
+}
 /* ============================================================
    12. 반응형
    ------------------------------------------------------------

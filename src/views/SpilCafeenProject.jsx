@@ -66,6 +66,7 @@ import firstAttempt from '../assets/images/case-spilcafeen/first-attempt.png';
 import difficultyIcon from '../assets/images/case-spilcafeen/difficulty-icon.png';
 import finalDifficulty from '../assets/images/case-spilcafeen/final.png';
 // Preference Test 3단 비교 (First Attempt / Icon Iteration / Final)
+import figmaIcon from '../assets/images/case-spilcafeen/figma.svg'
 
 import prototypeVideo from '../assets/images/case-spilcafeen/interactive-prototype.mp4';
 // Final Screens 인터랙티브 프로토타입 영상
@@ -175,7 +176,10 @@ export default function SpilcafeenProject() {
             needs of both the café and its visitors, using our findings to shape
             and prototype a digital application.
           </p>
+
+          
         </div>
+        
 
         <div className={styles.heroLogoWrap}>
           <img src={logo} alt="Spilcaféen 로고" className={styles.heroLogo} />
@@ -412,6 +416,18 @@ export default function SpilcafeenProject() {
           controls      /* 재생바 숨기려면 이 줄 삭제 */
         />
       </figure>
+
+      <section className={styles.textBlock}>
+                      <a  
+                          href="https://www.figma.com/proto/LS04z7YsteAFVpMpJp0Tg3/Spil-Cafeen?node-id=1189-13350&viewport=-772%2C-49%2C0.11&t=BDke551IHAKiBLas-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=929%3A3796&show-proto-sidebar=1&page-id=67%3A145"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.codedLink}
+                        >
+                          <img src={figmaIcon} alt="" className={styles.linkIcon} />
+                          Figma Prototype
+                        </a>
+      </section>
 
       {/* ========== 12. Learnings and Next Steps ========== */}
       <section className={styles.textBlock}>
