@@ -83,7 +83,8 @@
 
 /* 강조 텍스트 — span 전체가 아니라 클래스로 지정하는 게 안전 */
 .highlight {
-  color: #1ABCFE;
+  color: #0A6F9E;
+  font-weight: 600;
 }
 
 /* ---------- Explore My Projects ---------- */

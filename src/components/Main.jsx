@@ -1,5 +1,5 @@
 import styles from './Main.module.css';
-import profile from '../assets/images/profile/about.jpg';
+import profile from '../assets/images/profile/about.png';
 import { Link } from 'react-router-dom';
 
 // --i : 등장 순서. 숫자가 클수록 늦게 나타남
