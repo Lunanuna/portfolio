@@ -44,7 +44,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 64px;
   font-weight: 800;
-  color: #111111;
+  color: #0D0E82;
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin: 0;
@@ -83,7 +83,7 @@
 
 /* 강조 텍스트 — span 전체가 아니라 클래스로 지정하는 게 안전 */
 .highlight {
-  color: #0A6F9E;
+  color: #0D0E82;
   font-weight: 600;
 }
 
