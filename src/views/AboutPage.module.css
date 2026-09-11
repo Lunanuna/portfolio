@@ -5,6 +5,12 @@
   --content-max: 1120px;   /* 콘텐츠 최대 폭 */
   --side-pad: 24px;        /* 좌우 최소 여백 */
 
+  /* [추가] 모션 조절값 — Main / Projects 와 동일하게 맞춤 */
+  --rise-dur: 0.65s;
+  --rise-stagger: 0.08s;
+  --rise-dist: 18px;
+  --rise-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
   display: flex;
   flex-direction: column;
   margin-top: 240px;
@@ -33,6 +39,36 @@
 }
 
 /* ============================================================
+   [추가] 모션 — 진입 애니메이션 / 스크롤 리빌
+   ------------------------------------------------------------
+   .rise   : 페이지 로드 시 1회. style={{'--i': n}} 으로 순서 지정
+   .reveal : 화면에 들어올 때. useReveal 훅이 .visible 을 붙여줌
+   ============================================================ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(var(--rise-dist)); }
+  to   { opacity: 1; transform: none; }
+}
+
+.rise {
+  opacity: 0;
+  animation: rise var(--rise-dur) var(--rise-ease) forwards;
+  animation-delay: calc(var(--i, 0) * var(--rise-stagger));
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--rise-dur) var(--rise-ease),
+    transform var(--rise-dur) var(--rise-ease);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
    제목
    ============================================================ */
 .heading {
@@ -41,7 +77,12 @@
   font-weight: 800;
   color: #111111;
   line-height: 1.25;
-  margin: 0;               /* ← 기존 'o auto' 오타 수정 */
+  margin: 0;
+
+  /* [추가] 제목만 더 멀리서, 더 느긋하게 — 순서는 여전히 첫 번째 */
+  --rise-dist: 28px;
+  --rise-dur: 0.85s;
+  --rise-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ============================================================
@@ -84,7 +125,7 @@
   height: auto;
   display: block;
   flex-shrink: 0;
-   border-radius: 4px;
+  border-radius: 4px;
 }
 
 .button {
@@ -99,11 +140,29 @@
   margin-top: 24px;
   text-decoration: none;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+
+  /* [변경] hover 를 opacity → transform 으로.
+     리빌이 opacity 를 쓰기 때문에 둘이 겹치면 서로를 덮어씀 */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .button:hover {
-  opacity: 0.85;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(26, 188, 254, 0.35);
+}
+
+/* [추가] 버튼 전용 리빌 — 위로 밀지 않고 페이드만.
+   hover 의 translateY 와 충돌하지 않게 하기 위함 */
+.buttonReveal {
+  opacity: 0;
+  transition:
+    opacity var(--rise-dur) var(--rise-ease),
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.buttonReveal.visible {
+  opacity: 1;
 }
 
 /* ============================================================
@@ -119,6 +178,8 @@
   gap: 64px;
 }
 
+/* ⚠️ 아래 4개(.middleHeader / .middleImg / .middleFlex / .middlePara)는
+   현재 JSX 에서 쓰이지 않음. 다시 쓸 계획 없으면 지워도 됨 */
 .middleHeader {
   color: #26448C;
   font-size: 48px;
@@ -206,7 +267,7 @@
   object-fit: cover;
 }
 
-.SpanColor{
+.SpanColor {
   color: #999999;
   font-weight: 400;
 }
@@ -220,7 +281,10 @@
     margin-top: 120px;
   }
 
-  .heading { font-size: 28px; }
+  .heading {
+    font-size: 28px;
+    --rise-dist: 20px;     /* [추가] 작은 화면에선 이동 거리도 줄임 */
+  }
 
   .topInner {
     flex-direction: column;
@@ -263,7 +327,7 @@
     transition: none;
   }
 
-    /* ── 하단 갤러리: 가로 스와이프 ── */
+  /* ── 하단 갤러리: 가로 스와이프 ── */
   .imageArr {
     flex-wrap: nowrap;              /* ← wrap 해제가 핵심 */
     overflow-x: auto;
@@ -288,5 +352,19 @@
     height: 260px;         /* 이 숫자 하나로 전체 크기 조절 */
     object-fit: initial;   /* cover 필요 없음 — 크롭이 없으니까 */
     scroll-snap-align: start;
+  }
+}
+
+/* ============================================================
+   [추가] 움직임 최소화 설정 존중
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .reveal,
+  .buttonReveal {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
   }
 }

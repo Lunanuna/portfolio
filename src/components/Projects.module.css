@@ -1,12 +1,20 @@
+/* ============================================================
+   Projects.module.css
+   ============================================================ */
 
 .projects {
-  scroll-margin-top: 100px; 
-    display: flex;
+  scroll-margin-top: 100px;
+  display: flex;
   flex-direction: column;
   margin: 0 auto;
   max-width: 1200px;
   margin-top: 64px;
-  margin-bottom: 256px; 
+  margin-bottom: 256px;
+
+  /* [추가] 모션 조절값 — 여기서만 바꾸면 아래 전부 따라감 */
+  --rise-dur: 0.65s;
+  --rise-stagger: 0.08s;
+  --rise-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .title {
@@ -32,6 +40,10 @@
   flex-direction: column; /* 이미지 위, 텍스트 아래 */
   text-decoration: none;
   color: inherit;
+
+  /* [추가] 썸네일 확대가 카드 밖으로 넘치지 않게 */
+  overflow: hidden;
+  border-radius: 4px;
 }
 
 .thumbnail {
@@ -40,7 +52,9 @@
   object-fit: cover;
   border-radius: 4px;
   margin-bottom: 20px;
-  
+
+  /* [추가] hover 확대용 */
+  transition: transform 0.45s var(--rise-ease);
 }
 
 .info {
@@ -52,6 +66,9 @@
   font-size: 24px;
   font-weight: 700;
   margin: 0 0 8px;
+
+  /* [추가] hover 색 전환용 */
+  transition: color 0.2s ease;
 }
 
 .description {
@@ -72,6 +89,41 @@
   border: 1px solid #999999;
   border-radius: 999px;
   color: #767676;
+}
+
+/* ============================================================
+   [추가] 카드 hover
+   ------------------------------------------------------------
+   원래 미디어쿼리에 transform:none 예외만 있고 정작 원본 규칙이
+   없어서 hover 효과가 동작하지 않던 상태였음.
+   원하지 않으면 이 블록만 지우면 됨.
+   ============================================================ */
+.projectItem:hover .thumbnail {
+  transform: scale(1.04);
+}
+
+.projectItem:hover .projectTitle {
+  color: #26448C;
+}
+
+/* ============================================================
+   [추가] 스크롤 리빌
+   ------------------------------------------------------------
+   useReveal 훅이 .visible 을 붙여줌.
+   --i 는 JSX에서 style={{'--i': n}} 으로 전달 (줄 안에서의 순번).
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--rise-dur) var(--rise-ease),
+    transform var(--rise-dur) var(--rise-ease);
+  transition-delay: calc(var(--i, 0) * var(--rise-stagger));
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
 }
 
 /* ============================================================
@@ -120,6 +172,10 @@
     row-gap: 48px;
   }
 
+  /* [추가] 1단에서는 카드가 하나씩 따로 들어오므로 순번 딜레이 제거 */
+  .projects {
+    --rise-stagger: 0s;
+  }
 
   /* 터치 기기엔 hover 확대가 의미 없음 */
   .projectItem:hover .thumbnail {
@@ -149,8 +205,15 @@
 /* 움직임 최소화 설정 존중 */
 @media (prefers-reduced-motion: reduce) {
   .thumbnail,
-  .projectTitle {
+  .projectTitle,
+  .reveal {
     transition: none;
+  }
+
+  /* [추가] 애니메이션 없이 처음부터 보이게 */
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 
   .projectItem:hover .thumbnail {

@@ -182,3 +182,36 @@
     max-width: none;
   }
 }
+
+/* ============================================================
+   진입 애니메이션 — 페이지 로드 시 1회, 위에서부터 순서대로
+   ============================================================ */
+
+/* 조절값은 여기서만 바꾸면 전부 따라감 */
+.main {
+  --rise-dur: 0.65s;      /* 한 요소가 나타나는 시간 */
+  --rise-stagger: 0.08s;  /* 요소 사이 간격 */
+  --rise-dist: 18px;      /* 아래에서 올라오는 거리 */
+  --rise-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(var(--rise-dist)); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* JSX에서 style={{'--i': n}} 으로 순서를 넘겨줌 */
+.rise {
+  opacity: 0;
+  animation: rise var(--rise-dur) var(--rise-ease) forwards;
+  animation-delay: calc(var(--i, 0) * var(--rise-stagger));
+}
+
+/* 모션 최소화 설정을 켠 사용자에게는 애니메이션 없이 바로 표시 */
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
