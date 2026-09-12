@@ -1,15 +1,18 @@
 import { useState, useRef, useEffect } from 'react';
 import styles from './Footer.module.css';
+import { useReveal } from '../hooks/useReveal';
 
-// 아이콘 — 저장한 경로에 맞춰 수정해줘
-import copyIcon from '../assets/icons/copy.svg';
-import checkIcon from '../assets/icons/check.svg';
+// 경로는 실제 위치에 맞게 수정해줘
+import sticker1 from '../assets/icons/sticker1.webp';
 
 const EMAIL = 'hanga93@gmail.com';
 
 export default function Footer() {
   const [copied, setCopied] = useState(false);
   const timerRef = useRef(null);
+
+  // 푸터가 화면에 들어오면 스티커가 톡 튀어나옴
+  const [stickerRef, stickerShown] = useReveal({ threshold: 0.25 });
 
   // 컴포넌트가 사라질 때 남아있는 타이머 정리 (메모리 누수 방지)
   useEffect(() => {
@@ -30,17 +33,10 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer}>
-
-      {/* <div className={styles.info}>
-        <p className={styles.role}>
-       Gayoung Han
-          </p>
-      </div> */}
-
       <ul className={styles.contact}>
-        <li><a
+        <li>
           
-            href="/resume-gayoung.pdf"
+          <a  href="/resume-gayoung.pdf"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -59,28 +55,41 @@ export default function Footer() {
         </li>
 
         <li className={styles.emailRow}>
-  <button
-    type="button"
-    onClick={handleCopy}
-    className={`${styles.copyButton} ${copied ? styles.copied : ''}`}
-    aria-label={copied ? '이메일 주소 복사됨' : `이메일 주소 복사: ${EMAIL}`}
-  >
-    <span>{EMAIL}</span>
-    <img
-      src={copied ? checkIcon : copyIcon}
-      alt=""
-      className={styles.copyIcon}
-    />
-  </button>
+          <button
+            type="button"
+            onClick={handleCopy}
+            className={`${styles.copyButton} ${copied ? styles.copied : ''}`}
+            aria-label={copied ? '이메일 주소 복사됨' : `이메일 주소 복사: ${EMAIL}`}
+          >
+            <span>{EMAIL}</span>
+            {/* img 대신 span — 색을 CSS가 칠함 (글자색 자동 추종) */}
+            <span
+              className={copied ? styles.checkIcon : styles.copyIcon}
+              aria-hidden="true"
+            />
+          </button>
 
-  {/* 스크린리더용 안내 — 화면에는 안 보임 */}
-  <span className={styles.srOnly} role="status" aria-live="polite">
-    {copied ? 'Email copied' : ''}
-  </span>
-</li>
+          {/* 스크린리더용 안내 — 화면에는 안 보임 */}
+          <span className={styles.srOnly} role="status" aria-live="polite">
+            {copied ? 'Email copied' : ''}
+          </span>
+        </li>
       </ul>
 
-       <h2 className={styles.heading}>Let’s Chat</h2>
+      {/* 스티커 + 제목을 한 덩어리로 묶어야 위치를 잡을 수 있음 */}
+      <div ref={stickerRef} className={styles.headingWrap}>
+        {/* 3겹인 이유: 위치잡기 / 등장 / 상시부유 가 각각 transform 을 쓰는데
+            한 요소엔 transform 을 하나만 걸 수 있어서 나눠야 함 */}
+        <span className={styles.stickerPos}>
+          <span className={`${styles.stickerPop} ${stickerShown ? styles.visible : ''}`}>
+            <span className={styles.stickerBob}>
+              <img src={sticker1} alt="" />
+            </span>
+          </span>
+        </span>
+
+        <h2 className={styles.heading}>Let's Chat</h2>
+      </div>
     </footer>
   );
 }

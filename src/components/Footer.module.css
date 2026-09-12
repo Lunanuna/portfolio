@@ -1,14 +1,30 @@
 .footer {
   --c-bg: #326FE7;
   --c-cream: #FAFEE4;
-  --c-white: #0D0E82;
+  --c-white: #0D0E82;      /* ※ 실제로는 네이비. 나중에 --c-ink 로 이름 바꾸면 좋음 */
   --c-heading: #F8FAE3;
 
   --pad-x: 48px;
-  --pad-top: 48px;
-  --gap-stack: 48px;   /* 이름 ↔ 링크 ↔ Let's Chat 세로 간격 */
+  --pad-top: 96px;
+  --gap-stack: 128px;   /* 링크 ↔ Let's Chat 세로 간격 */
 
   --crop: -0.17em;      /* 클수록 많이 잘림 */
+
+  /* ── 스티커 조절값 ───────────────────────────────
+     size    : 스티커 크기
+     overlap : 제일 내려갔을 때 글자에 얼마나 잠기는지
+               (0.64 = 64% 잠김 = 머리랑 눈만 빼꼼)
+     rise    : 위로 올라오는 거리 (자기 키 기준 %)
+     dur     : 올라가는 데 걸리는 시간 (왕복은 2배)
+     rot     : 올라가며 갸웃하는 각도 (0 으로 두면 수직으로만 움직임)
+     x       : 좌우 미세 조정 (음수 = 왼쪽)
+     ─────────────────────────────────────────────── */
+  --sticker-size: clamp(88px, 12vw, 250px);
+  --sticker-overlap: 0.64;
+  --peek-rise: 30%;
+  --peek-dur: 4.5s;
+  --peek-rot: 0.8deg;
+  --sticker-x: 0px;
 
   background: var(--c-bg);
   padding: var(--pad-top) var(--pad-x) 0;
@@ -25,21 +41,80 @@
   row-gap: var(--gap-stack);
 }
 
+/* ============================================================
+   스티커 + Let's Chat
+   ------------------------------------------------------------
+   3겹으로 나눈 이유: 위치잡기 / 등장 / 빼꼼 이 각각 transform 을
+   쓰는데, 한 요소엔 transform 을 하나만 걸 수 있어서.
+   ============================================================ */
+.headingWrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ① 위치 — 가로 가운데, 제목 윗변에 걸치도록 */
+.stickerPos {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% - var(--sticker-size) * var(--sticker-overlap));
+  width: var(--sticker-size);
+  transform: translateX(calc(-50% + var(--sticker-x)));
+  z-index: 0;                    /* 글자(z-index:1) 뒤 */
+  pointer-events: none;
+}
+
+/* ② 등장 — 글자 뒤에서 올라오며 살짝 넘어갔다 자리잡음 */
+.stickerPop {
+  display: block;
+  opacity: 0;
+  transform: translateY(60%) scale(0.94);
+  transition:
+    opacity 0.35s ease-out,
+    transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.stickerPop.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ③ 빼꼼 — 글자 뒤에서 천천히 올라왔다 내려감 */
+@keyframes stickerPeek {
+  from { transform: translateY(0)                          rotate(calc(var(--peek-rot) * -1)); }
+  to   { transform: translateY(calc(var(--peek-rise) * -1)) rotate(var(--peek-rot)); }
+}
+
+.stickerBob {
+  display: block;
+  animation: stickerPeek var(--peek-dur) ease-in-out infinite alternate;
+}
+
+.stickerBob img {
+  width: 80%;
+  height: auto;
+  display: block;
+}
+
 /* ── Let's Chat! ── */
 .heading {
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
   color: var(--c-heading);
-  font-size: 16.9vw;
+  font-size: 15vw;
   line-height: 0.85;
   letter-spacing: -0.02em;
   text-align: center;
   white-space: nowrap;
   margin: 0 0 var(--crop);
   user-select: none;
+
+  position: relative;
+  z-index: 1;                    /* 스티커보다 앞 */
 }
 
-/* ── 이름 ── */
+/* ── 이름 (현재 JSX에서 주석 처리됨) ── */
 .info {
   display: flex;
   flex-direction: column;
@@ -76,11 +151,11 @@
 }
 
 .contact a {
-  transition: opacity 0.2s ease;
+  transition: color 0.2s ease;   /* opacity → color 로 수정 */
 }
 
 .contact a:hover {
-  opacity: 0.75;
+  color: #F8FAE3;
 }
 
 /* ── 이메일 + 카피 버튼 ── */
@@ -98,22 +173,35 @@
   padding: 0;
   cursor: pointer;
   font-family: inherit;
-  transition: opacity 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .copyButton:hover {
-  opacity: 0.75;
+  color: #F8FAE3;
+}
+
+/* ── 아이콘 — SVG를 '모양 틀'로만 쓰고 색은 글자색을 따라감 ── */
+.copyIcon,
+.checkIcon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: currentColor;   /* ← 여기가 아이콘 색 */
+  transition: transform 0.15s ease, background-color 0.2s ease;
 }
 
 .copyIcon {
-  width: 20px;
-  height: 20px;
-  display: block;
-  filter: brightness(0) invert(1);
-  transition: transform 0.15s ease;
+  -webkit-mask: url('../assets/icons/copy.svg') center / contain no-repeat;
+          mask: url('../assets/icons/copy.svg') center / contain no-repeat;
 }
 
-.copyButton:hover .copyIcon {
+.checkIcon {
+  -webkit-mask: url('../assets/icons/check.svg') center / contain no-repeat;
+          mask: url('../assets/icons/check.svg') center / contain no-repeat;
+}
+
+.copyButton:hover .copyIcon,
+.copyButton:hover .checkIcon {
   transform: scale(1.12);
 }
 
@@ -128,12 +216,17 @@
   white-space: nowrap;
 }
 
-/* ── 반응형 ── */
+/* ============================================================
+   반응형
+   ============================================================ */
 @media (max-width: 900px) {
   .footer {
     --pad-x: 32px;
     --pad-top: 32px;
     --gap-stack: 40px;
+
+    --sticker-overlap: 0.6;
+    --peek-rise: 26%;
   }
 }
 
@@ -153,5 +246,21 @@
   .contact a,
   .copyButton {
     font-size: 16px;
+  }
+}
+
+/* ============================================================
+   움직임 최소화 설정 존중
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .stickerPop {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .stickerBob {
+    animation: none;
+    transform: translateY(-15%);   /* 중간 높이에 고정 */
   }
 }
