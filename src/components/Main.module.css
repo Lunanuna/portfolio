@@ -332,7 +332,7 @@
   }
 
   .meta p {
-    font-size: clamp(17px, 4.6vw, 24px);
+    font-size: clamp(18px, 4.6vw, 24px);
   }
 
   /* 소개 섹션 — 위에 스티커가 들어갈 여백 확보 */
@@ -347,7 +347,7 @@
   }
 
   .scrollLink {
-    font-size: 17px;
+    font-size: 18px;
   }
 
   /* 페이지 전체 기준 스티커는 모바일에서 전부 끔 */
