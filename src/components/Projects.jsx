@@ -67,16 +67,24 @@ function ProjectCard({ project, index }) {
 }
 
 export default function Projects() {
-  const [titleRef, titleShown] = useReveal();
+  const [headRef, headShown] = useReveal();
 
   return (
     <section id="Projects" className={styles.projects}>
-      <h2
-        ref={titleRef}
-        className={`${styles.title} ${styles.reveal} ${titleShown ? styles.visible : ''}`}
+      <div
+        ref={headRef}
+        className={`${styles.header} ${headShown ? styles.visible : ''}`}
       >
-        Projects
-      </h2>
+        <h2 className={`${styles.title} ${styles.reveal}`} style={{ '--i': 0 }}>
+          Recent Projects
+        </h2>
+        <p className={`${styles.lead} ${styles.reveal}`} style={{ '--i': 1 }}>
+          Throughout my multimedia studies, I have explored the design process for
+          digital solutions through practical project work, from user research to
+          prototyping.
+        </p>
+      </div>
+
       <div className={styles.list}>
         {projectList.map((project, i) => (
           // 2열 그리드라 줄마다 0, 1 반복

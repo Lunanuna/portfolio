@@ -11,24 +11,44 @@
   margin-top: 64px;
   margin-bottom: 256px;
 
-  /* [추가] 모션 조절값 — 여기서만 바꾸면 아래 전부 따라감 */
+  /* 모션 조절값 — 여기서만 바꾸면 아래 전부 따라감 */
   --rise-dur: 0.65s;
   --rise-stagger: 0.08s;
   --rise-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-.title {
-  font-family: 'Montserrat', 'Karla';
-  margin: 0 0 40px;
-  /* padding: 0 60px; */
-  font-size: 36px;
-  font-weight: 800;
+/* ============================================================
+   섹션 헤더 — 가운데 정렬
+   ============================================================ */
+.header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto clamp(48px, 7vw, 96px);
 }
 
+.title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 4vw, 56px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+  white-space: nowrap;       /* 항상 한 줄 */
+}
+
+.lead {
+  font-family: 'Karla', sans-serif;
+  font-size: clamp(15px, 1.3vw, 18px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #505050;
+  margin: 0;
+}
+
+/* ============================================================
+   카드 목록
+   ============================================================ */
 .list {
-  /* max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 60px; */
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 한 줄에 2개 */
   column-gap: 64px;
@@ -41,7 +61,7 @@
   text-decoration: none;
   color: inherit;
 
-  /* [추가] 썸네일 확대가 카드 밖으로 넘치지 않게 */
+  /* 썸네일 확대가 카드 밖으로 넘치지 않게 */
   overflow: hidden;
   border-radius: 4px;
 }
@@ -53,7 +73,6 @@
   border-radius: 4px;
   margin-bottom: 20px;
 
-  /* [추가] hover 확대용 */
   transition: transform 0.45s var(--rise-ease);
 }
 
@@ -67,7 +86,6 @@
   font-weight: 700;
   margin: 0 0 8px;
 
-  /* [추가] hover 색 전환용 */
   transition: color 0.2s ease;
 }
 
@@ -92,22 +110,19 @@
 }
 
 /* ============================================================
-   [추가] 카드 hover
-   ------------------------------------------------------------
-   원래 미디어쿼리에 transform:none 예외만 있고 정작 원본 규칙이
-   없어서 hover 효과가 동작하지 않던 상태였음.
-   원하지 않으면 이 블록만 지우면 됨.
+   카드 hover
    ============================================================ */
 .projectItem:hover .thumbnail {
   transform: scale(1.04);
 }
 
-
 /* ============================================================
-   [추가] 스크롤 리빌
+   스크롤 리빌
    ------------------------------------------------------------
    useReveal 훅이 .visible 을 붙여줌.
-   --i 는 JSX에서 style={{'--i': n}} 으로 전달 (줄 안에서의 순번).
+   - 카드: 요소 자신에게 .visible 이 붙음  → .reveal.visible
+   - 헤더: 부모(.header)에 .visible 이 붙음 → .visible .reveal
+   --i 는 JSX 에서 style={{'--i': n}} 으로 전달
    ============================================================ */
 .reveal {
   opacity: 0;
@@ -118,7 +133,8 @@
   transition-delay: calc(var(--i, 0) * var(--rise-stagger));
 }
 
-.reveal.visible {
+.reveal.visible,
+.visible .reveal {
   opacity: 1;
   transform: none;
 }
@@ -149,9 +165,8 @@
     margin-bottom: 128px;
   }
 
-  .title {
-    font-size: 32px;
-    margin-bottom: 32px;
+  .header {
+    margin-bottom: clamp(40px, 6vw, 64px);
   }
 
   .list {
@@ -169,9 +184,14 @@
     row-gap: 48px;
   }
 
-  /* [추가] 1단에서는 카드가 하나씩 따로 들어오므로 순번 딜레이 제거 */
+  /* 1단에서는 카드가 하나씩 따로 들어오므로 순번 딜레이 제거.
+     단, 헤더(제목→설명문)는 순차 등장이 유지되도록 별도 지정 */
   .projects {
     --rise-stagger: 0s;
+  }
+
+  .header {
+    --rise-stagger: 0.08s;
   }
 
   /* 터치 기기엔 hover 확대가 의미 없음 */
@@ -188,8 +208,12 @@
   }
 
   .title {
-    font-size: 26px;
-    margin-bottom: 24px;
+    font-size: min(32px, 9vw);   /* 좁아져도 한 줄 유지 */
+    margin-bottom: 12px;
+  }
+
+  .lead {
+    font-size: 15px;
   }
 
   .projectTitle { font-size: 21px; }
@@ -207,7 +231,6 @@
     transition: none;
   }
 
-  /* [추가] 애니메이션 없이 처음부터 보이게 */
   .reveal {
     opacity: 1;
     transform: none;
