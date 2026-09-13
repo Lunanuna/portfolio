@@ -148,7 +148,6 @@
 
 .button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(26, 188, 254, 0.35);
 }
 
 /* [추가] 버튼 전용 리빌 — 위로 밀지 않고 페이드만.
