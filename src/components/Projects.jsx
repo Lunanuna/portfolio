@@ -79,7 +79,7 @@ export default function Projects() {
           Recent Projects
         </h2>
         <p className={`${styles.lead} ${styles.reveal}`} style={{ '--i': 1 }}>
-          Throughout my multimedia studies, I have explored the design process for
+          Throughout my design studies, I have explored the design process for
           digital solutions through practical project work, from user research to
           prototyping.
         </p>

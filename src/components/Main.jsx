@@ -100,7 +100,7 @@ export default function Main() {
         </h2>
 
         <p className={`${styles.pitchBody} ${styles.pitchItem}`} style={rise(2)}>
-          I'm a Multimedia Design student specializing in UX/UI design, with a bit of
+          Hejsa! I'm a Multimedia Design student specializing in UX/UI design, with a bit of
           front-end skills. I work across user research, ideation, prototyping, and
           implementation to create digital solutions. I also care about being someone
           people enjoy working with, whether that means being helpful, keeping a good
