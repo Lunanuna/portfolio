@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import styles from './Footer.module.css';
 import { useReveal } from '../hooks/useReveal';
 
-// 경로는 실제 위치에 맞게 수정해줘
 import sticker1 from '../assets/icons/sticker1.webp';
 
 const EMAIL = 'hanga93@gmail.com';
@@ -11,8 +10,10 @@ export default function Footer() {
   const [copied, setCopied] = useState(false);
   const timerRef = useRef(null);
 
-  // 푸터가 화면에 들어오면 스티커가 톡 튀어나옴
-  const [stickerRef, stickerShown] = useReveal({ threshold: 0.25 });
+  // 푸터 전체를 관찰한다.
+  // 제목만 관찰하면 모바일에서 제목이 화면 맨 아래 35px 안에 들어가는데,
+  // rootMargin 이 아래쪽을 잘라내서 교차 조건을 영원히 못 채움.
+  const [footerRef, stickerShown] = useReveal({ threshold: 0.1, rootMargin: '0px' });
 
   // 컴포넌트가 사라질 때 남아있는 타이머 정리 (메모리 누수 방지)
   useEffect(() => {
@@ -32,11 +33,11 @@ export default function Footer() {
   };
 
   return (
-    <footer className={styles.footer}>
+    <footer ref={footerRef} className={styles.footer}>
       <ul className={styles.contact}>
         <li>
-          
-          <a  href="/resume-gayoung.pdf"
+          <a
+            href="/resume-gayoung.pdf"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -77,8 +78,8 @@ export default function Footer() {
       </ul>
 
       {/* 스티커 + 제목을 한 덩어리로 묶어야 위치를 잡을 수 있음 */}
-      <div ref={stickerRef} className={styles.headingWrap}>
-        {/* 3겹인 이유: 위치잡기 / 등장 / 상시부유 가 각각 transform 을 쓰는데
+      <div className={styles.headingWrap}>
+        {/* 3겹인 이유: 위치잡기 / 등장 / 빼꼼 이 각각 transform 을 쓰는데
             한 요소엔 transform 을 하나만 걸 수 있어서 나눠야 함 */}
         <span className={styles.stickerPos}>
           <span className={`${styles.stickerPop} ${stickerShown ? styles.visible : ''}`}>

@@ -11,12 +11,13 @@
   --crop: -0.17em;      /* 클수록 많이 잘림 */
 
   /* ── 스티커 조절값 ───────────────────────────────
-     size    : 스티커 크기
-     overlap : 제일 내려갔을 때 글자에 얼마나 잠기는지
-               (0.64 = 64% 잠김 = 머리랑 눈만 빼꼼)
+     size    : 스티커 자리의 가로폭
+     overlap : 글자에 얼마나 잠기는지.
+               ※ 이미지 '세로'가 아니라 '가로폭' 기준으로 계산됨.
+                 스티커가 세로로 조금 납작해서, 체감 잠김은 이 숫자보다 깊음
      rise    : 위로 올라오는 거리 (자기 키 기준 %)
      dur     : 올라가는 데 걸리는 시간 (왕복은 2배)
-     rot     : 올라가며 갸웃하는 각도 (0 으로 두면 수직으로만 움직임)
+     rot     : 올라가며 갸웃하는 각도 (0 이면 수직으로만)
      x       : 좌우 미세 조정 (음수 = 왼쪽)
      ─────────────────────────────────────────────── */
   --sticker-size: clamp(88px, 12vw, 250px);
@@ -95,6 +96,7 @@
   width: 80%;
   height: auto;
   display: block;
+  margin-inline: auto;   /* 100% 가 아니면 왼쪽으로 쏠리므로 가운데 정렬 */
 }
 
 /* ── Let's Chat! ── */
@@ -151,7 +153,7 @@
 }
 
 .contact a {
-  transition: color 0.2s ease;   /* opacity → color 로 수정 */
+  transition: color 0.2s ease;
 }
 
 .contact a:hover {
@@ -186,7 +188,7 @@
   display: block;
   width: 20px;
   height: 20px;
-  background-color: currentColor;   /* ← 여기가 아이콘 색 */
+  background-color: currentColor;
   transition: transform 0.15s ease, background-color 0.2s ease;
 }
 
@@ -223,9 +225,12 @@
   .footer {
     --pad-x: 32px;
     --pad-top: 32px;
-    --gap-stack: 40px;
+    --gap-stack: 64px;
 
-    --sticker-overlap: 0.6;
+    /* 실제 페이지에서 측정해 맞춘 값 —
+       제목 위로 약 26px 올라옴 (제목 높이 48px 기준) */
+    --sticker-size: 70px;
+    --sticker-overlap: 0.38;
     --peek-rise: 26%;
   }
 }
@@ -233,7 +238,7 @@
 @media (max-width: 560px) {
   .footer {
     --pad-x: 20px;
-    --gap-stack: 32px;
+    --gap-stack: 64px;
     --crop: -0.22em;   /* 작은 화면에선 덜 자름 */
   }
 
