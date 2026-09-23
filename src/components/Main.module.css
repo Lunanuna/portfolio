@@ -317,7 +317,7 @@
   .portrait {
     grid-column: 1;
     grid-row: 2;
-    height: auto;
+    width: 100%;
     aspect-ratio: 4 / 5;
     object-position: center;
   }
