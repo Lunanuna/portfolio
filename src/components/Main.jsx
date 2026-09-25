@@ -68,7 +68,7 @@ export default function Main() {
         />
 
         <div className={`${styles.meta} ${styles.rise}`} style={rise(2)}>
-          <p>UX/UI<br />Designer</p>
+          <p>Digital<br />Designer</p>
           <p>Based in<br />Copenhagen</p>
         </div>
       </section>
