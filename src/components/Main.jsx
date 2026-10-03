@@ -68,7 +68,7 @@ export default function Main() {
         />
 
         <div className={`${styles.meta} ${styles.rise}`} style={rise(2)}>
-          <p>Digital<br />Designer</p>
+          <p>UX/UI<br />Designer</p>
           <p>Based in<br />Copenhagen</p>
         </div>
       </section>
@@ -100,7 +100,7 @@ export default function Main() {
         </h2>
 
         <p className={`${styles.pitchBody} ${styles.pitchItem}`} style={rise(2)}>
-          Hejsa! I’m a Multimedia Design student with a focus on digital design, especially UX/UI, with some front-end skills. I’ve worked on a range of digital projects, from research and ideation to visual design, prototyping, and development.
+          Hejsa! I’m a Multimedia Design student with a focus on UX/UI Design, with some front-end skills. I’ve worked on a range of digital projects, from research and ideation to visual design, prototyping, and development.
 I also care about being someone people enjoy working with, whether that means being helpful, keeping a good mood, or knowing when a little humor is needed.
         </p>
 
