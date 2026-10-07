@@ -1,0 +1,651 @@
+/* ============================================================
+   PITCH SECTION
+   ============================================================ */
+
+.pitch {
+  width: 100%;
+  max-width: 1440px;
+
+  margin: 0 auto;
+  padding: 120px 80px 160px;
+
+  color: #111111;
+}
+
+
+/* ============================================================
+   REVEAL ANIMATION
+   ============================================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+
+  transition-delay: calc(var(--i, 0) * 0.1s);
+}
+
+.visible .reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.packageCard.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ============================================================
+   INTRO
+   ============================================================ */
+
+.intro {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+
+  align-items: center;
+  gap: 72px;
+
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+
+/* ============================================================
+   PORTRAIT
+   ============================================================ */
+
+.portraitWrapper {
+  width: 300px;
+  aspect-ratio: 1;
+}
+
+.portrait {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
+/* ============================================================
+   INTRO TEXT
+   ============================================================ */
+
+.introContent {
+  max-width: 780px;
+}
+
+.availability {
+  margin: 0 0 4px;
+
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.mainTitle {
+  margin: 0 0 18px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.introText {
+  max-width: 720px;
+
+  margin: 0 0 36px;
+
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.expect {
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.expect p {
+  margin: 0 0 4px;
+}
+
+.expect ul {
+  margin: 0;
+  padding-left: 24px;
+}
+
+
+/* ============================================================
+   CHAT AREA
+   ============================================================ */
+
+.chat {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 760px;
+  gap: 18px;
+
+  margin: 60px auto 90px;
+}
+
+.chatRight {
+  display: flex;
+  flex-direction: column;
+
+  width: fit-content;
+
+  align-self: flex-end;
+  align-items: flex-end;
+
+  gap: 10px;
+}
+
+.chatLeft {
+  display: flex;
+
+  width: fit-content;
+
+  align-self: flex-start;
+}
+
+
+/* ============================================================
+   CHAT BUBBLE BASE
+   ============================================================ */
+
+.bubble {
+  position: relative;
+
+  width: fit-content;
+  max-width: 380px;
+
+  padding: 14px 20px;
+
+  border-radius: 20px;
+
+  font-family: "Karla", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+
+/* ============================================================
+   BLUE BUBBLES
+   ============================================================ */
+
+.blueBubble {
+  background: #2f8df5;
+  color: #ffffff;
+}
+
+/* 첫 번째 파란 말풍선은 꼬리 없음 */
+.chatRight .blueBubble:first-child::after {
+  display: none;
+}
+
+/* 두 번째 파란 말풍선만 꼬리 */
+.chatRight .blueBubble:last-child::after {
+  content: "";
+
+  position: absolute;
+
+  right: 10px;
+  bottom: -6px;
+
+  width: 18px;
+  height: 18px;
+
+  background: #2f8df5;
+
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+
+/* ============================================================
+   GREY BUBBLE
+   ============================================================ */
+
+.greyBubble {
+  background: #e9e9eb;
+  color: #111111;
+}
+
+/* 회색 꼬리 - 더 작게 */
+.greyBubble::after {
+  content: "";
+
+  position: absolute;
+
+  left: 10px;
+  bottom: -6px;
+
+  width: 18px;
+  height: 18px;
+
+  background: #e9e9eb;
+
+  clip-path: polygon(0 0, 0 100%, 100% 0);
+}
+
+
+/* ============================================================
+   PACKAGE INTRO
+   ============================================================ */
+
+.packageIntro {
+  margin-bottom: 52px;
+
+  text-align: center;
+}
+
+.packageHeading {
+  margin: 0 0 10px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.packageLead {
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+
+/* ============================================================
+   PACKAGE GRID
+   ============================================================ */
+
+.packageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 34px;
+
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+
+/* ============================================================
+   PACKAGE CARD
+   ============================================================ */
+
+.packageCard {
+  min-height: 410px;
+
+  padding: 24px 24px 34px;
+
+  background: #fbfce3;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 3px 14px rgba(17, 17, 17, 0.12);
+
+  opacity: 0;
+  transform: translateY(18px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+
+  transition-delay: calc(var(--i, 0) * 0.1s);
+}
+
+
+/* ============================================================
+   PACKAGE EYEBROW
+   ============================================================ */
+
+.eyebrow {
+  display: inline-block;
+
+  margin-bottom: 28px;
+
+  padding: 5px 18px;
+
+  border-radius: 999px;
+
+  background: #3478f6;
+  color: #ffffff;
+
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+
+/* ============================================================
+   PACKAGE TITLE
+   ============================================================ */
+
+.packageTitle {
+  margin: 0 0 10px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+
+/* ============================================================
+   PACKAGE SUBTITLE
+   ============================================================ */
+
+.packageSubtitle {
+  margin: 0;
+
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+
+/* ============================================================
+   DIVIDER
+   ============================================================ */
+
+.divider {
+  width: 100%;
+  height: 1px;
+
+  margin: 30px 0;
+
+  background: rgba(17, 17, 17, 0.3);
+}
+
+
+/* ============================================================
+   PACKAGE LIST
+   ============================================================ */
+
+.packageList {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.packageList li {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 10px;
+
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.checkIcon {
+  width: 15px;
+  height: 15px;
+
+  margin-top: 3px;
+
+  flex-shrink: 0;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 1024px) {
+
+  .pitch {
+    padding: 100px 40px 120px;
+  }
+
+  .intro {
+    grid-template-columns: 220px 1fr;
+    gap: 42px;
+  }
+
+  .portraitWrapper {
+    width: 220px;
+  }
+
+  .mainTitle {
+    font-size: 40px;
+  }
+
+  .introText,
+  .expect {
+    font-size: 17px;
+  }
+
+  .chat {
+    gap: 24px;
+
+    margin: 54px auto 78px;
+  }
+
+  .bubble {
+    max-width: 340px;
+
+    font-size: 17px;
+  }
+
+  .chatLeft {
+    padding-left: 24px;
+  }
+
+  .packageGrid {
+    gap: 20px;
+  }
+
+  .packageCard {
+    padding: 22px 20px 28px;
+  }
+
+  .packageTitle {
+    font-size: 25px;
+  }
+
+  .packageSubtitle,
+  .packageList li {
+    font-size: 15px;
+  }
+
+  .eyebrow {
+    font-size: 14px;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .pitch {
+    padding: 72px 24px 90px;
+  }
+
+
+  /* Intro stacks */
+  .intro {
+    grid-template-columns: 1fr;
+
+    gap: 32px;
+  }
+
+  .portraitWrapper {
+    width: 190px;
+
+    margin: 0 auto;
+  }
+
+  .introContent {
+    max-width: none;
+  }
+
+  .availability {
+    font-size: 14px;
+  }
+
+  .mainTitle {
+    font-size: 34px;
+  }
+
+  .introText,
+  .expect {
+    font-size: 16px;
+  }
+
+  .introText {
+    margin-bottom: 30px;
+  }
+
+
+  /* Chat */
+  .chat {
+    gap: 22px;
+
+    margin: 56px 0 76px;
+  }
+
+  .chatRight {
+    align-items: flex-end;
+
+    gap: 10px;
+  }
+
+  .chatLeft {
+    padding-left: 0;
+  }
+
+  .bubble {
+    max-width: 85%;
+
+    padding: 12px 16px;
+
+    border-radius: 18px;
+
+    font-size: 16px;
+  }
+
+
+  /* Package heading */
+  .packageIntro {
+    margin-bottom: 36px;
+  }
+
+  .packageHeading {
+    font-size: 30px;
+  }
+
+  .packageLead {
+    max-width: 440px;
+
+    font-size: 15px;
+  }
+
+
+  /* Package cards stack */
+  .packageGrid {
+    grid-template-columns: 1fr;
+
+    gap: 22px;
+  }
+
+  .packageCard {
+    min-height: auto;
+
+    padding: 26px 24px 32px;
+  }
+
+  .packageTitle {
+    font-size: 26px;
+  }
+
+  .packageSubtitle,
+  .packageList li {
+    font-size: 16px;
+  }
+
+  .eyebrow {
+    font-size: 14px;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  .pitch {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .portraitWrapper {
+    width: 170px;
+  }
+
+  .mainTitle {
+    font-size: 30px;
+  }
+
+  .packageHeading {
+    font-size: 27px;
+  }
+
+  .bubble {
+    max-width: 90%;
+  }
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .reveal,
+  .packageCard {
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+}
