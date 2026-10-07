@@ -422,91 +422,194 @@
 
 /* ============================================================
    TABLET
+   Desktop 구조 그대로 유지
+   - intro: 사진 + 텍스트 2열
+   - chat: 좌 / 우 구조 유지
+   - package: 3개 카드 유지
    ============================================================ */
 
 @media (max-width: 1024px) {
 
   .pitch {
-    padding: 100px 40px 120px;
+    padding: 90px 32px 110px;
   }
 
+
+  /* ========================================================
+     INTRO
+     구조는 desktop 그대로, 크기만 축소
+     ======================================================== */
+
   .intro {
-    grid-template-columns: 220px 1fr;
-    gap: 42px;
+    grid-template-columns: 190px 1fr;
+    gap: 36px;
+
+    max-width: 900px;
   }
 
   .portraitWrapper {
-    width: 220px;
+    width: 190px;
+  }
+
+  .introContent {
+    max-width: 650px;
+  }
+
+  .availability {
+    font-size: 14px;
   }
 
   .mainTitle {
-    font-size: 40px;
+    font-size: 38px;
+    margin-bottom: 14px;
   }
 
-  .introText,
-  .expect {
-    font-size: 17px;
+  .introText {
+    font-size: 16px;
+    margin-bottom: 26px;
   }
+
+  .expect {
+    font-size: 16px;
+  }
+
+
+  /* ========================================================
+     CHAT
+     Desktop 구조 그대로
+     ======================================================== */
 
   .chat {
-    gap: 24px;
+    max-width: 650px;
 
-    margin: 54px auto 78px;
+    gap: 16px;
+
+    margin: 50px auto 70px;
   }
 
-  .bubble {
-    max-width: 340px;
+  .chatRight {
+    align-self: flex-end;
+    align-items: flex-end;
 
-    font-size: 17px;
+    gap: 8px;
   }
 
   .chatLeft {
-    padding-left: 24px;
+    align-self: flex-start;
   }
 
+  .bubble {
+    max-width: 310px;
+
+    padding: 12px 18px;
+
+    font-size: 16px;
+  }
+
+
+  /* ========================================================
+     PACKAGE INTRO
+     ======================================================== */
+
+  .packageIntro {
+    margin-bottom: 40px;
+  }
+
+  .packageHeading {
+    font-size: 34px;
+  }
+
+  .packageLead {
+    font-size: 14px;
+  }
+
+
+  /* ========================================================
+     PACKAGE GRID
+     3 columns 유지
+     ======================================================== */
+
   .packageGrid {
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 16px;
+
+    max-width: 900px;
   }
 
   .packageCard {
-    padding: 22px 20px 28px;
-  }
+    min-height: 340px;
 
-  .packageTitle {
-    font-size: 25px;
-  }
-
-  .packageSubtitle,
-  .packageList li {
-    font-size: 15px;
+    padding: 20px 18px 26px;
   }
 
   .eyebrow {
+    margin-bottom: 22px;
+
+    padding: 5px 14px;
+
+    font-size: 13px;
+  }
+
+  .packageTitle {
+    font-size: 22px;
+  }
+
+  .packageSubtitle {
     font-size: 14px;
+  }
+
+  .divider {
+    margin: 24px 0;
+  }
+
+  .packageList {
+    gap: 10px;
+  }
+
+  .packageList li {
+    gap: 8px;
+
+    font-size: 14px;
+  }
+
+  .checkIcon {
+    width: 13px;
+    height: 13px;
+
+    margin-top: 3px;
   }
 }
 
 
 /* ============================================================
    MOBILE
+   여기서부터 구조 변경
+
+   640px 아래에서만:
+   - intro stack
+   - package cards stack
    ============================================================ */
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
 
   .pitch {
-    padding: 72px 24px 90px;
+    padding: 70px 24px 90px;
   }
 
 
-  /* Intro stacks */
+  /* ========================================================
+     INTRO STACK
+     ======================================================== */
+
   .intro {
     grid-template-columns: 1fr;
 
-    gap: 32px;
+    gap: 30px;
   }
 
   .portraitWrapper {
-    width: 190px;
+    width: 180px;
 
     margin: 0 auto;
   }
@@ -520,7 +623,7 @@
   }
 
   .mainTitle {
-    font-size: 34px;
+    font-size: 32px;
   }
 
   .introText,
@@ -529,78 +632,92 @@
   }
 
   .introText {
-    margin-bottom: 30px;
+    margin-bottom: 28px;
   }
 
 
-  /* Chat */
-  .chat {
-    gap: 22px;
+  /* ========================================================
+     CHAT
+     좌우 방향은 모바일에서도 유지
+     ======================================================== */
 
-    margin: 56px 0 76px;
+  .chat {
+    width: 100%;
+    max-width: none;
+
+    gap: 18px;
+
+    margin: 50px auto 70px;
   }
 
   .chatRight {
+    align-self: flex-end;
     align-items: flex-end;
 
-    gap: 10px;
+    gap: 8px;
   }
 
   .chatLeft {
-    padding-left: 0;
+    align-self: flex-start;
   }
 
   .bubble {
-    max-width: 85%;
+    max-width: 78vw;
 
-    padding: 12px 16px;
+    padding: 11px 15px;
 
-    border-radius: 18px;
-
-    font-size: 16px;
-  }
-
-
-  /* Package heading */
-  .packageIntro {
-    margin-bottom: 36px;
-  }
-
-  .packageHeading {
-    font-size: 30px;
-  }
-
-  .packageLead {
-    max-width: 440px;
+    border-radius: 17px;
 
     font-size: 15px;
   }
 
 
-  /* Package cards stack */
+  /* ========================================================
+     PACKAGE INTRO
+     ======================================================== */
+
+  .packageIntro {
+    margin-bottom: 34px;
+  }
+
+  .packageHeading {
+    font-size: 28px;
+  }
+
+  .packageLead {
+    max-width: 420px;
+
+    font-size: 14px;
+  }
+
+
+  /* ========================================================
+     PACKAGE CARDS STACK
+     ======================================================== */
+
   .packageGrid {
     grid-template-columns: 1fr;
 
-    gap: 22px;
+    gap: 18px;
   }
 
   .packageCard {
     min-height: auto;
 
-    padding: 26px 24px 32px;
+    padding: 24px 22px 30px;
+  }
+
+  .eyebrow {
+    font-size: 13px;
   }
 
   .packageTitle {
-    font-size: 26px;
+    font-size: 25px;
   }
 
   .packageSubtitle,
   .packageList li {
-    font-size: 16px;
-  }
-
-  .eyebrow {
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 
@@ -617,7 +734,7 @@
   }
 
   .portraitWrapper {
-    width: 170px;
+    width: 165px;
   }
 
   .mainTitle {
@@ -625,27 +742,10 @@
   }
 
   .packageHeading {
-    font-size: 27px;
+    font-size: 26px;
   }
 
   .bubble {
-    max-width: 90%;
-  }
-}
-
-
-/* ============================================================
-   REDUCED MOTION
-   ============================================================ */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .reveal,
-  .packageCard {
-    opacity: 1;
-
-    transform: none;
-
-    transition: none;
+    max-width: 84vw;
   }
 }
