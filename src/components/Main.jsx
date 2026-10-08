@@ -67,7 +67,7 @@ export default function Main() {
             style={rise(1)}
           >
             Multimedia Design student focused on{' '}
-            <span className={styles.highlight}>UX/UI design.</span>
+            <span className={styles.highlight}>UX/UI design. </span>
             <br className={styles.desktopBreak} />
             Also into user research and front-end development.
           </p>

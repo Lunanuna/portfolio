@@ -525,9 +525,9 @@
     Desktop에서는 의도적으로 2줄.
     모바일에서는 width에 따라 자연스럽게 줄바꿈.
   */
-  .desktopBreak {
+  /* .desktopBreak {
     display: none;
-  }
+  } */
 
 
   /*
