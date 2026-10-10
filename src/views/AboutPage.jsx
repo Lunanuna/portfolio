@@ -1,6 +1,7 @@
+
 import styles from './AboutPage.module.css';
 import { useReveal } from '../hooks/useReveal';
-import { useScrolled } from '../hooks/useScrolled'; 
+import { useScrolled } from '../hooks/useScrolled';
 
 // images
 import portrait from '../assets/images/About/portrait.png';
@@ -16,8 +17,14 @@ import freetime3 from '../assets/images/About/freetime3.png';
 import freetime4 from '../assets/images/About/freetime4.png';
 import karaoke1 from '../assets/images/About/karaoke1.png';
 import karaoke2 from '../assets/images/About/karaoke2.png';
-import test from '../assets/images/About/test.png';
-import testMobile from '../assets/images/About/testMobile.png';
+
+// Tivoli animation frames (desktop and mobile)
+import tivoliDesk1 from '../assets/images/About/tivoli-desk-1.webp';
+import tivoliDesk2 from '../assets/images/About/tivoli-desk-2.webp';
+import tivoliDesk3 from '../assets/images/About/tivoli-desk-3.webp';
+import tivoliMobile1 from '../assets/images/About/tivoli-mobile-1.webp';
+import tivoliMobile2 from '../assets/images/About/tivoli-mobile-2.webp';
+import tivoliMobile3 from '../assets/images/About/tivoli-mobile-3.webp';
 
 // --i : 진입 애니메이션 등장 순서
 const rise = (i) => ({ '--i': i });
@@ -141,14 +148,41 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── 중간 ── */}
+      {/* ── 중간: Tivoli 3단계 애니메이션 ── */}
       <section className={styles.middleAbout}>
         <div
           ref={midRef}
           className={`${styles.middleInner} ${styles.reveal} ${midShown ? styles.visible : ''}`}
         >
-          <img src={test} alt="" className={`${styles.testImg} ${styles.onlyDesktop}`} />
-          <img src={testMobile} alt="..." className={`${styles.testImg} ${styles.onlyMobile}`} />
+          <div
+            className={styles.tivoliSequence}
+            role="img"
+            aria-label="Tivoli photo with the words: I believe... There is always another perspective worth looking from."
+          >
+            {/* Frame 1: Background + photo */}
+            <picture className={styles.tivoliBase}>
+              <source media="(max-width: 900px)" srcSet={tivoliMobile1} />
+              <img src={tivoliDesk1} alt="" />
+            </picture>
+
+            {/* Frame 2: I believe... */}
+            <picture
+              className={`${styles.tivoliOverlay} ${styles.tivoliStepTwo}`}
+              aria-hidden="true"
+            >
+              <source media="(max-width: 900px)" srcSet={tivoliMobile2} />
+              <img src={tivoliDesk2} alt="" />
+            </picture>
+
+            {/* Frame 3: Full message */}
+            <picture
+              className={`${styles.tivoliOverlay} ${styles.tivoliStepThree}`}
+              aria-hidden="true"
+            >
+              <source media="(max-width: 900px)" srcSet={tivoliMobile3} />
+              <img src={tivoliDesk3} alt="" />
+            </picture>
+          </div>
         </div>
       </section>
 
@@ -159,7 +193,7 @@ export default function AboutPage() {
             ref={subRef}
             className={`${styles.subHeading} ${styles.reveal} ${subShown ? styles.visible : ''}`}
           >
-            <span role="img" aria-label="여성">💁🏻‍♀️</span> A little more about me
+            <span role="img" aria-label="여성">💁🏻‍♀️</span> When I am not designing
           </h2>
 
           {GALLERIES.map((gallery) => (

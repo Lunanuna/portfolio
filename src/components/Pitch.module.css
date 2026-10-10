@@ -1,91 +1,41 @@
-/* ============================================================
-   PITCH SECTION
-   ============================================================ */
 
-.pitch {
-  width: 100%;
-  max-width: 1440px;
-
-  margin: 0 auto;
-  padding: 120px 80px 160px;
-
-  color: #111111;
-}
-
-
-/* ============================================================
-   REVEAL ANIMATION
-   ============================================================ */
+.pitch { width: 100%; max-width: 1440px; margin: 0 auto; padding: 120px 80px 160px; color: #111111; }
 
 .reveal {
   opacity: 0;
   transform: translateY(18px);
-
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s ease;
-
+  transition: opacity 0.7s ease, transform 0.7s ease;
   transition-delay: calc(var(--i, 0) * 0.1s);
 }
 
-.visible .reveal {
-  opacity: 1;
-  transform: translateY(0);
-}
+.visible .reveal { opacity: 1; transform: translateY(0); }
+.packageCard.visible { opacity: 1; transform: translateY(0); }
 
-.packageCard.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-/* ============================================================
-   INTRO
-   ============================================================ */
+/* INTRO */
 
 .intro {
   display: grid;
   grid-template-columns: 300px 1fr;
-
   align-items: center;
   gap: 72px;
-
   max-width: 1120px;
   margin: 0 auto;
 }
 
-
-/* ============================================================
-   PORTRAIT
-   ============================================================ */
-
-.portraitWrapper {
-  width: 300px;
-  aspect-ratio: 1;
-}
+.portraitWrapper { width: 300px; aspect-ratio: 1; }
 
 .portrait {
   display: block;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
   border-radius: 50%;
 }
 
-
-/* ============================================================
-   INTRO TEXT
-   ============================================================ */
-
-.introContent {
-  max-width: 780px;
-}
+.introContent { max-width: 780px; }
 
 .availability {
   margin: 0 0 4px;
-
   font-family: "Karla", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -94,7 +44,6 @@
 
 .mainTitle {
   margin: 0 0 18px;
-
   font-family: "Montserrat", sans-serif;
   font-size: 48px;
   font-weight: 600;
@@ -103,9 +52,7 @@
 
 .introText {
   max-width: 720px;
-
   margin: 0 0 36px;
-
   font-family: "Karla", sans-serif;
   font-size: 18px;
   font-weight: 400;
@@ -119,144 +66,176 @@
   line-height: 1.45;
 }
 
-.expect p {
-  margin: 0 0 4px;
-}
+.expect p { margin: 0 0 4px; }
+.expect ul { margin: 0; padding-left: 24px; }
 
-.expect ul {
-  margin: 0;
-  padding-left: 24px;
-}
-
-
-/* ============================================================
-   CHAT AREA
-   ============================================================ */
+/* CHAT AREA */
 
 .chat {
   display: flex;
   flex-direction: column;
-
   max-width: 760px;
   gap: 18px;
-
   margin: 115px auto 135px;
 }
 
 .chatRight {
   display: flex;
   flex-direction: column;
-
   width: fit-content;
-
   align-self: flex-end;
   align-items: flex-end;
-
   gap: 10px;
 }
 
 .chatLeft {
   display: flex;
-
   width: fit-content;
-
   align-self: flex-start;
 }
 
-
-/* ============================================================
-   CHAT BUBBLE BASE
-   ============================================================ */
+/* CHAT BUBBLES */
 
 .bubble {
   position: relative;
-
   width: fit-content;
   max-width: 380px;
-
   padding: 14px 20px;
-
   border-radius: 20px;
-
   font-family: "Karla", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 1.15;
 }
 
-
-/* ============================================================
-   BLUE BUBBLES
-   ============================================================ */
-
 .blueBubble {
   background: #2f8df5;
   color: #ffffff;
 }
 
-/* 첫 번째 파란 말풍선은 꼬리 없음 */
-.chatRight .blueBubble:first-child::after {
-  display: none;
-}
+.chatRight .blueBubble:first-child::after { display: none; }
 
-/* 두 번째 파란 말풍선만 꼬리 */
 .chatRight .blueBubble:last-child::after {
   content: "";
-
   position: absolute;
-
   right: 10px;
   bottom: -6px;
-
   width: 18px;
   height: 18px;
-
   background: #2f8df5;
-
   clip-path: polygon(100% 0, 0 0, 100% 100%);
 }
-
-
-/* ============================================================
-   GREY BUBBLE
-   ============================================================ */
 
 .greyBubble {
   background: #e9e9eb;
   color: #111111;
 }
 
-/* 회색 꼬리 - 더 작게 */
 .greyBubble::after {
   content: "";
-
   position: absolute;
-
   left: 10px;
   bottom: -6px;
-
   width: 18px;
   height: 18px;
-
   background: #e9e9eb;
-
   clip-path: polygon(0 0, 0 100%, 100% 0);
 }
 
+/* NEW — CHAT ANIMATION */
 
-/* ============================================================
-   PACKAGE INTRO
-   ============================================================ */
+.chatLeft { position: relative; }
 
-.packageIntro {
-  margin-bottom: 52px;
-
-  text-align: center;
+.chatMessage {
+  opacity: 0;
+  transform: translateY(14px) scale(0.96);
 }
+
+.chat.visible .chatMessageOne {
+  animation: chatSend 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+}
+
+.chat.visible .chatMessageTwo {
+  animation: chatSend 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1.55s forwards;
+}
+
+.chat.visible .chatMessageReply {
+  animation: chatReceive 0.55s cubic-bezier(0.22, 1, 0.36, 1) 3.55s forwards;
+}
+
+@keyframes chatSend {
+  from { opacity: 0; transform: translate(24px, 14px) scale(0.96); }
+  to { opacity: 1; transform: translate(0, 0) scale(1); }
+}
+
+@keyframes chatReceive {
+  from { opacity: 0; transform: translate(-20px, 12px) scale(0.96); }
+  to { opacity: 1; transform: translate(0, 0) scale(1); }
+}
+
+/* TYPING INDICATOR */
+
+.typingIndicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  padding: 16px 20px;
+  border-radius: 20px;
+  background: #e9e9eb;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.chat.visible .typingIndicator {
+  animation: typingAppear 1.35s ease 1.85s both;
+}
+
+.typingDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #919196;
+  animation: typingBounce 0.9s ease-in-out infinite;
+}
+
+.typingDot:nth-child(2) { animation-delay: 0.15s; }
+.typingDot:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes typingAppear {
+  0% { opacity: 0; visibility: hidden; }
+  15%, 80% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.45; }
+  30% { transform: translateY(-5px); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chatMessage,
+  .chat.visible .chatMessageOne,
+  .chat.visible .chatMessageTwo,
+  .chat.visible .chatMessageReply {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .typingIndicator { display: none; }
+}
+
+/* PACKAGE INTRO */
+
+.packageIntro { margin-bottom: 52px; text-align: center; }
 
 .packageHeading {
   margin: 0 0 10px;
-
   font-family: "Montserrat", sans-serif;
   font-size: 42px;
   font-weight: 600;
@@ -265,145 +244,84 @@
 
 .packageLead {
   max-width: 700px;
-
   margin: 0 auto;
-
   font-family: "Karla", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
 }
 
-
-/* ============================================================
-   PACKAGE GRID
-   ============================================================ */
+/* PACKAGE GRID */
 
 .packageGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-
   gap: 34px;
-
   max-width: 1120px;
   margin: 0 auto;
 }
 
-
-/* ============================================================
-   PACKAGE CARD
-   ============================================================ */
-
 .packageCard {
   min-height: 410px;
-
   padding: 24px 24px 34px;
-
   background: #fbfce3;
-
   border-radius: 20px;
-
-  box-shadow:
-    0 3px 14px rgba(17, 17, 17, 0.12);
-
+  box-shadow: 0 3px 14px rgba(17, 17, 17, 0.12);
   opacity: 0;
   transform: translateY(18px);
-
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s ease;
-
+  transition: opacity 0.7s ease, transform 0.7s ease;
   transition-delay: calc(var(--i, 0) * 0.1s);
 }
 
-
-/* ============================================================
-   PACKAGE EYEBROW
-   ============================================================ */
-
 .eyebrow {
   display: inline-block;
-
   margin-bottom: 28px;
-
   padding: 5px 18px;
-
   border-radius: 999px;
-
   background: #3478f6;
   color: #ffffff;
-
   font-family: "Karla", sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 1;
 }
 
-
-/* ============================================================
-   PACKAGE TITLE
-   ============================================================ */
-
 .packageTitle {
   margin: 0 0 10px;
-
   font-family: "Montserrat", sans-serif;
   font-size: 30px;
   font-weight: 600;
   line-height: 1.1;
 }
 
-
-/* ============================================================
-   PACKAGE SUBTITLE
-   ============================================================ */
-
 .packageSubtitle {
   margin: 0;
-
   font-family: "Karla", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.35;
 }
 
-
-/* ============================================================
-   DIVIDER
-   ============================================================ */
-
 .divider {
   width: 100%;
   height: 1px;
-
   margin: 30px 0;
-
   background: rgba(17, 17, 17, 0.3);
 }
-
-
-/* ============================================================
-   PACKAGE LIST
-   ============================================================ */
 
 .packageList {
   display: flex;
   flex-direction: column;
-
   gap: 12px;
-
   margin: 0;
   padding: 0;
-
   list-style: none;
 }
 
 .packageList li {
   display: flex;
   align-items: flex-start;
-
   gap: 10px;
-
   font-family: "Karla", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -413,339 +331,74 @@
 .checkIcon {
   width: 15px;
   height: 15px;
-
   margin-top: 3px;
-
   flex-shrink: 0;
 }
 
-
-/* ============================================================
-   TABLET
-   Desktop 구조 그대로 유지
-   - intro: 사진 + 텍스트 2열
-   - chat: 좌 / 우 구조 유지
-   - package: 3개 카드 유지
-   ============================================================ */
+/* TABLET */
 
 @media (max-width: 1024px) {
+  .pitch { padding: 90px 32px 110px; }
+  .intro { grid-template-columns: 190px 1fr; gap: 36px; max-width: 900px; }
+  .portraitWrapper { width: 190px; }
+  .introContent { max-width: 650px; }
+  .availability { font-size: 14px; }
+  .mainTitle { font-size: 38px; margin-bottom: 14px; }
+  .introText { font-size: 16px; margin-bottom: 26px; }
+  .expect { font-size: 16px; }
 
-  .pitch {
-    padding: 90px 32px 110px;
-  }
+  .chat { max-width: 650px; gap: 16px; margin: 50px auto 70px; }
+  .chatRight { align-self: flex-end; align-items: flex-end; gap: 8px; }
+  .chatLeft { align-self: flex-start; }
+  .bubble { max-width: 310px; padding: 12px 18px; font-size: 16px; }
 
-
-  /* ========================================================
-     INTRO
-     구조는 desktop 그대로, 크기만 축소
-     ======================================================== */
-
-  .intro {
-    grid-template-columns: 190px 1fr;
-    gap: 36px;
-
-    max-width: 900px;
-  }
-
-  .portraitWrapper {
-    width: 190px;
-  }
-
-  .introContent {
-    max-width: 650px;
-  }
-
-  .availability {
-    font-size: 14px;
-  }
-
-  .mainTitle {
-    font-size: 38px;
-    margin-bottom: 14px;
-  }
-
-  .introText {
-    font-size: 16px;
-    margin-bottom: 26px;
-  }
-
-  .expect {
-    font-size: 16px;
-  }
-
-
-  /* ========================================================
-     CHAT
-     Desktop 구조 그대로
-     ======================================================== */
-
-  .chat {
-    max-width: 650px;
-
-    gap: 16px;
-
-    margin: 50px auto 70px;
-  }
-
-  .chatRight {
-    align-self: flex-end;
-    align-items: flex-end;
-
-    gap: 8px;
-  }
-
-  .chatLeft {
-    align-self: flex-start;
-  }
-
-  .bubble {
-    max-width: 310px;
-
-    padding: 12px 18px;
-
-    font-size: 16px;
-  }
-
-
-  /* ========================================================
-     PACKAGE INTRO
-     ======================================================== */
-
-  .packageIntro {
-    margin-bottom: 40px;
-  }
-
-  .packageHeading {
-    font-size: 34px;
-  }
-
-  .packageLead {
-    font-size: 14px;
-  }
-
-
-  /* ========================================================
-     PACKAGE GRID
-     3 columns 유지
-     ======================================================== */
-
-  .packageGrid {
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 16px;
-
-    max-width: 900px;
-  }
-
-  .packageCard {
-    min-height: 340px;
-
-    padding: 20px 18px 26px;
-  }
-
-  .eyebrow {
-    margin-bottom: 22px;
-
-    padding: 5px 14px;
-
-    font-size: 13px;
-  }
-
-  .packageTitle {
-    font-size: 22px;
-  }
-
-  .packageSubtitle {
-    font-size: 14px;
-  }
-
-  .divider {
-    margin: 24px 0;
-  }
-
-  .packageList {
-    gap: 10px;
-  }
-
-  .packageList li {
-    gap: 8px;
-
-    font-size: 14px;
-  }
-
-  .checkIcon {
-    width: 13px;
-    height: 13px;
-
-    margin-top: 3px;
-  }
+  .packageIntro { margin-bottom: 40px; }
+  .packageHeading { font-size: 34px; }
+  .packageLead { font-size: 14px; }
+  .packageGrid { grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; }
+  .packageCard { min-height: 340px; padding: 20px 18px 26px; }
+  .eyebrow { margin-bottom: 22px; padding: 5px 14px; font-size: 13px; }
+  .packageTitle { font-size: 22px; }
+  .packageSubtitle { font-size: 14px; }
+  .divider { margin: 24px 0; }
+  .packageList { gap: 10px; }
+  .packageList li { gap: 8px; font-size: 14px; }
+  .checkIcon { width: 13px; height: 13px; margin-top: 3px; }
 }
 
-
-/* ============================================================
-   MOBILE
-   여기서부터 구조 변경
-
-   640px 아래에서만:
-   - intro stack
-   - package cards stack
-   ============================================================ */
+/* MOBILE */
 
 @media (max-width: 640px) {
+  .pitch { padding: 70px 24px 90px; }
+  .intro { grid-template-columns: 1fr; gap: 30px; }
+  .portraitWrapper { width: 180px; margin: 0 auto; }
+  .introContent { max-width: none; }
+  .availability { font-size: 14px; }
+  .mainTitle { font-size: 32px; }
+  .introText, .expect { font-size: 16px; }
+  .introText { margin-bottom: 28px; }
 
-  .pitch {
-    padding: 70px 24px 90px;
-  }
+  .chat { width: 100%; max-width: none; gap: 18px; margin: 50px auto 70px; }
+  .chatRight { align-self: flex-end; align-items: flex-end; gap: 8px; }
+  .chatLeft { align-self: flex-start; }
+  .bubble { max-width: 78vw; padding: 11px 15px; border-radius: 17px; font-size: 15px; }
 
-
-  /* ========================================================
-     INTRO STACK
-     ======================================================== */
-
-  .intro {
-    grid-template-columns: 1fr;
-
-    gap: 30px;
-  }
-
-  .portraitWrapper {
-    width: 180px;
-
-    margin: 0 auto;
-  }
-
-  .introContent {
-    max-width: none;
-  }
-
-  .availability {
-    font-size: 14px;
-  }
-
-  .mainTitle {
-    font-size: 32px;
-  }
-
-  .introText,
-  .expect {
-    font-size: 16px;
-  }
-
-  .introText {
-    margin-bottom: 28px;
-  }
-
-
-  /* ========================================================
-     CHAT
-     좌우 방향은 모바일에서도 유지
-     ======================================================== */
-
-  .chat {
-    width: 100%;
-    max-width: none;
-
-    gap: 18px;
-
-    margin: 50px auto 70px;
-  }
-
-  .chatRight {
-    align-self: flex-end;
-    align-items: flex-end;
-
-    gap: 8px;
-  }
-
-  .chatLeft {
-    align-self: flex-start;
-  }
-
-  .bubble {
-    max-width: 78vw;
-
-    padding: 11px 15px;
-
-    border-radius: 17px;
-
-    font-size: 15px;
-  }
-
-
-  /* ========================================================
-     PACKAGE INTRO
-     ======================================================== */
-
-  .packageIntro {
-    margin-bottom: 34px;
-  }
-
-  .packageHeading {
-    font-size: 28px;
-  }
-
-  .packageLead {
-    max-width: 420px;
-
-    font-size: 14px;
-  }
-
-
-  /* ========================================================
-     PACKAGE CARDS STACK
-     ======================================================== */
-
-  .packageGrid {
-    grid-template-columns: 1fr;
-
-    gap: 18px;
-  }
-
-  .packageCard {
-    min-height: auto;
-
-    padding: 24px 22px 30px;
-  }
-
-  .eyebrow {
-    font-size: 13px;
-  }
-
-  .packageTitle {
-    font-size: 25px;
-  }
-
-  .packageSubtitle,
-  .packageList li {
-    font-size: 15px;
-  }
+  .packageIntro { margin-bottom: 34px; }
+  .packageHeading { font-size: 28px; }
+  .packageLead { max-width: 420px; font-size: 14px; }
+  .packageGrid { grid-template-columns: 1fr; gap: 18px; }
+  .packageCard { min-height: auto; padding: 24px 22px 30px; }
+  .eyebrow { font-size: 13px; }
+  .packageTitle { font-size: 25px; }
+  .packageSubtitle, .packageList li { font-size: 15px; }
 }
 
-
-/* ============================================================
-   SMALL MOBILE
-   ============================================================ */
+/* SMALL MOBILE */
 
 @media (max-width: 480px) {
-
-  .pitch {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-  .portraitWrapper {
-    width: 165px;
-  }
-
-  .mainTitle {
-    font-size: 30px;
-  }
-
-  .packageHeading {
-    font-size: 26px;
-  }
-
-  .bubble {
-    max-width: 84vw;
-  }
+  .pitch { padding-left: 18px; padding-right: 18px; }
+  .portraitWrapper { width: 165px; }
+  .mainTitle { font-size: 30px; }
+  .packageHeading { font-size: 26px; }
+  .bubble { max-width: 84vw; }
 }

@@ -1,11 +1,11 @@
+
 /* ============================================================
-   공통 레이아웃 변수 — 여기만 바꾸면 전 섹션이 같이 움직임
+   공통 레이아웃 변수
    ============================================================ */
 .mainAbout {
-  --content-max: 1120px;   /* 콘텐츠 최대 폭 */
-  --side-pad: 24px;        /* 좌우 최소 여백 */
+  --content-max: 1120px;
+  --side-pad: 24px;
 
-  /* [추가] 모션 조절값 — Main / Projects 와 동일하게 맞춤 */
   --rise-dur: 0.65s;
   --rise-stagger: 0.08s;
   --rise-dist: 18px;
@@ -16,8 +16,6 @@
   margin-top: 240px;
 }
 
-/* ── 모든 섹션 공통: 폭 100%, 안쪽 래퍼가 중앙 정렬 담당 ──
-   (100vw + 음수 margin은 배경색이 필요한 섹션에서만 쓰면 됨) */
 .headingSection,
 .topAbout,
 .middleAbout,
@@ -27,7 +25,6 @@
   padding-inline: var(--side-pad);
 }
 
-/* ── 안쪽 래퍼: 실제로 중앙 정렬되는 박스 ── */
 .headingInner,
 .topInner,
 .middleInner,
@@ -39,14 +36,18 @@
 }
 
 /* ============================================================
-   [추가] 모션 — 진입 애니메이션 / 스크롤 리빌
-   ------------------------------------------------------------
-   .rise   : 페이지 로드 시 1회. style={{'--i': n}} 으로 순서 지정
-   .reveal : 화면에 들어올 때. useReveal 훅이 .visible 을 붙여줌
+   모션 — 진입 애니메이션 / 스크롤 리빌
    ============================================================ */
 @keyframes rise {
-  from { opacity: 0; transform: translateY(var(--rise-dist)); }
-  to   { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(var(--rise-dist));
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .rise {
@@ -58,6 +59,7 @@
 .reveal {
   opacity: 0;
   transform: translateY(20px);
+
   transition:
     opacity var(--rise-dur) var(--rise-ease),
     transform var(--rise-dur) var(--rise-ease);
@@ -79,7 +81,6 @@
   line-height: 1.25;
   margin: 0;
 
-  /* [추가] 제목만 더 멀리서, 더 느긋하게 — 순서는 여전히 첫 번째 */
   --rise-dist: 28px;
   --rise-dur: 0.85s;
   --rise-ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -97,13 +98,13 @@
   flex-direction: row;
   align-items: flex-start;
   gap: 48px;
-  margin-top: 40px;        /* 제목 ↔ 본문 간격 */
+  margin-top: 40px;
 }
 
 .textBox {
   display: flex;
   flex-direction: column;
-  min-width: 0;            /* flex 안에서 텍스트 줄바꿈 깨짐 방지 */
+  min-width: 0;
 }
 
 .textBox h3 {
@@ -141,19 +142,18 @@
   text-decoration: none;
   cursor: pointer;
 
-  /* [변경] hover 를 opacity → transform 으로.
-     리빌이 opacity 를 쓰기 때문에 둘이 겹치면 서로를 덮어씀 */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .button:hover {
   transform: translateY(-2px);
 }
 
-/* [추가] 버튼 전용 리빌 — 위로 밀지 않고 페이드만.
-   hover 의 translateY 와 충돌하지 않게 하기 위함 */
 .buttonReveal {
   opacity: 0;
+
   transition:
     opacity var(--rise-dur) var(--rise-ease),
     transform 0.2s ease,
@@ -177,8 +177,82 @@
   gap: 64px;
 }
 
-/* ⚠️ 아래 4개(.middleHeader / .middleImg / .middleFlex / .middlePara)는
-   현재 JSX 에서 쓰이지 않음. 다시 쓸 계획 없으면 지워도 됨 */
+/* ============================================================
+   NEW — TIVOLI IMAGE ANIMATION
+
+   Frame 1: Background + photo
+   Frame 2: I believe...
+   Frame 3: Full message
+
+   Three images overlap in exactly the same position.
+   ============================================================ */
+
+.tivoliSequence {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+  isolation: isolate;
+}
+
+/* Base image determines the height */
+.tivoliBase,
+.tivoliOverlay {
+  display: block;
+  width: 100%;
+}
+
+.tivoliBase img,
+.tivoliOverlay img {
+  display: block;
+  width: 100%;
+}
+
+.tivoliBase img {
+  height: auto;
+}
+
+/* Overlay images */
+.tivoliOverlay {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tivoliOverlay img {
+  height: 100%;
+  object-fit: fill;
+}
+
+/* ============================================================
+   ANIMATION TIMING
+   ============================================================ */
+
+/* Step 2: I believe... */
+.middleInner.visible .tivoliStepTwo {
+  animation: tivoliFadeIn 0.65s ease 0.85s forwards;
+}
+
+/* Step 3: Full message */
+.middleInner.visible .tivoliStepThree {
+  animation: tivoliFadeIn 0.65s ease 2s forwards;
+}
+
+@keyframes tivoliFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   기존 중간 섹션 스타일 — 유지
+   ============================================================ */
 .middleHeader {
   color: #26448C;
   font-size: 48px;
@@ -212,7 +286,11 @@
 
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+
   transition-delay: 0.45s;
 }
 
@@ -221,7 +299,9 @@
   transform: none;
 }
 
-.onlyMobile { display: none; }
+.onlyMobile {
+  display: none;
+}
 
 /* ============================================================
    하단
@@ -282,7 +362,7 @@
 
   .heading {
     font-size: 28px;
-    --rise-dist: 20px;     /* [추가] 작은 화면에선 이동 거리도 줄임 */
+    --rise-dist: 20px;
   }
 
   .topInner {
@@ -291,7 +371,9 @@
     margin-top: 32px;
   }
 
-  .topAbout { padding-bottom: 80px; }
+  .topAbout {
+    padding-bottom: 80px;
+  }
 
   .portrait {
     width: 100%;
@@ -304,9 +386,13 @@
     margin-bottom: 48px;
   }
 
-  .middleAbout { padding-block: 64px; }
+  .middleAbout {
+    padding-block: 64px;
+  }
 
-  .middleHeader { font-size: 32px; }
+  .middleHeader {
+    font-size: 32px;
+  }
 
   .middleFlex {
     flex-direction: column;
@@ -314,10 +400,17 @@
     gap: 24px;
   }
 
-  .middleImg { max-width: 350px; }
+  .middleImg {
+    max-width: 350px;
+  }
 
-  .onlyDesktop { display: none; }
-  .onlyMobile  { display: block; }
+  .onlyDesktop {
+    display: none;
+  }
+
+  .onlyMobile {
+    display: block;
+  }
 
   .middlePara {
     font-size: 20px;
@@ -328,34 +421,35 @@
 
   /* ── 하단 갤러리: 가로 스와이프 ── */
   .imageArr {
-    flex-wrap: nowrap;              /* ← wrap 해제가 핵심 */
+    flex-wrap: nowrap;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     gap: 12px;
     margin-bottom: 48px;
 
-    /* 화면 끝까지 흘러가게 (full-bleed) */
     margin-inline: calc(-1 * var(--side-pad));
     padding-inline: var(--side-pad);
     scroll-padding-inline: var(--side-pad);
 
-    scrollbar-width: none;          /* Firefox */
+    scrollbar-width: none;
   }
 
-  .imageArr::-webkit-scrollbar { display: none; }
+  .imageArr::-webkit-scrollbar {
+    display: none;
+  }
 
   .galleryImg {
-    flex: 0 0 auto;        /* ← 78% 대신 auto */
-    width: auto;           /* 가로는 비율대로 */
-    height: 260px;         /* 이 숫자 하나로 전체 크기 조절 */
-    object-fit: initial;   /* cover 필요 없음 — 크롭이 없으니까 */
+    flex: 0 0 auto;
+    width: auto;
+    height: 260px;
+    object-fit: initial;
     scroll-snap-align: start;
   }
 }
 
 /* ============================================================
-   [추가] 움직임 최소화 설정 존중
+   움직임 최소화 설정 존중
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   .rise,
@@ -365,5 +459,17 @@
     transition: none;
     opacity: 1;
     transform: none;
+  }
+
+  .middleInner .tivoliStepTwo,
+  .middleInner.visible .tivoliStepTwo {
+    animation: none;
+    opacity: 0;
+  }
+
+  .middleInner .tivoliStepThree,
+  .middleInner.visible .tivoliStepThree {
+    animation: none;
+    opacity: 1;
   }
 }

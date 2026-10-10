@@ -1,3 +1,4 @@
+
 import styles from './Pitch.module.css';
 import { useReveal } from '../hooks/useReveal';
 
@@ -36,10 +37,6 @@ const packageList = [
 
 /* ============================================================
    PACKAGE CARD
-
-   map() 안에서 useReveal()을 직접 호출하지 않기 위해
-   카드 하나를 별도 컴포넌트로 분리.
-   카드마다 자기 위치에서 따로 reveal 됨.
    ============================================================ */
 
 function PackageCard({ pkg, index }) {
@@ -167,7 +164,7 @@ export default function Pitch() {
 
 
       {/* ======================================================
-          CHAT
+          CHAT — ANIMATED
       ====================================================== */}
 
       <div
@@ -178,17 +175,15 @@ export default function Pitch() {
       >
         <div className={styles.chatRight}>
           <div
-            className={`${styles.bubble} ${styles.blueBubble} ${styles.reveal}`}
-            style={{ '--i': 0 }}
+            className={`${styles.bubble} ${styles.blueBubble} ${styles.chatMessage} ${styles.chatMessageOne}`}
           >
             Okay Gayoung,
             <br />
-            10 weeks sounds good.
+            10 weeks sounds good!
           </div>
 
           <div
-            className={`${styles.bubble} ${styles.blueBubble} ${styles.reveal}`}
-            style={{ '--i': 1 }}
+            className={`${styles.bubble} ${styles.blueBubble} ${styles.chatMessage} ${styles.chatMessageTwo}`}
           >
             But what if we need more?
           </div>
@@ -196,12 +191,17 @@ export default function Pitch() {
 
         <div className={styles.chatLeft}>
           <div
-            className={`${styles.bubble} ${styles.greyBubble} ${styles.reveal}`}
-            style={{ '--i': 2 }}
+            className={`${styles.bubble} ${styles.greyBubble} ${styles.chatMessage} ${styles.chatMessageReply}`}
           >
             Good question!
             <br />
             I came prepared. 😊
+          </div>
+
+          <div className={styles.typingIndicator} aria-hidden="true">
+            <span className={styles.typingDot} />
+            <span className={styles.typingDot} />
+            <span className={styles.typingDot} />
           </div>
         </div>
       </div>
